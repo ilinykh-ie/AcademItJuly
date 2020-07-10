@@ -19,24 +19,22 @@
     <select>
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:origin/master" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="71017881-c371-4f7b-b49f-bcd54cc08df1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/AcademItJuly.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Range/Range.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Range/src/ru/ilinykh/range/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Range/META-INF/Range.kotlin_module" afterDir="false" />
+    <list default="true" id="71017881-c371-4f7b-b49f-bcd54cc08df1" name="Default Changelist" comment="Delete kotlin module">
+      <change afterPath="$PROJECT_DIR$/Shapes/Shapes.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Shapes/src/ru/ilinykh/shape/Circle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Shapes/src/ru/ilinykh/shape/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Shapes/src/ru/ilinykh/shape/Rectangle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Shapes/src/ru/ilinykh/shape/Shape.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Shapes/src/ru/ilinykh/shape/Square.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Shapes/src/ru/ilinykh/shape/Triangle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +52,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1dwcpEBHUdtu5CcupDPPriGx0qG" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -62,8 +63,23 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.CommitDialog" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main (1)">
+    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.ilinykh.shape.Main" />
+      <module name="Shapes" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.ilinykh.shape.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.ilinykh.range.Main" />
       <module name="Range" />
@@ -73,6 +89,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -88,6 +105,28 @@
       <option name="presentableId" value="Default" />
       <updated>1593339776851</updated>
     </task>
+    <task id="LOCAL-00001" summary="Первый комит">
+      <created>1593692358570</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1593692358570</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Delete kotlin module">
+      <created>1593699732202</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1593699732202</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Задача Range">
+      <created>1594122563745</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1594122563745</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -95,49 +134,108 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="origin/master" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Первый комит" />
+    <MESSAGE value="Delete kotlin module" />
+    <MESSAGE value="Задача Range" />
+    <option name="LAST_COMMIT_MESSAGE" value="Задача Range" />
+  </component>
   <component name="WindowStateProjectService">
-    <state width="1556" height="217" key="GridCell.Tab.0.bottom" timestamp="1593351202273">
+    <state x="605" y="138" width="851" height="584" key="#com.intellij.ide.util.MemberChooser" timestamp="1594367910914">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1556" height="217" key="GridCell.Tab.0.bottom/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1593340085072" />
-    <state width="1556" height="217" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1593351202273" />
-    <state width="1556" height="217" key="GridCell.Tab.0.center" timestamp="1593351202272">
+    <state x="605" y="138" width="851" height="584" key="#com.intellij.ide.util.MemberChooser/0.0.1600.860@0.0.1600.860" timestamp="1594367910914" />
+    <state x="519" y="261" key="#com.intellij.refactoring.move.moveMembers.MoveMembersDialog" timestamp="1594375119484">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1556" height="217" key="GridCell.Tab.0.center/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1593340085072" />
-    <state width="1556" height="217" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1593351202272" />
-    <state width="1556" height="217" key="GridCell.Tab.0.left" timestamp="1593351202272">
+    <state x="519" y="261" key="#com.intellij.refactoring.move.moveMembers.MoveMembersDialog/0.0.1600.860@0.0.1600.860" timestamp="1594375119484" />
+    <state x="513" y="3" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1594213622484">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1556" height="217" key="GridCell.Tab.0.left/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1593340085071" />
-    <state width="1556" height="217" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1593351202272" />
-    <state width="1556" height="217" key="GridCell.Tab.0.right" timestamp="1593351202272">
+    <state x="513" y="3" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1594213622484" />
+    <state x="427" y="0" key="CommitChangelistDialog2" timestamp="1594122563108">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1556" height="217" key="GridCell.Tab.0.right/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1593340085072" />
-    <state width="1556" height="217" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1593351202272" />
-    <state x="182" y="55" key="new project wizard" timestamp="1593339808682">
+    <state x="427" y="0" key="CommitChangelistDialog2/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1594122563108" />
+    <state x="401" y="107" width="1097" height="660" key="DiffContextDialog" timestamp="1593699759790">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="182" y="55" key="new project wizard/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1593339808682" />
+    <state x="401" y="107" width="1097" height="660" key="DiffContextDialog/0.0.1600.860@0.0.1600.860" timestamp="1593699759790" />
+    <state width="1556" height="219" key="GridCell.Tab.0.bottom" timestamp="1594388443209">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1556" height="178" key="GridCell.Tab.0.bottom/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1594214173981" />
+    <state width="1556" height="219" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1594388443209" />
+    <state width="1556" height="219" key="GridCell.Tab.0.center" timestamp="1594388443209">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1556" height="178" key="GridCell.Tab.0.center/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1594214173980" />
+    <state width="1556" height="219" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1594388443209" />
+    <state width="1556" height="219" key="GridCell.Tab.0.left" timestamp="1594388443209">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1556" height="178" key="GridCell.Tab.0.left/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1594214173980" />
+    <state width="1556" height="219" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1594388443209" />
+    <state width="1556" height="219" key="GridCell.Tab.0.right" timestamp="1594388443209">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1556" height="178" key="GridCell.Tab.0.right/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1594214173981" />
+    <state width="1556" height="219" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1594388443209" />
+    <state width="1556" height="270" key="GridCell.Tab.1.bottom" timestamp="1594375430699">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1556" height="270" key="GridCell.Tab.1.bottom/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1594122781863" />
+    <state width="1556" height="270" key="GridCell.Tab.1.bottom/0.0.1600.860@0.0.1600.860" timestamp="1594375430699" />
+    <state width="1556" height="270" key="GridCell.Tab.1.center" timestamp="1594375430699">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1556" height="270" key="GridCell.Tab.1.center/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1594122781862" />
+    <state width="1556" height="270" key="GridCell.Tab.1.center/0.0.1600.860@0.0.1600.860" timestamp="1594375430699" />
+    <state width="1556" height="270" key="GridCell.Tab.1.left" timestamp="1594375430699">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1556" height="270" key="GridCell.Tab.1.left/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1594122781862" />
+    <state width="1556" height="270" key="GridCell.Tab.1.left/0.0.1600.860@0.0.1600.860" timestamp="1594375430699" />
+    <state width="1556" height="270" key="GridCell.Tab.1.right" timestamp="1594375430699">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1556" height="270" key="GridCell.Tab.1.right/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1594122781862" />
+    <state width="1556" height="270" key="GridCell.Tab.1.right/0.0.1600.860@0.0.1600.860" timestamp="1594375430699" />
+    <state x="303" y="60" key="SettingsEditor" timestamp="1593700520131">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="303" y="60" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1593700520131" />
+    <state x="392" y="164" key="Vcs.Push.Dialog.v2" timestamp="1594122584927">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="392" y="164" key="Vcs.Push.Dialog.v2/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1594122584927" />
+    <state x="392" y="164" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1593699962757" />
+    <state x="92" y="92" width="1416" height="676" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1593692643511">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="92" y="92" width="1416" height="676" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1593692643511" />
+    <state x="611" y="345" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1593692522242">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="611" y="345" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1593692522242" />
+    <state x="518" y="232" key="git4idea.merge.GitPullDialog" timestamp="1593692955387">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="518" y="232" key="git4idea.merge.GitPullDialog/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1593692955387" />
+    <state x="182" y="55" key="new project wizard" timestamp="1594209346202">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="182" y="55" key="new project wizard/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1594209346202" />
+    <state x="456" y="190" key="run.anything.popup" timestamp="1594376771914">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="456" y="190" key="run.anything.popup/0.0.1600.860@0.0.1600.860" timestamp="1594376771914" />
   </component>
 </project>
