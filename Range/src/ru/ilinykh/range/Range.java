@@ -33,148 +33,48 @@ public class Range {
         return (x >= from) && (x <= to);
     }
 
-    public Range getIntersection(Range x) {
-        double from1 = from;
-        double to1 = to;
-        double from2 = x.getFrom();
-        double to2 = x.getTo();
-
-        double intersectionStart;
-        double intersectionEnd;
-
-        if (from1 >= from2) {
-            if (from1 >= to2) {
-                return null;
-            }
-
-            intersectionStart = from1;
-            intersectionEnd = Math.min(to2, to1);
-        } else {
-            if (from2 >= to1) {
-                return null;
-            }
-
-            intersectionStart = from2;
-            intersectionEnd = Math.min(to1, to2);
-        }
-
-        return new Range(intersectionStart, intersectionEnd);
-    }
-
-    public Range[] getUnion(Range x) {
-        double from1 = from;
-        double to1 = to;
-        double from2 = x.getFrom();
-        double to2 = x.getTo();
-
-        double unionStart1;
-        double unionEnd1;
-        double unionStart2 = 0;
-        double unionEnd2 = 0;
-
-        int segmentsCount;
-
-        if (from1 >= from2) {
-            if (from1 > to2) {
-                unionStart1 = from2;
-                unionEnd1 = to2;
-                unionStart2 = from1;
-                unionEnd2 = to1;
-
-                segmentsCount = 2;
-            } else if (to2 <= to1) {
-                unionStart1 = from2;
-                unionEnd1 = to1;
-
-                segmentsCount = 1;
-            } else {
-                unionStart1 = from2;
-                unionEnd1 = to2;
-
-                segmentsCount = 1;
-            }
-        } else {
-            if (from2 > to1) {
-                unionStart1 = from1;
-                unionEnd1 = to1;
-                unionStart2 = from2;
-                unionEnd2 = to2;
-
-                segmentsCount = 2;
-            } else if (to2 >= to1) {
-                unionStart1 = from1;
-                unionEnd1 = to2;
-
-                segmentsCount = 1;
-            } else {
-                unionStart1 = from1;
-                unionEnd1 = to1;
-
-                segmentsCount = 1;
-            }
-        }
-
-        Range[] unions = new Range[segmentsCount];
-        unions[0] = new Range(unionStart1, unionEnd1);
-
-        if (segmentsCount == 2) {
-            unions[1] = new Range(unionStart2, unionEnd2);
-        }
-
-        return unions;
-    }
-
-    public Range[] getDifference(Range x) {
-        double from1 = from;
-        double to1 = to;
-        double from2 = x.getFrom();
-        double to2 = x.getTo();
-
-        if ((from2 <= from1) && (to2 >= to1)) {
+    public Range getIntersection(Range range2) {
+        if (from >= range2.to || range2.from >= to) {
             return null;
         }
 
-        double differenceStart1;
-        double differenceEnd1;
-        double differenceStart2 = 0;
-        double differenceEnd2 = 0;
+        return new Range(Math.max(from, range2.from), Math.min(to, range2.to));
+    }
 
-        int segmentsCount;
-
-        if (from1 >= from2) {
-            differenceEnd1 = to1;
-            segmentsCount = 1;
-
-            differenceStart1 = Math.max(from1, to2);
-
-        } else {
-            if (from2 >= to1) {
-                differenceStart1=from1;
-                differenceEnd1 = to1;
-
-                segmentsCount = 1;
-            } else if (to2 >= to1) {
-                differenceStart1=from1;
-                differenceEnd1 = from2;
-
-                segmentsCount = 1;
-            } else {
-                differenceStart1=from1;
-                differenceEnd1 = from2;
-                differenceStart2=to2;
-                differenceEnd2 = to1;
-
-                segmentsCount = 2;
-            }
+    public Range[] getUnion(Range range2) {
+        if (from > range2.to) {
+            return new Range[]{new Range(range2.from, range2.to), new Range(from, to)};
         }
 
-        Range[] unions = new Range[segmentsCount];
-        unions[0] = new Range(differenceStart1, differenceEnd1);
-
-        if (segmentsCount == 2) {
-            unions[1] = new Range(differenceStart2, differenceEnd2);
+        if (range2.from > to) {
+            return new Range[]{new Range(from, to), new Range(range2.from, range2.to)};
         }
 
-        return unions;
+        return new Range[]{new Range(Math.min(from, range2.from), Math.max(to, range2.to))};
+    }
+
+    public Range[] getDifference(Range range2) {
+        if ((range2.from <= from) && (range2.to >= to)) {
+            return new Range[]{};
+        }
+
+        if (range2.to < from || range2.from > to) {
+            return new Range[]{new Range(from, to)};
+        }
+
+        if (range2.from <= from) {
+            return new Range[]{new Range(range2.to, to)};
+        }
+
+        if (range2.to >= to) {
+            return new Range[]{new Range(from, range2.from)};
+        }
+
+        return new Range[]{new Range(from, range2.from), new Range(range2.to, to)};
+    }
+
+    @Override
+    public String toString() {
+        return String.format("от %.2f до %.2f", from, to);
     }
 }
