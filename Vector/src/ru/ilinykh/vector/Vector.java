@@ -3,7 +3,7 @@ package ru.ilinykh.vector;
 import java.util.Arrays;
 
 public class Vector {
-    private double[] components;
+    private final double[] components;
     private int n;
 
     public Vector(int n) throws IllegalAccessException {

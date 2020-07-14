@@ -44,5 +44,8 @@ public class Main {
 
         double scalar = Vector.scalarProduct(vector1, vector2);
         System.out.println("Скалярное произведение векторов 1 и 2 равна " + scalar);
+
+        Vector vector6 = new Vector(vector5);
+        System.out.println(vector6.toString());
     }
 }

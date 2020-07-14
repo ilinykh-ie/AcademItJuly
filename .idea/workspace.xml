@@ -156,7 +156,14 @@
       <option name="project" value="LOCAL" />
       <updated>1594732230188</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Исправление задачи Vector">
+      <created>1594735764109</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1594735764109</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -178,7 +185,8 @@
     <MESSAGE value="Добавление задачи Shapes" />
     <MESSAGE value="Исправление замечаний к задаче Range" />
     <MESSAGE value="Добавление задачи Vector;&#10;Перемещение файла Main из задачи Shapes в оттельную папку." />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавление задачи Vector;&#10;Перемещение файла Main из задачи Shapes в оттельную папку." />
+    <MESSAGE value="Исправление задачи Vector" />
+    <option name="LAST_COMMIT_MESSAGE" value="Исправление задачи Vector" />
   </component>
   <component name="WindowStateProjectService">
     <state x="280" y="6" key="#Project_Structure" timestamp="1594652313101">
@@ -197,34 +205,34 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="513" y="3" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1594707113602" />
-    <state x="427" y="0" key="CommitChangelistDialog2" timestamp="1594732229363">
+    <state x="427" y="0" width="1092" height="860" key="CommitChangelistDialog2" timestamp="1594735763466">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="427" y="0" key="CommitChangelistDialog2/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1594732229363" />
+    <state x="427" y="0" width="1092" height="860" key="CommitChangelistDialog2/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1594735763466" />
     <state x="427" y="0" key="CommitChangelistDialog2/0.0.1600.860@0.0.1600.860" timestamp="1594388553748" />
     <state x="401" y="107" width="1097" height="660" key="DiffContextDialog" timestamp="1593699759790">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="401" y="107" width="1097" height="660" key="DiffContextDialog/0.0.1600.860@0.0.1600.860" timestamp="1593699759790" />
-    <state width="1556" height="219" key="GridCell.Tab.0.bottom" timestamp="1594735490508">
+    <state width="1556" height="219" key="GridCell.Tab.0.bottom" timestamp="1594736130364">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1556" height="219" key="GridCell.Tab.0.bottom/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1594735490508" />
+    <state width="1556" height="219" key="GridCell.Tab.0.bottom/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1594736130364" />
     <state width="1556" height="270" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1594389116611" />
-    <state width="1556" height="219" key="GridCell.Tab.0.center" timestamp="1594735490507">
+    <state width="1556" height="219" key="GridCell.Tab.0.center" timestamp="1594736130364">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1556" height="219" key="GridCell.Tab.0.center/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1594735490507" />
+    <state width="1556" height="219" key="GridCell.Tab.0.center/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1594736130364" />
     <state width="1556" height="270" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1594389116611" />
-    <state width="1556" height="219" key="GridCell.Tab.0.left" timestamp="1594735490507">
+    <state width="1556" height="219" key="GridCell.Tab.0.left" timestamp="1594736130364">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1556" height="219" key="GridCell.Tab.0.left/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1594735490507" />
+    <state width="1556" height="219" key="GridCell.Tab.0.left/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1594736130364" />
     <state width="1556" height="270" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1594389116611" />
-    <state width="1556" height="219" key="GridCell.Tab.0.right" timestamp="1594735490508">
+    <state width="1556" height="219" key="GridCell.Tab.0.right" timestamp="1594736130364">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1556" height="219" key="GridCell.Tab.0.right/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1594735490508" />
+    <state width="1556" height="219" key="GridCell.Tab.0.right/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1594736130364" />
     <state width="1556" height="270" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1594389116611" />
     <state width="1556" height="270" key="GridCell.Tab.1.bottom" timestamp="1594389116611">
       <screen x="0" y="0" width="1600" height="860" />
@@ -250,10 +258,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="303" y="60" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1593700520131" />
-    <state x="392" y="164" key="Vcs.Push.Dialog.v2" timestamp="1594732236832">
+    <state x="392" y="164" key="Vcs.Push.Dialog.v2" timestamp="1594735782255">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="392" y="164" key="Vcs.Push.Dialog.v2/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1594732236832" />
+    <state x="392" y="164" key="Vcs.Push.Dialog.v2/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1594735782255" />
     <state x="392" y="164" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1594388559410" />
     <state x="92" y="92" width="1416" height="676" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1593692643511">
       <screen x="0" y="0" width="1600" height="860" />
