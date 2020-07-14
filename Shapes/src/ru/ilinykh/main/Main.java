@@ -1,4 +1,6 @@
-package ru.ilinykh.shape;
+package ru.ilinykh.main;
+
+import ru.ilinykh.shape.*;
 
 import java.util.Arrays;
 
