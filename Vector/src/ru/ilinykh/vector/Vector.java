@@ -3,8 +3,8 @@ package ru.ilinykh.vector;
 import java.util.Arrays;
 
 public class Vector {
-    private final double[] components;
-    private final int n;
+    private double[] components;
+    private int n;
 
     public Vector(int n) throws IllegalAccessException {
         if (n <= 0) {
@@ -23,7 +23,7 @@ public class Vector {
         this.components = new double[vector.n];
         this.n = vector.n;
 
-        System.arraycopy(vector.components, 0, this.components, 0, n);
+        System.arraycopy(vector.components, 0, this.components, 0, vector.n);
     }
 
     public Vector(double[] array) {
@@ -57,44 +57,38 @@ public class Vector {
         return Arrays.toString(components);
     }
 
-    public Vector getSum(Vector vector) throws IllegalAccessException {
+    public void getSum(Vector vector) throws IllegalAccessException {
         Vector vector1 = new Vector(Math.max(this.n, vector.n), this.components);
 
         for (int i = 0; i < vector.n; i++) {
             vector1.components[i] += vector.components[i];
         }
 
-        return vector1;
+        this.n = vector1.n;
+        System.arraycopy(vector1.components, 0, this.components, 0, vector1.n);
     }
 
-    public Vector getDiff(Vector vector) throws IllegalAccessException {
+    public void getDiff(Vector vector) throws IllegalAccessException {
         Vector vector1 = new Vector(Math.max(this.n, vector.n), this.components);
 
         for (int i = 0; i < vector.n; i++) {
             vector1.components[i] -= vector.components[i];
         }
 
-        return vector1;
+        this.n = vector1.n;
+        System.arraycopy(vector1.components, 0, this.components, 0, vector1.n);
     }
 
-    public Vector getMultiplication(double number) {
-        Vector vector = new Vector(this);
-
+    public void getMultiplication(double number) {
         for (int i = 0; i < n; i++) {
-            vector.components[i] *= number;
+            components[i] *= number;
         }
-
-        return vector;
     }
 
-    public Vector expandVector() {
-        Vector vector = new Vector(this);
-
+    public void expandVector() {
         for (int i = 0; i < n; i++) {
-            vector.components[i] *= -1;
+            components[i] *= -1;
         }
-
-        return vector;
     }
 
     public double getLength() {
