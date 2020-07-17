@@ -1,4 +1,4 @@
-package ru.ilinykh.main;
+package ru.ilinykh.range_main;
 
 import ru.ilinykh.range.Range;
 
@@ -27,20 +27,20 @@ public class Main {
         Range range1 = new Range(10.5, 30.6);
         Range range2 = new Range(15.40, 23.4);
 
-        Range range3 = range1.getIntersection(range2);
+        Range intersection = range1.getIntersection(range2);
 
-        if (range3 == null) {
+        if (intersection == null) {
             System.out.println("Пересечений нет");
         } else {
-            System.out.println("Пересечение: " + range3.toString());
+            System.out.println("Пересечение: " + intersection);
         }
 
         Range[] union = range1.getUnion(range2);
 
         if (union.length > 1) {
-            System.out.println("Объединение 1: " + union[0].toString() + ", 2: " + union[1].toString());
+            System.out.println("Объединение 1: " + union[0] + ", 2: " + union[1]);
         } else {
-            System.out.println("Объединение: " + union[0].toString());
+            System.out.println("Объединение: " + union[0]);
         }
 
         Range[] difference = range1.getDifference(range2);
@@ -48,9 +48,9 @@ public class Main {
         if (difference.length == 0) {
             System.out.println("Результат разности интервалов равен 0.");
         } else if (difference.length > 1) {
-            System.out.println("Разность интеравалов 1: " + difference[0].toString() + ", 2: " + difference[1].toString());
+            System.out.println("Разность интеравалов 1: " + difference[0] + ", 2: " + difference[1]);
         } else {
-            System.out.println("Разность интеравалов: " + difference[0].toString());
+            System.out.println("Разность интеравалов: " + difference[0]);
         }
     }
 }
