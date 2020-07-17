@@ -1,24 +1,28 @@
 package ru.ilinykh.shape;
 
-public class Circle implements Shape, Comparable<Shape> {
+public class Circle implements Shape {
     private final double radius;
 
     public Circle(double radius) {
         this.radius = radius;
     }
 
+    @Override
     public double getWidth() {
         return 2 * radius;
     }
 
+    @Override
     public double getHeight() {
         return 2 * radius;
     }
 
+    @Override
     public double getArea() {
         return Math.PI * Math.pow(radius, 2);
     }
 
+    @Override
     public double getPerimeter() {
         return Math.PI * 2 * radius;
     }
@@ -27,11 +31,6 @@ public class Circle implements Shape, Comparable<Shape> {
     public String toString() {
         return String.format("Фигура - окружность, площадь = %.2f, длина окружности равна = %.2f, высота = %.2f, ширина равна %.2f.",
                 this.getArea(), this.getPerimeter(), this.getHeight(), this.getWidth());
-    }
-
-    @Override
-    public int compareTo(Shape o) {
-        return (int) (this.getArea() - o.getArea());
     }
 
     @Override

@@ -1,6 +1,6 @@
 package ru.ilinykh.shape;
 
-public class Rectangle implements Shape, Comparable<Shape> {
+public class Rectangle implements Shape {
     private final double width;
     private final double height;
 
@@ -9,18 +9,22 @@ public class Rectangle implements Shape, Comparable<Shape> {
         this.height = height;
     }
 
+    @Override
     public double getWidth() {
         return width;
     }
 
+    @Override
     public double getHeight() {
         return height;
     }
 
+    @Override
     public double getArea() {
         return width * height;
     }
 
+    @Override
     public double getPerimeter() {
         return (width + height) * 2;
     }
@@ -29,11 +33,6 @@ public class Rectangle implements Shape, Comparable<Shape> {
     public String toString() {
         return String.format("Фигура - прямоугольник, площадь = %.2f, периметр равен = %.2f, высота = %.2f, ширина равна %.2f.",
                 this.getArea(), this.getPerimeter(), this.getHeight(), this.getWidth());
-    }
-
-    @Override
-    public int compareTo(Shape o) {
-        return (int) (this.getArea() - o.getArea());
     }
 
     @Override

@@ -1,14 +1,14 @@
 package ru.ilinykh.shape;
 
-public class Triangle implements Shape, Comparable<Shape> {
-    private final int x1;
-    private final int y1;
-    private final int x2;
-    private final int y2;
-    private final int x3;
-    private final int y3;
+public class Triangle implements Shape {
+    private final double x1;
+    private final double y1;
+    private final double x2;
+    private final double y2;
+    private final double x3;
+    private final double y3;
 
-    public Triangle(int x1, int y1, int x2, int y2, int x3, int y3) {
+    public Triangle(double x1, double y1, double x2, double y2, double x3, double y3) {
         this.x1 = x1;
         this.y1 = y1;
         this.x2 = x2;
@@ -17,41 +17,40 @@ public class Triangle implements Shape, Comparable<Shape> {
         this.y3 = y3;
     }
 
+    @Override
     public double getWidth() {
         return Math.max(x1, Math.max(x2, x3)) - Math.min(x1, Math.min(x2, x3));
     }
 
+    @Override
     public double getHeight() {
         return Math.max(y1, Math.max(y2, y3)) - Math.min(y1, Math.min(y2, y3));
     }
 
+    public double getSide(double x1, double x2, double y1, double y2) {
+        return Math.sqrt(Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2));
+    }
+
+    @Override
     public double getArea() {
-        double sideA = Math.sqrt(Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2));
-        double sideB = Math.sqrt(Math.pow((x1 - x3), 2) + Math.pow((y1 - y3), 2));
-        double sideC = Math.sqrt(Math.pow((x2 - x3), 2) + Math.pow((y2 - y3), 2));
+        double sideA = this.getSide(x1, x2, y1, y2);
+        double sideB = this.getSide(x1, x3, y1, y3);
+        double sideC = this.getSide(x2, x3, y2, y3);
 
         double halfPerimeter = (sideA + sideB + sideC) / 2;
 
         return Math.sqrt(halfPerimeter * (halfPerimeter - sideA) * (halfPerimeter - sideB) * (halfPerimeter - sideC));
     }
 
+    @Override
     public double getPerimeter() {
-        double sideA = Math.sqrt(Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2));
-        double sideB = Math.sqrt(Math.pow((x1 - x3), 2) + Math.pow((y1 - y3), 2));
-        double sideC = Math.sqrt(Math.pow((x2 - x3), 2) + Math.pow((y2 - y3), 2));
-
-        return sideA + sideB + sideC;
+        return this.getSide(x1, x2, y1, y2) + this.getSide(x1, x3, y1, y3) + this.getSide(x2, x3, y2, y3);
     }
 
     @Override
     public String toString() {
-        return String.format("Фигура - треугольник, площадь = %.2f, периметр равен = %.2f, высота = %.2f, ширина равна %.2f.",
-                this.getArea(), this.getPerimeter(), this.getHeight(), this.getWidth());
-    }
-
-    @Override
-    public int compareTo(Shape o) {
-        return (int) (this.getArea() - o.getArea());
+        return String.format("Фигура - треугольник, площадь = %.2f, периметр равен = %.2f, высота = %.2f, ширина равна %.2f, координаты x1 = %.2f, y1 = %.2f," +
+                " x2 = %.2f, y2 = %.2f, x3 = %.2f, y3 = %.2f", this.getArea(), this.getPerimeter(), this.getHeight(), this.getWidth(), x1, y1, x2, y2, x3, y3);
     }
 
     @Override
@@ -72,12 +71,12 @@ public class Triangle implements Shape, Comparable<Shape> {
     public int hashCode() {
         final int prime = 31;
         int hash = 1;
-        hash = prime * hash + x1;
-        hash = prime * hash + y1;
-        hash = prime * hash + x2;
-        hash = prime * hash + y2;
-        hash = prime * hash + x3;
-        hash = prime * hash + y3;
+        hash = prime * hash + Double.hashCode(x1);
+        hash = prime * hash + Double.hashCode(y1);
+        hash = prime * hash + Double.hashCode(x2);
+        hash = prime * hash + Double.hashCode(y2);
+        hash = prime * hash + Double.hashCode(x3);
+        hash = prime * hash + Double.hashCode(y3);
         return hash;
     }
 }
