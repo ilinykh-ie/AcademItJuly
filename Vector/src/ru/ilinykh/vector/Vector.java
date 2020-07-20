@@ -3,90 +3,86 @@ package ru.ilinykh.vector;
 import java.util.Arrays;
 
 public class Vector {
-    private final double[] components;
-    private int n;
+    private double[] components;
 
-    public Vector(int n) throws IllegalAccessException {
-        if (n <= 0) {
-            throw new IllegalAccessException("Размерность вектора n должна быть больше 0");
+    public Vector(int length) throws IllegalArgumentException {
+        if (length <= 0) {
+            throw new IllegalArgumentException("Длина вектора должна быть больше 0");
         }
 
-        this.components = new double[n];
-        this.n = n;
-
-        for (int i = 0; i < n; i++) {
-            components[i] = 0;
-        }
+        components = new double[length];
     }
 
     public Vector(Vector vector) {
-        this.components = new double[vector.n];
-        this.n = vector.n;
-
-        System.arraycopy(vector.components, 0, this.components, 0, vector.n);
+        components = Arrays.copyOf(vector.components, vector.getSize());
     }
 
     public Vector(double[] array) {
-        this.components = new double[array.length];
-        this.n = array.length;
-
-        System.arraycopy(array, 0, this.components, 0, n);
+        if (array.length <= 0) {
+            throw new IllegalArgumentException("Длина вектора должна быть больше 0");
+        }
+        components = Arrays.copyOf(array, array.length);
     }
 
-    public Vector(int n, double[] array) throws IllegalAccessException {
-        if (n <= 0) {
-            throw new IllegalAccessException("Размерность вектора n должна быть больше 0");
+    public Vector(int length, double[] array) throws IllegalArgumentException {
+        if (length <= 0) {
+            throw new IllegalArgumentException("Длина вектора должна быть больше 0");
+        } else if (length < array.length) {
+            throw new IllegalArgumentException("Длина вектора должна быть не меньше длины массива");
         }
 
-        this.components = new double[n];
-        this.n = n;
-
-        System.arraycopy(array, 0, this.components, 0, array.length);
-
-        for (int i = array.length; i < n; i++) {
-            components[i] = 0;
-        }
+        components = Arrays.copyOf(array, length);
     }
 
     public int getSize() {
-        return n;
+        return components.length;
     }
 
     @Override
     public String toString() {
-        return Arrays.toString(components);
+        return Arrays.toString(components).replace("[", "{").replace("]", "}");
     }
 
-    public void getSum(Vector vector) throws IllegalAccessException {
-        Vector vector1 = new Vector(Math.max(this.n, vector.n), this.components);
+    public void sum(Vector vector) {
+        if (vector.getSize() > this.getSize()) {
+            Vector vector1 = new Vector(Math.max(this.getSize(), vector.getSize()), components);
 
-        for (int i = 0; i < vector.n; i++) {
-            vector1.components[i] += vector.components[i];
+            for (int i = 0; i < vector.getSize(); i++) {
+                vector1.components[i] += vector.components[i];
+            }
+
+            components = Arrays.copyOf(vector1.components, vector1.getSize());
+        } else {
+            for (int i = 0; i < vector.getSize(); i++) {
+                components[i] += vector.components[i];
+            }
         }
-
-        this.n = vector1.n;
-        System.arraycopy(vector1.components, 0, this.components, 0, vector1.n);
     }
 
-    public void getDiff(Vector vector) throws IllegalAccessException {
-        Vector vector1 = new Vector(Math.max(this.n, vector.n), this.components);
+    public void difference(Vector vector) {
+        if (vector.getSize() > this.getSize()) {
+            Vector vector1 = new Vector(Math.max(this.getSize(), vector.getSize()), components);
 
-        for (int i = 0; i < vector.n; i++) {
-            vector1.components[i] -= vector.components[i];
+            for (int i = 0; i < vector.getSize(); i++) {
+                vector1.components[i] -= vector.components[i];
+            }
+
+            components = Arrays.copyOf(vector1.components, vector1.getSize());
+        } else {
+            for (int i = 0; i < vector.getSize(); i++) {
+                components[i] -= vector.components[i];
+            }
         }
-
-        this.n = vector1.n;
-        System.arraycopy(vector1.components, 0, this.components, 0, vector1.n);
     }
 
-    public void getMultiplication(double number) {
-        for (int i = 0; i < n; i++) {
+    public void multiplication(double number) {
+        for (int i = 0; i < this.getSize(); i++) {
             components[i] *= number;
         }
     }
 
-    public void expandVector() {
-        for (int i = 0; i < n; i++) {
+    public void deployVector() {
+        for (int i = 0; i < this.getSize(); i++) {
             components[i] *= -1;
         }
     }
@@ -94,27 +90,27 @@ public class Vector {
     public double getLength() {
         double length = 0;
 
-        for (int i = 0; i < this.n; i++) {
-            length += Math.pow(this.components[i], 2);
+        for (double e : components) {
+            length += Math.pow(e, 2);
         }
 
         return Math.sqrt(length);
     }
 
-    public double getVectorComponent(int index) throws IllegalAccessException {
-        if (index <= 0 || index > n) {
-            throw new IllegalAccessException("Индекс вне диапазона вектора");
+    public double getVectorComponent(int index) throws IllegalArgumentException {
+        if (index < 0 || index >= this.getSize()) {
+            throw new IllegalArgumentException("Индекс вне диапазона вектора");
         }
 
-        return this.components[index - 1];
+        return components[index];
     }
 
-    public void setVectorComponent(int index, double number) throws IllegalAccessException {
-        if (index <= 0 || index > n) {
-            throw new IllegalAccessException("Индекс вне диапазона вектора");
+    public void setVectorComponent(int index, double number) throws IllegalArgumentException {
+        if (index < 0 || index >= this.getSize()) {
+            throw new IllegalArgumentException("Индекс вне диапазона вектора");
         }
 
-        this.components[index - 1] = number;
+        components[index] = number;
     }
 
     @Override
@@ -128,7 +124,7 @@ public class Vector {
         }
 
         Vector v = (Vector) o;
-        return n == v.n && Arrays.equals(components, v.components);
+        return Arrays.equals(components, v.components);
     }
 
     @Override
@@ -136,34 +132,28 @@ public class Vector {
         final int prime = 31;
         int hash = 1;
         hash = prime * hash + Arrays.hashCode(components);
-        hash = prime * hash + n;
         return hash;
     }
 
-    public static Vector sum(Vector vector1, Vector vector2) throws IllegalAccessException {
-        Vector vector = new Vector(Math.max(vector1.n, vector2.n), vector1.components);
-
-        for (int i = 0; i < vector2.n; i++) {
-            vector.components[i] += vector2.components[i];
-        }
+    public static Vector getSum(Vector vector1, Vector vector2) {
+        Vector vector = new Vector(vector1);
+        vector.sum(vector2);
 
         return vector;
     }
 
-    public static Vector diff(Vector vector1, Vector vector2) throws IllegalAccessException {
-        Vector vector = new Vector(Math.max(vector1.n, vector2.n), vector1.components);
-
-        for (int i = 0; i < vector2.n; i++) {
-            vector.components[i] -= vector2.components[i];
-        }
+    public static Vector getDifference(Vector vector1, Vector vector2) {
+        Vector vector = new Vector(vector1);
+        vector.difference(vector2);
 
         return vector;
     }
 
-    public static double scalarProduct(Vector vector1, Vector vector2) {
+    public static double getScalarProduct(Vector vector1, Vector vector2) {
         double scalarProduct = 0;
+        int minSize = Math.min(vector1.getSize(), vector2.getSize());
 
-        for (int i = 0; i < (Math.min(vector1.n, vector2.n)); i++) {
+        for (int i = 0; i < minSize; i++) {
             scalarProduct += vector1.components[i] * vector2.components[i];
         }
 

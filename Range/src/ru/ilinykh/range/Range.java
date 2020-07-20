@@ -30,7 +30,7 @@ public class Range {
     }
 
     public boolean isInside(double x) {
-        return (x >= from) && (x <= to);
+        return x >= from && x <= to;
     }
 
     public Range getIntersection(Range range) {
@@ -54,7 +54,7 @@ public class Range {
     }
 
     public Range[] getDifference(Range range) {
-        if ((range.from <= from) && (range.to >= to)) {
+        if (range.from <= from && range.to >= to) {
             return new Range[]{};
         }
 
