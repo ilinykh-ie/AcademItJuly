@@ -27,15 +27,15 @@ public class Triangle implements Shape {
         return Math.max(y1, Math.max(y2, y3)) - Math.min(y1, Math.min(y2, y3));
     }
 
-    public double getSide(double x1, double x2, double y1, double y2) {
+    private static double getSide(double x1, double y1, double x2, double y2) {
         return Math.sqrt(Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2));
     }
 
     @Override
     public double getArea() {
-        double sideA = this.getSide(x1, x2, y1, y2);
-        double sideB = this.getSide(x1, x3, y1, y3);
-        double sideC = this.getSide(x2, x3, y2, y3);
+        double sideA = getSide(x1, y1, x2, y2);
+        double sideB = getSide(x1, y1, x3, y3);
+        double sideC = getSide(x2, y2, x3, y3);
 
         double halfPerimeter = (sideA + sideB + sideC) / 2;
 
@@ -44,13 +44,13 @@ public class Triangle implements Shape {
 
     @Override
     public double getPerimeter() {
-        return this.getSide(x1, x2, y1, y2) + this.getSide(x1, x3, y1, y3) + this.getSide(x2, x3, y2, y3);
+        return getSide(x1, y1, x2, y2) + getSide(x1, y1, x3, y3) + getSide(x2, y2, x3, y3);
     }
 
     @Override
     public String toString() {
-        return String.format("Фигура - треугольник, площадь = %.2f, периметр равен = %.2f, высота = %.2f, ширина равна %.2f, координаты x1 = %.2f, y1 = %.2f," +
-                " x2 = %.2f, y2 = %.2f, x3 = %.2f, y3 = %.2f", this.getArea(), this.getPerimeter(), this.getHeight(), this.getWidth(), x1, y1, x2, y2, x3, y3);
+        return String.format("Фигура - треугольник, площадь = %.2f, периметр = %.2f, высота = %.2f, ширина = %.2f, координаты x1 = %.2f, y1 = %.2f," +
+                " x2 = %.2f, y2 = %.2f, x3 = %.2f, y3 = %.2f", getArea(), getPerimeter(), getHeight(), getWidth(), x1, y1, x2, y2, x3, y3);
     }
 
     @Override
@@ -59,7 +59,7 @@ public class Triangle implements Shape {
             return true;
         }
 
-        if (o == null || o.getClass() != this.getClass()) {
+        if (o == null || o.getClass() != getClass()) {
             return false;
         }
 

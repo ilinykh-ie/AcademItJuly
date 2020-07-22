@@ -31,8 +31,8 @@ public class Rectangle implements Shape {
 
     @Override
     public String toString() {
-        return String.format("Фигура - прямоугольник, площадь = %.2f, периметр равен = %.2f, высота = %.2f, ширина равна %.2f.",
-                this.getArea(), this.getPerimeter(), this.getHeight(), this.getWidth());
+        return String.format("Фигура - прямоугольник, площадь = %.2f, периметр = %.2f, высота = %.2f, ширина %.2f.",
+                getArea(), getPerimeter(), height, width);
     }
 
     @Override
@@ -41,7 +41,7 @@ public class Rectangle implements Shape {
             return true;
         }
 
-        if (o == null || o.getClass() != this.getClass()) {
+        if (o == null || o.getClass() != getClass()) {
             return false;
         }
 

@@ -29,8 +29,8 @@ public class Circle implements Shape {
 
     @Override
     public String toString() {
-        return String.format("Фигура - окружность, площадь = %.2f, длина окружности равна = %.2f, высота = %.2f, ширина равна %.2f.",
-                this.getArea(), this.getPerimeter(), this.getHeight(), this.getWidth());
+        return String.format("Фигура - окружность, площадь = %.2f, длина окружности = %.2f, высота = %.2f, ширина = %.2f, радиус = %.2f.",
+                getArea(), getPerimeter(), getHeight(), getWidth(), radius);
     }
 
     @Override
@@ -39,7 +39,7 @@ public class Circle implements Shape {
             return true;
         }
 
-        if (o == null || o.getClass() != this.getClass()) {
+        if (o == null || o.getClass() != getClass()) {
             return false;
         }
 

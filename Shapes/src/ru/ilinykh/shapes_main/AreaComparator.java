@@ -1,4 +1,6 @@
-package ru.ilinykh.shape;
+package ru.ilinykh.shapes_main;
+
+import ru.ilinykh.shape.Shape;
 
 import java.util.Comparator;
 
