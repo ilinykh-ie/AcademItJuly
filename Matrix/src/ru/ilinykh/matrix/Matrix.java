@@ -68,10 +68,10 @@ public class Matrix {
 
         stringBuilder.append("{");
 
-        for (int i = 0; i < this.getRowsCount(); i++) {
+        for (int i = 0; i < getRowsCount(); i++) {
             stringBuilder.append(components[i]);
 
-            if (i != this.getRowsCount() - 1) {
+            if (i != getRowsCount() - 1) {
                 stringBuilder.append(", ");
             }
         }
@@ -82,7 +82,7 @@ public class Matrix {
     }
 
     public Vector getRowVector(int index) throws IllegalArgumentException {
-        if (index < 0 || index > this.getRowsCount()) {
+        if (index < 0 || index > getRowsCount()) {
             throw new IllegalArgumentException("Индекс вне диапазона матрицы");
         }
 
@@ -90,9 +90,9 @@ public class Matrix {
     }
 
     public void setRowVector(int index, Vector vector) throws IllegalArgumentException {
-        if (index < 0 || index > this.getRowsCount()) {
+        if (index < 0 || index > getRowsCount()) {
             throw new IllegalArgumentException("Индекс вне диапазона матрицы");
-        } else if (vector.getSize() > this.getColumnsCount()) {
+        } else if (vector.getSize() > getColumnsCount()) {
             throw new IllegalArgumentException("Длина вектора больше длины матрицы");
         }
 
@@ -103,13 +103,13 @@ public class Matrix {
     }
 
     public Vector getColumnVector(int index) throws IllegalArgumentException {
-        if (index < 0 || index > this.getColumnsCount()) {
+        if (index < 0 || index > getColumnsCount()) {
             throw new IllegalArgumentException("Индекс вне диапазона матрицы");
         }
 
-        double[] array = new double[this.getRowsCount()];
+        double[] array = new double[getRowsCount()];
 
-        for (int i = 0; i < this.getRowsCount(); i++) {
+        for (int i = 0; i < getRowsCount(); i++) {
             array[i] = components[i].getVectorComponent(index);
         }
 
@@ -129,41 +129,41 @@ public class Matrix {
     public void multiplicationByNumber(double number) {
         Matrix temp = new Matrix(this);
 
-        for (int i = 0; i < this.getRowsCount(); i++) {
-            for (int j = 0; j < this.getColumnsCount(); j++) {
+        for (int i = 0; i < getRowsCount(); i++) {
+            for (int j = 0; j < getColumnsCount(); j++) {
                 components[i].setVectorComponent(j, temp.components[i].getVectorComponent(j) * number);
             }
         }
     }
 
     public double getDeterminant() throws IllegalArgumentException {
-        if (this.getColumnsCount() != this.getRowsCount()) {
+        if (getColumnsCount() != getRowsCount()) {
             throw new IllegalArgumentException("Матрица должна быть квадратной");
         }
 
-        if (this.getRowsCount() == 2) {
-            return this.components[0].getVectorComponent(0) * this.components[1].getVectorComponent(1) -
-                    this.components[1].getVectorComponent(0) * this.components[0].getVectorComponent(1);
+        if (getRowsCount() == 2) {
+            return components[0].getVectorComponent(0) * components[1].getVectorComponent(1) -
+                    components[1].getVectorComponent(0) * components[0].getVectorComponent(1);
         }
 
         double determinant = 0;
-        Matrix subMatrix = new Matrix(this.getRowsCount() - 1, this.getColumnsCount() - 1);
+        Matrix subMatrix = new Matrix(getRowsCount() - 1, getColumnsCount() - 1);
 
-        for (int i = 0; i < this.getColumnsCount(); i++) {
+        for (int i = 0; i < getColumnsCount(); i++) {
             for (int j = 0; j < subMatrix.getRowsCount(); j++) {
                 for (int k = 0; k < subMatrix.getColumnsCount(); k++) {
                     if (k < i) {
-                        subMatrix.components[j].setVectorComponent(k, this.components[j + 1].getVectorComponent(k));
+                        subMatrix.components[j].setVectorComponent(k, components[j + 1].getVectorComponent(k));
                     } else {
-                        subMatrix.components[j].setVectorComponent(k, this.components[j + 1].getVectorComponent(k + 1));
+                        subMatrix.components[j].setVectorComponent(k, components[j + 1].getVectorComponent(k + 1));
                     }
                 }
             }
 
             if (i % 2 == 0) {
-                determinant += this.components[0].getVectorComponent(i) * subMatrix.getDeterminant();
+                determinant += components[0].getVectorComponent(i) * subMatrix.getDeterminant();
             } else {
-                determinant -= this.components[0].getVectorComponent(i) * subMatrix.getDeterminant();
+                determinant -= components[0].getVectorComponent(i) * subMatrix.getDeterminant();
             }
         }
 
@@ -171,7 +171,7 @@ public class Matrix {
     }
 
     public void multiplicationByVector(Vector vector) throws IllegalArgumentException {
-        if (this.getColumnsCount() != vector.getSize()) {
+        if (getColumnsCount() != vector.getSize()) {
             throw new IllegalArgumentException("Число столбцов в матрице должно совпадать длиной вектора");
         }
 
@@ -193,24 +193,24 @@ public class Matrix {
     }
 
     public void sum(Matrix matrix) throws IllegalArgumentException {
-        if (this.getColumnsCount() != matrix.getColumnsCount() || this.getRowsCount() != matrix.getRowsCount()) {
+        if (getColumnsCount() != matrix.getColumnsCount() || getRowsCount() != matrix.getRowsCount()) {
             throw new IllegalArgumentException("Матрицы должны быть одинакового размера");
         }
 
-        for (int i = 0; i < this.getRowsCount(); i++) {
-            for (int j = 0; j < this.getColumnsCount(); j++) {
+        for (int i = 0; i < getRowsCount(); i++) {
+            for (int j = 0; j < getColumnsCount(); j++) {
                 components[i].setVectorComponent(j, components[i].getVectorComponent(j) + matrix.components[i].getVectorComponent(j));
             }
         }
     }
 
     public void difference(Matrix matrix) throws IllegalArgumentException {
-        if (this.getColumnsCount() != matrix.getColumnsCount() || this.getRowsCount() != matrix.getRowsCount()) {
+        if (getColumnsCount() != matrix.getColumnsCount() || getRowsCount() != matrix.getRowsCount()) {
             throw new IllegalArgumentException("Матрицы должны быть одинакового размера");
         }
 
-        for (int i = 0; i < this.getRowsCount(); i++) {
-            for (int j = 0; j < this.getColumnsCount(); j++) {
+        for (int i = 0; i < getRowsCount(); i++) {
+            for (int j = 0; j < getColumnsCount(); j++) {
                 components[i].setVectorComponent(j, components[i].getVectorComponent(j) - matrix.components[i].getVectorComponent(j));
             }
         }

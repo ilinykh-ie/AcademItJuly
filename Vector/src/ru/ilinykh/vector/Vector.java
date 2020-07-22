@@ -44,8 +44,8 @@ public class Vector {
     }
 
     public void sum(Vector vector) {
-        if (vector.getSize() > this.getSize()) {
-            Vector vector1 = new Vector(Math.max(this.getSize(), vector.getSize()), components);
+        if (vector.getSize() > getSize()) {
+            Vector vector1 = new Vector(Math.max(getSize(), vector.getSize()), components);
 
             for (int i = 0; i < vector.getSize(); i++) {
                 vector1.components[i] += vector.components[i];
@@ -60,8 +60,8 @@ public class Vector {
     }
 
     public void difference(Vector vector) {
-        if (vector.getSize() > this.getSize()) {
-            Vector vector1 = new Vector(Math.max(this.getSize(), vector.getSize()), components);
+        if (vector.getSize() > getSize()) {
+            Vector vector1 = new Vector(Math.max(getSize(), vector.getSize()), components);
 
             for (int i = 0; i < vector.getSize(); i++) {
                 vector1.components[i] -= vector.components[i];
@@ -76,13 +76,13 @@ public class Vector {
     }
 
     public void multiplication(double number) {
-        for (int i = 0; i < this.getSize(); i++) {
+        for (int i = 0; i < getSize(); i++) {
             components[i] *= number;
         }
     }
 
     public void deployVector() {
-        for (int i = 0; i < this.getSize(); i++) {
+        for (int i = 0; i < getSize(); i++) {
             components[i] *= -1;
         }
     }
@@ -98,7 +98,7 @@ public class Vector {
     }
 
     public double getVectorComponent(int index) throws IllegalArgumentException {
-        if (index < 0 || index >= this.getSize()) {
+        if (index < 0 || index >= getSize()) {
             throw new IllegalArgumentException("Индекс вне диапазона вектора");
         }
 
@@ -106,7 +106,7 @@ public class Vector {
     }
 
     public void setVectorComponent(int index, double number) throws IllegalArgumentException {
-        if (index < 0 || index >= this.getSize()) {
+        if (index < 0 || index >= getSize()) {
             throw new IllegalArgumentException("Индекс вне диапазона вектора");
         }
 
@@ -119,7 +119,7 @@ public class Vector {
             return true;
         }
 
-        if (o == null || o.getClass() != this.getClass()) {
+        if (o == null || o.getClass() != getClass()) {
             return false;
         }
 

@@ -27,13 +27,7 @@
     <list default="true" id="71017881-c371-4f7b-b49f-bcd54cc08df1" name="Default Changelist" comment="Исправление задачи Vector, добавление задачи Matrix.">
       <change afterPath="$PROJECT_DIR$/List/List.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/List/src/ru/ilinykh/list_main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shapes/src/ru/ilinykh/shape/AreaComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shapes/src/ru/ilinykh/shapes_main/AreaComparator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shapes/src/ru/ilinykh/shape/Circle.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shapes/src/ru/ilinykh/shape/Circle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shapes/src/ru/ilinykh/shape/PerimeterComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shapes/src/ru/ilinykh/shapes_main/PerimeterComparator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shapes/src/ru/ilinykh/shape/Rectangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shapes/src/ru/ilinykh/shape/Rectangle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shapes/src/ru/ilinykh/shape/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shapes/src/ru/ilinykh/shape/Square.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shapes/src/ru/ilinykh/shape/Triangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shapes/src/ru/ilinykh/shape/Triangle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vector/src/ru/ilinykh/vector/Vector.java" beforeDir="false" afterPath="$PROJECT_DIR$/Vector/src/ru/ilinykh/vector/Vector.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +64,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="editing.templates" />
   </component>
-  <component name="RunManager" selected="Application.Main (2)">
+  <component name="RunManager" selected="Application.Main (4)">
     <configuration name="Main (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.ilinykh.shapes_main.Main" />
       <module name="Shapes" />
@@ -177,11 +171,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main (4)" />
+        <item itemvalue="Application.Main (3)" />
         <item itemvalue="Application.Main (2)" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main (5)" />
-        <item itemvalue="Application.Main (4)" />
-        <item itemvalue="Application.Main (3)" />
       </list>
     </recent_temporary>
   </component>
@@ -280,7 +274,14 @@
       <option name="project" value="LOCAL" />
       <updated>1595323509934</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Исправление задачи Shapes">
+      <created>1595415295070</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1595415295070</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -304,10 +305,10 @@
     <MESSAGE value="Добавление задачи Vector;&#10;Перемещение файла Main из задачи Shapes в оттельную папку." />
     <MESSAGE value="Исправление задачи Vector" />
     <MESSAGE value="Исправление задачи Range" />
-    <MESSAGE value="Исправление задачи Shapes" />
     <MESSAGE value="Исправление задачи Vector, добавление задачи Matrix." />
     <MESSAGE value="Добавление задачи ArrayListHome." />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавление задачи ArrayListHome." />
+    <MESSAGE value="Исправление задачи Shapes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Исправление задачи Shapes" />
   </component>
   <component name="WindowStateProjectService">
     <state x="280" y="6" key="#Project_Structure" timestamp="1595314064052">
@@ -328,10 +329,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="513" y="3" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1594707113602" />
-    <state x="427" y="0" width="1092" height="860" key="CommitChangelistDialog2" timestamp="1595323509305">
+    <state x="427" y="0" width="1092" height="860" key="CommitChangelistDialog2" timestamp="1595415294167">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="427" y="0" width="1092" height="860" key="CommitChangelistDialog2/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1595323509305" />
+    <state x="427" y="0" width="1092" height="860" key="CommitChangelistDialog2/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1595415294167" />
     <state x="427" y="0" key="CommitChangelistDialog2/0.0.1600.860@0.0.1600.860" timestamp="1594388553748" />
     <state width="440" height="466" key="DebuggerActiveHint" timestamp="1594998311095">
       <screen x="0" y="0" width="1600" height="860" />
@@ -346,25 +347,25 @@
     </state>
     <state x="580" y="173" key="FileChooserDialogImpl/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1595319717006" />
     <state x="580" y="173" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1594795937578" />
-    <state width="1556" height="217" key="GridCell.Tab.0.bottom" timestamp="1595414725772">
+    <state width="1540" height="217" key="GridCell.Tab.0.bottom" timestamp="1595415411249">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1556" height="217" key="GridCell.Tab.0.bottom/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1595414725772" />
+    <state width="1540" height="217" key="GridCell.Tab.0.bottom/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1595415411249" />
     <state width="1556" height="270" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1594800105122" />
-    <state width="1556" height="217" key="GridCell.Tab.0.center" timestamp="1595414725772">
+    <state width="1540" height="217" key="GridCell.Tab.0.center" timestamp="1595415411248">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1556" height="217" key="GridCell.Tab.0.center/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1595414725772" />
+    <state width="1540" height="217" key="GridCell.Tab.0.center/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1595415411248" />
     <state width="1556" height="270" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1594800105122" />
-    <state width="1556" height="217" key="GridCell.Tab.0.left" timestamp="1595414725771">
+    <state width="1540" height="217" key="GridCell.Tab.0.left" timestamp="1595415411248">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1556" height="217" key="GridCell.Tab.0.left/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1595414725771" />
+    <state width="1540" height="217" key="GridCell.Tab.0.left/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1595415411248" />
     <state width="1556" height="270" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1594800105122" />
-    <state width="1556" height="217" key="GridCell.Tab.0.right" timestamp="1595414725772">
+    <state width="1540" height="217" key="GridCell.Tab.0.right" timestamp="1595415411248">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1556" height="217" key="GridCell.Tab.0.right/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1595414725772" />
+    <state width="1540" height="217" key="GridCell.Tab.0.right/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1595415411248" />
     <state width="1556" height="270" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1594800105122" />
     <state width="1556" height="270" key="GridCell.Tab.1.bottom" timestamp="1595015508310">
       <screen x="0" y="0" width="1600" height="860" />
@@ -391,10 +392,10 @@
     </state>
     <state x="500" y="0" key="SettingsEditor/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1595000400978" />
     <state x="500" y="0" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1594796133410" />
-    <state x="392" y="164" key="Vcs.Push.Dialog.v2" timestamp="1595323519356">
+    <state x="392" y="164" key="Vcs.Push.Dialog.v2" timestamp="1595415299614">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="392" y="164" key="Vcs.Push.Dialog.v2/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1595323519356" />
+    <state x="392" y="164" key="Vcs.Push.Dialog.v2/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1595415299614" />
     <state x="392" y="164" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1594800101828" />
     <state x="92" y="92" width="1416" height="676" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1593692643511">
       <screen x="0" y="0" width="1600" height="860" />
