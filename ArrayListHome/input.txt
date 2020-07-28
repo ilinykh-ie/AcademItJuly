@@ -1,1 +1,6 @@
-1 5 2 1 4 8 12 5 9 3 22 3 5 3 3 3 3 
+text1
+text2
+text3
+text4
+text5
+text6
