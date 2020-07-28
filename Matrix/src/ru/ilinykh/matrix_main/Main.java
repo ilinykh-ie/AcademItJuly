@@ -6,7 +6,7 @@ import ru.ilinykh.vector.Vector;
 public class Main {
     public static void main(String[] args) {
         Matrix matrix = new Matrix(4, 5);
-        Vector vector = matrix.getRowVector(0);
+        Vector vector = matrix.getRow(0);
         System.out.println("Вектор-строка матрицы: " + vector);
 
         double[] array1 = {1, 5, -3, 34};
@@ -17,32 +17,33 @@ public class Main {
         matrix = new Matrix(vectors);
         System.out.println("Матрица из массива векторов: " + matrix);
 
-        matrix.setRowVector(1, vector1);
+        matrix.setRow(1, vector1);
         System.out.println("Матрица с после вставки вектора: " + matrix);
 
-        vector2 = matrix.getColumnVector(3);
+        vector2 = matrix.getColumn(3);
         System.out.println("Вектор-столбец матрицы: " + vector2);
 
-        double[][] array = {{4, 5, 9, 13}, {2, -10, 15, 5}, {3, 5, 11, 15}, {1, 5, -3, 10}};
+        double[][] array = {{5, 9, 13, 5}, {-10, 15, 5, -5}, {5, 11, 15, 8}, {5, -3, 10, 0}};
         Matrix matrix1 = new Matrix(array);
         double determinant = matrix1.getDeterminant();
         System.out.println("Определитель марицы равен: " + determinant);
 
-        Matrix matrix2 = new Matrix(matrix1);
-        matrix2.multiplicationByNumber(10);
+        double[][] array3 = {{4, 5, 9, 10}, {2, -10, 15, 10}, {3, 5, 11, 10}, {6, -3, 12, 44}};
+        Matrix matrix2 = new Matrix(array3);
+        matrix2.multiplyByNumber(10);
         System.out.println("Результат умножения: " + matrix2);
 
         matrix2.transpose();
         System.out.println("Развернутая матрица: " + matrix2);
 
         Matrix matrix3 = new Matrix(matrix1);
-        matrix3.multiplicationByVector(vector1);
-        System.out.println("Произведение матрицы на вектор: " + matrix3);
+        Vector vector4 = matrix3.multiplyByVector(vector1);
+        System.out.println("Произведение матрицы на вектор: " + vector4);
 
         matrix1.sum(matrix2);
         System.out.println("Результат суммы матриц: " + matrix1);
 
-        matrix1.difference(matrix2);
+        matrix1.subtract(matrix2);
         System.out.println("Результат разницы матриц: " + matrix1);
 
         Matrix matrix4 = Matrix.getSum(matrix1, matrix2);
@@ -51,7 +52,11 @@ public class Main {
         Matrix matrix5 = Matrix.getDifference(matrix4, matrix2);
         System.out.println("Результат разницы матриц: " + matrix5);
 
-        Matrix matrix6 = Matrix.getMultiplication(matrix1, matrix2);
-        System.out.println("Результат разницы матриц: " + matrix6);
+        double[][] array4 = {{1, 0}, {0, 1}, {1, 1}};
+        double[][] array5 = {{1, 2, 1}, {0, 1, 2}};
+        Matrix matrix6 = new Matrix(array4);
+        Matrix matrix7 = new Matrix(array5);
+        Matrix matrix8 = Matrix.getMultiplication(matrix6, matrix7);
+        System.out.println("Результат произведения матриц: " + matrix8);
     }
 }
