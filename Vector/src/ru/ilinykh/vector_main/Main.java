@@ -33,7 +33,7 @@ public class Main {
             System.out.println("Векторы 1 и 2 не равны");
         }
 
-        vector1.reverseVector();
+        vector1.reverse();
         System.out.println("Развернутый вектор 1 равен " + vector1);
 
         Vector vector4 = Vector.getSum(vector1, vector2);

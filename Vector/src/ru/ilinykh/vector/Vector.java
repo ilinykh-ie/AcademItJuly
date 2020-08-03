@@ -7,7 +7,7 @@ public class Vector {
 
     public Vector(int length) {
         if (length <= 0) {
-            throw new IllegalArgumentException("Длина вектора должна быть больше 0");
+            throw new IllegalArgumentException("Длина вектора должна быть больше 0, переданное значение = " + length);
         }
 
         components = new double[length];
@@ -19,7 +19,7 @@ public class Vector {
 
     public Vector(double[] array) {
         if (array.length <= 0) {
-            throw new IllegalArgumentException("Длина вектора должна быть больше 0");
+            throw new IllegalArgumentException("Длина вектора должна быть больше 0, переданное значение = " + array.length);
         }
 
         components = Arrays.copyOf(array, array.length);
@@ -27,7 +27,7 @@ public class Vector {
 
     public Vector(int length, double[] array) {
         if (length <= 0) {
-            throw new IllegalArgumentException("Длина вектора должна быть больше 0");
+            throw new IllegalArgumentException("Длина вектора должна быть больше 0, переданное значение = " + length);
         }
 
         components = Arrays.copyOf(array, length);
@@ -81,7 +81,7 @@ public class Vector {
         }
     }
 
-    public void reverseVector() {
+    public void reverse() {
         multiply(-1);
     }
 
@@ -97,7 +97,7 @@ public class Vector {
 
     public double getComponent(int index) {
         if (index < 0 || index >= components.length) {
-            throw new IndexOutOfBoundsException("Индекс вне диапазона вектора");
+            throw new IndexOutOfBoundsException("Индекс " + index + " вне диапазона вектора (" + components.length + ")");
         }
 
         return components[index];
@@ -105,7 +105,7 @@ public class Vector {
 
     public void setComponent(int index, double number) {
         if (index < 0 || index >= components.length) {
-            throw new IndexOutOfBoundsException("Индекс вне диапазона вектора");
+            throw new IndexOutOfBoundsException("Индекс " + index + " вне диапазона вектора (" + components.length + ")");
         }
 
         components[index] = number;
