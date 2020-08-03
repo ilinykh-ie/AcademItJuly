@@ -12,13 +12,14 @@ public class Main {
             return null;
         }
 
-        ArrayList<Integer> result = new ArrayList<>(list);
+        ArrayList<Integer> result = new ArrayList<>();
+        result.add(list.get(0));
 
-        for (int i = 0; i < result.size(); ) {
-            if (result.indexOf(result.get(i)) != result.lastIndexOf(result.get(i))) {
-                result.remove(result.lastIndexOf(result.get(i)));
-            } else {
-                i++;
+        for (int i = 1; i < list.size(); i++) {
+            int temp = list.get(i);
+
+            if (!result.contains(temp)) {
+                result.add(temp);
             }
         }
 
@@ -29,7 +30,6 @@ public class Main {
         ArrayList<String> listFromFile = new ArrayList<>();
 
         try (Scanner scanner = new Scanner(new FileInputStream("ArrayListHome\\input.txt"))) {
-
             while (scanner.hasNextLine()) {
                 listFromFile.add(scanner.nextLine());
             }
