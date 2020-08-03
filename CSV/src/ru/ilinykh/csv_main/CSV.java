@@ -6,19 +6,23 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class CSV {
-    public static String changeInvalidCharacters(char c) {
+    public static String changeSpecialCharacters(char c) {
         if (c == '<') {
-            return "&lt";
-        } else if (c == '>') {
-            return "&gt";
-        } else if (c == '&') {
-            return "&amp";
+            return "&lt;";
+        }
+
+        if (c == '>') {
+            return "&gt;";
+        }
+
+        if (c == '&') {
+            return "&amp;";
         }
 
         return String.valueOf(c);
     }
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) {
         try (Scanner scanner = new Scanner(new FileInputStream(args[0]), "windows-1251");
              PrintWriter writer = new PrintWriter(args[1])) {
             writer.println("<!DOCTYPE html>");
@@ -36,7 +40,7 @@ public class CSV {
             while (scanner.hasNextLine()) {
                 String currentString = scanner.nextLine();
 
-                if (!isInsideQuotes) {
+                if (!isInsideQuotes && currentString.length() > 0) {
                     writer.print("<tr><td>");
                 }
 
@@ -45,20 +49,24 @@ public class CSV {
                         isInsideQuotes = !isInsideQuotes;
                     }
 
-                    if (i == 0 && isInsideQuotes) {
-                        writer.print("<br/>");
-                        writer.print(changeInvalidCharacters(currentString.charAt(i)));
-                    } else if (currentString.charAt(i) == ',' && !isInsideQuotes) {
-                        writer.print("</td><td>");
-                    } else if (currentString.charAt(i) == '"' && (i == 0 || currentString.charAt(i - 1) == ',' || (i != currentString.length() - 1 && currentString.charAt(i + 1) == ','))) {
+                    if (currentString.charAt(i) == '"' && (i == 0 || currentString.charAt(i - 1) == ',' || (i != currentString.length() - 1 && currentString.charAt(i + 1) == ','))) {
                         continue;
-                    } else if (currentString.charAt(i) == '"' && i != currentString.length() - 1 && currentString.charAt(i + 1) == '"') {
+                    }
+
+                    if (currentString.charAt(i) == '"' && i != currentString.length() - 1 && currentString.charAt(i + 1) == '"') {
                         writer.print('"');
                         isInsideQuotes = !isInsideQuotes;
                         i++;
                         continue;
+                    }
+
+                    if (i == 0 && isInsideQuotes) {
+                        writer.print("<br/>");
+                        writer.print(changeSpecialCharacters(currentString.charAt(i)));
+                    } else if (currentString.charAt(i) == ',' && !isInsideQuotes) {
+                        writer.print("</td><td>");
                     } else if (currentString.charAt(i) != '"' || i != currentString.length() - 1) {
-                        writer.print(changeInvalidCharacters(currentString.charAt(i)));
+                        writer.print(changeSpecialCharacters(currentString.charAt(i)));
                     }
 
                     if (i == currentString.length() - 1 && !isInsideQuotes) {
@@ -69,6 +77,9 @@ public class CSV {
             writer.println("</table>");
             writer.println("</body>");
             writer.println("</html>");
+        } catch (FileNotFoundException e) {
+            System.out.println("Файл не надйен. Путь к исходному и конечному файлам нужно указать через аргументы программы.");
+            System.out.println("Аргумент с индексом 0 - путь к исходному CSV файлу, аргумент с индексом 1 - путь куда сохраниться полученный HTML файл.");
         }
     }
 }
