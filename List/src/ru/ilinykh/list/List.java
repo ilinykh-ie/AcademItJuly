@@ -1,5 +1,7 @@
 package ru.ilinykh.list;
 
+import java.util.NoSuchElementException;
+
 public class List<T> {
     private ListElement<T> head;
     private int count;
@@ -9,7 +11,15 @@ public class List<T> {
         count = 1;
     }
 
+    public List() {
+        count = 0;
+    }
+
     public T getFirstElementData() {
+        if (count == 0) {
+            throw new NoSuchElementException("Список пустой.");
+        }
+
         return head.getData();
     }
 
@@ -19,40 +29,48 @@ public class List<T> {
 
     public void insertElementToBeginning(T data) {
         ListElement<T> element = new ListElement<>(data);
-
-        if (head != null) {
-            element.setNext(head);
-        }
+        element.setNext(head);
         head = element;
+
         count++;
     }
 
-    public void insertElement(T data, int index) throws IllegalArgumentException {
+    private ListElement<T> getElementByIndex(int index) {
         if (index > count || index < 0) {
-            throw new IllegalArgumentException("Индекс вне диспазона вставки.");
+            throw new IndexOutOfBoundsException("Индекс вне диспазона вставки.");
+        }
+
+        int i = 0;
+        ListElement<T> temp = new ListElement<>();
+
+        for (ListElement<T> e = head; e != null; e = e.getNext()) {
+            if (i == index) {
+                temp = e;
+                break;
+            }
+
+            i++;
+        }
+
+        return temp;
+    }
+
+    public void insertElement(T data, int index) {
+        if (index > count || index < 0) {
+            throw new IndexOutOfBoundsException("Индекс вне диспазона вставки.");
         }
 
         if (index == 0) {
             insertElementToBeginning(data);
         } else {
             ListElement<T> element = new ListElement<>(data);
-            int i = -1;
+            ListElement<T> previous = getElementByIndex(index - 1);
 
-            for (ListElement<T> e = head, prev = null; ; prev = e, e = e.getNext()) {
-                i++;
-
-                if (i == index) {
-                    if (e != null) {
-                        element.setNext(e);
-                    }
-
-                    if (prev != null) {
-                        prev.setNext(element);
-                    }
-
-                    break;
-                }
+            if (index < count) {
+                element.setNext(previous.getNext());
             }
+
+            previous.setNext(element);
 
             count++;
         }
@@ -82,66 +100,38 @@ public class List<T> {
 
     public T getData(int index) {
         if (index >= count || index < 0) {
-            throw new IllegalArgumentException("Элемента с этим индексом в списке нет.");
+            throw new IndexOutOfBoundsException("Элемента с этим индексом в списке нет.");
         }
 
-        int i = -1;
-        T temp = null;
-
-        for (ListElement<T> e = head; e != null; e = e.getNext()) {
-            i++;
-
-            if (i == index) {
-                temp = e.getData();
-            }
-        }
-
-        return temp;
+        return getElementByIndex(index).getData();
     }
 
-    public T setData(T data, int index) throws IllegalArgumentException {
+    public T setData(T data, int index) {
         if (index >= count || index < 0) {
-            throw new IllegalArgumentException("Элемента с этим индексом в списке нет.");
+            throw new IndexOutOfBoundsException("Элемента с этим индексом в списке нет.");
         }
 
-        int i = -1;
-        T temp = null;
-
-        for (ListElement<T> e = head; e != null; e = e.getNext()) {
-            i++;
-
-            if (i == index) {
-                temp = e.getData();
-                e.setData(data);
-            }
-        }
+        ListElement<T> element = getElementByIndex(index);
+        T temp = element.getData();
+        element.setData(data);
 
         return temp;
     }
 
     public T deleteElement(int index) {
         if (index >= count || index < 0) {
-            throw new IllegalArgumentException("Элемента с этим индексом в списке нет.");
+            throw new IndexOutOfBoundsException("Элемента с этим индексом в списке нет.");
         }
 
-        int i = -1;
-        T temp = null;
+        T temp;
 
-        for (ListElement<T> e = head, prev = null; e != null; prev = e, e = e.getNext()) {
-            i++;
-
-            if (i == index) {
-                if (prev != null) {
-                    temp = e.getData();
-                    prev.setNext(e.getNext());
-                } else {
-                    head = null;
-                }
-
-                count--;
-
-                break;
-            }
+        if (index >= 1) {
+            ListElement<T> previous = getElementByIndex(index - 1);
+            temp = previous.getNext().getData();
+            previous.setNext(previous.getNext().getNext());
+            count--;
+        } else {
+            temp = deleteFirstElement();
         }
 
         return temp;
@@ -151,11 +141,11 @@ public class List<T> {
         boolean isDeleted = false;
 
         for (ListElement<T> e = head, prev = null; e != null; prev = e, e = e.getNext()) {
-            if (e.getData() == data) {
+            if (e.getData().equals(data)) {
                 if (prev != null) {
                     prev.setNext(e.getNext());
                 } else {
-                    head = null;
+                    head = head.getNext();
                 }
 
                 isDeleted = true;
@@ -168,7 +158,7 @@ public class List<T> {
         return isDeleted;
     }
 
-    public T deleteFirstElement() throws IllegalArgumentException {
+    public T deleteFirstElement() {
         if (head == null) {
             throw new IllegalArgumentException("Список пустой");
         }
@@ -180,9 +170,9 @@ public class List<T> {
         return temp;
     }
 
-    public void expandList() {
+    public void reverse() {
         if (head == null) {
-            throw new IllegalArgumentException("Список пустой");
+            return;
         }
 
         for (ListElement<T> e = head, prev = null, next = e.getNext(); ; prev = e, e = next, next = next.getNext()) {
@@ -197,14 +187,22 @@ public class List<T> {
 
     public List<T> copy() {
         if (head == null) {
-            throw new IllegalArgumentException("Список пустой");
+            return new List<>();
         }
 
-        List<T> result = new List<>(head.getData());
+        List<T> result = new List<>();
 
-        for (int i = 1; i < count; i++) {
-            T temp = getData(i);
-            result.insertElement(temp, i);
+        for (ListElement<T> e = head, resultElement, resultPreviousElement = null; e != null; e = e.getNext(), resultPreviousElement = resultElement) {
+            resultElement = new ListElement<>(e.getData());
+
+            if (resultPreviousElement != null)
+                resultPreviousElement.setNext(resultElement);
+
+            if (e == head) {
+                result.head = resultElement;
+            }
+
+            result.count++;
         }
 
         return result;

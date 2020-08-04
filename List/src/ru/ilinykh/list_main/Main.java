@@ -7,6 +7,7 @@ public class Main {
     public static void main(String[] args) {
         ListElement<Integer> element = new ListElement<>(10);
         List<Integer> integerList = new List<>(element.getData());
+        integerList.insertElement(11,1);
         System.out.println(integerList);
 
         for (int i = 9; i >= 5; i--) {
@@ -26,12 +27,12 @@ public class Main {
 
         Integer number2 = 13;
         boolean isDeleted = integerList.deleteElement(number2);
-        System.out.println(integerList + " Удален ли элемент со значением " + number2 + "? - " + isDeleted);
+        System.out.println(integerList + " удален ли элемент со значением " + number2 + "? - " + isDeleted);
 
         number = integerList.deleteFirstElement();
         System.out.println(integerList + " у удаленного элемента с индексм 0 было значение " + number);
 
-        integerList.expandList();
+        integerList.reverse();
         System.out.println("Развернутый список" + integerList);
 
         List<Integer> list2 = integerList.copy();

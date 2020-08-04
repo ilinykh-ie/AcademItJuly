@@ -8,6 +8,9 @@ public class ListElement<T> {
         this.data = data;
     }
 
+    public ListElement() {
+    }
+
     public T getData() {
         return data;
     }
@@ -26,6 +29,9 @@ public class ListElement<T> {
 
     @Override
     public String toString() {
+        if (data == null) {
+            return null;
+        }
         return data.toString();
     }
 }
