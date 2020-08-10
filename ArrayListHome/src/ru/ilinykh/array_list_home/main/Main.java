@@ -12,14 +12,16 @@ public class Main {
             return null;
         }
 
+        if (list.size() == 0) {
+            return new ArrayList<>();
+        }
+
         ArrayList<Integer> result = new ArrayList<>();
         result.add(list.get(0));
 
-        for (int i = 1; i < list.size(); i++) {
-            int temp = list.get(i);
-
-            if (!result.contains(temp)) {
-                result.add(temp);
+        for (Integer e : list) {
+            if (!result.contains(e)) {
+                result.add(e);
             }
         }
 
@@ -54,11 +56,9 @@ public class Main {
             }
         }
 
-        integerList.add(5);
-
         System.out.println("Список без четных чисел: " + integerList);
 
-        ArrayList<Integer> integerList2 = new ArrayList<>(Arrays.asList(1, 1, 2, 1, 1, 15, 2, 2, 2, 2, 3, 3, 3, 8, 3, 8));
+        ArrayList<Integer> integerList2 = new ArrayList<>(Arrays.asList(1, 1, 1, 1, 1, 5, 5, 8, 7, 7, 7, 1, 1, 3, 3));
         System.out.println("Произвольный список: " + integerList2);
         ArrayList<Integer> integerList3 = getListWithoutRepeats(integerList2);
         System.out.println("Список без повторяющихся элементов: " + integerList3);
