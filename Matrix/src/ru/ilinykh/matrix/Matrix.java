@@ -26,28 +26,40 @@ public class Matrix {
     }
 
     public Matrix(double[][] array) {
-        if (array.length == 0 || array[0].length == 0) {
-            throw new IllegalArgumentException("Количество строк (" + array.length + ") и столбцов (" + array[0].length + ") должно быть больше 0");
+        int arrayLength = array.length;
+
+        if (arrayLength == 0) {
+            throw new IllegalArgumentException("Количество строк (" + arrayLength + ") должно быть больше 0");
+        }
+
+        for (int i = 0; i < arrayLength; i++) {
+            if (array[i].length != 0) {
+                break;
+            }
+
+            if (i == arrayLength - 1) {
+                throw new IllegalArgumentException("Количество столбцов должно быть больше 0");
+            }
         }
 
         int maxLength = array[0].length;
 
-        for (int i = 1; i < array.length; i++) {
+        for (int i = 1; i < arrayLength; i++) {
             if (array[i].length > maxLength) {
                 maxLength = array[i].length;
             }
         }
 
-        components = new Vector[array.length];
+        components = new Vector[arrayLength];
 
-        for (int i = 0; i < array.length; i++) {
+        for (int i = 0; i < arrayLength; i++) {
             components[i] = new Vector(maxLength, array[i]);
         }
     }
 
     public Matrix(Vector[] vectors) {
-        if (vectors.length == 0 || vectors[0].getSize() == 0) {
-            throw new IllegalArgumentException("Количество строк (" + vectors.length + ") и столбцов (" + vectors[0].getSize() + ") должно быть больше 0");
+        if (vectors.length == 0) {
+            throw new IllegalArgumentException("Количество строк (" + vectors.length + ") должно быть больше 0.");
         }
 
         int rowsCount = vectors.length;
