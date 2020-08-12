@@ -12,7 +12,6 @@ public class List<T> {
     }
 
     public List() {
-        count = 0;
     }
 
     public T getFirstElementData() {
@@ -28,20 +27,19 @@ public class List<T> {
     }
 
     public void insertElementToBeginning(T data) {
-        ListElement<T> element = new ListElement<>(data);
-        element.setNext(head);
-        head = element;
+        head = new ListElement<>(data, head);
 
         count++;
     }
 
     private ListElement<T> getElementByIndex(int index) {
-        if (index > count || index < 0) {
-            throw new IndexOutOfBoundsException("Индекс вне диспазона вставки.");
+        if (index < 0 || index >= count) {
+            int temp = count - 1;
+            throw new IndexOutOfBoundsException("Индекс " + index + " вне диспазона вставки (от 0 до " + temp + ").");
         }
 
         int i = 0;
-        ListElement<T> temp = new ListElement<>();
+        ListElement<T> temp = null;
 
         for (ListElement<T> e = head; e != null; e = e.getNext()) {
             if (i == index) {
@@ -57,7 +55,7 @@ public class List<T> {
 
     public void insertElement(T data, int index) {
         if (index > count || index < 0) {
-            throw new IndexOutOfBoundsException("Индекс вне диспазона вставки.");
+            throw new IndexOutOfBoundsException("Индекс " + index + " вне диспазона вставки (от 0 до " + count + ").");
         }
 
         if (index == 0) {
@@ -66,10 +64,7 @@ public class List<T> {
             ListElement<T> element = new ListElement<>(data);
             ListElement<T> previous = getElementByIndex(index - 1);
 
-            if (index < count) {
-                element.setNext(previous.getNext());
-            }
-
+            element.setNext(previous.getNext());
             previous.setNext(element);
 
             count++;
@@ -80,17 +75,17 @@ public class List<T> {
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
 
-        int i = 0;
-
         stringBuilder.append("{");
+        ListElement<T> e = head;
 
-        for (ListElement<T> e = head; e != null; e = e.getNext()) {
+        for (int i = 0; e != null; i++) {
             stringBuilder.append(e.getData());
-            i++;
 
-            if (i != count) {
+            if (i < count - 1) {
                 stringBuilder.append(", ");
             }
+
+            e = e.getNext();
         }
 
         stringBuilder.append("}");
@@ -99,18 +94,10 @@ public class List<T> {
     }
 
     public T getData(int index) {
-        if (index >= count || index < 0) {
-            throw new IndexOutOfBoundsException("Элемента с этим индексом в списке нет.");
-        }
-
         return getElementByIndex(index).getData();
     }
 
     public T setData(T data, int index) {
-        if (index >= count || index < 0) {
-            throw new IndexOutOfBoundsException("Элемента с этим индексом в списке нет.");
-        }
-
         ListElement<T> element = getElementByIndex(index);
         T temp = element.getData();
         element.setData(data);
@@ -120,47 +107,41 @@ public class List<T> {
 
     public T deleteElement(int index) {
         if (index >= count || index < 0) {
-            throw new IndexOutOfBoundsException("Элемента с этим индексом в списке нет.");
+            throw new IndexOutOfBoundsException("Элемента с этим индексом " + index + " в списке нет.");
         }
 
-        T temp;
-
-        if (index >= 1) {
-            ListElement<T> previous = getElementByIndex(index - 1);
-            temp = previous.getNext().getData();
-            previous.setNext(previous.getNext().getNext());
-            count--;
-        } else {
-            temp = deleteFirstElement();
+        if (index == 0) {
+            return deleteFirstElement();
         }
+
+        ListElement<T> previous = getElementByIndex(index - 1);
+        T temp = previous.getNext().getData();
+        previous.setNext(previous.getNext().getNext());
+        count--;
 
         return temp;
     }
 
     public boolean deleteElement(T data) {
-        boolean isDeleted = false;
-
         for (ListElement<T> e = head, prev = null; e != null; prev = e, e = e.getNext()) {
-            if (e.getData().equals(data)) {
+            if (e.getData() != null && e.getData().equals(data)) {
                 if (prev != null) {
                     prev.setNext(e.getNext());
                 } else {
                     head = head.getNext();
                 }
 
-                isDeleted = true;
                 count--;
-
-                break;
+                return true;
             }
         }
 
-        return isDeleted;
+        return false;
     }
 
     public T deleteFirstElement() {
         if (head == null) {
-            throw new IllegalArgumentException("Список пустой");
+            throw new NoSuchElementException("Список пустой");
         }
 
         T temp = head.getData();
@@ -190,19 +171,12 @@ public class List<T> {
             return new List<>();
         }
 
-        List<T> result = new List<>();
+        List<T> result = new List<>(head.getData());
+        result.count = count;
 
-        for (ListElement<T> e = head, resultElement, resultPreviousElement = null; e != null; e = e.getNext(), resultPreviousElement = resultElement) {
+        for (ListElement<T> e = head.getNext(), resultElement, resultPreviousElement = result.head; e != null; e = e.getNext(), resultPreviousElement = resultElement) {
             resultElement = new ListElement<>(e.getData());
-
-            if (resultPreviousElement != null)
-                resultPreviousElement.setNext(resultElement);
-
-            if (e == head) {
-                result.head = resultElement;
-            }
-
-            result.count++;
+            resultPreviousElement.setNext(resultElement);
         }
 
         return result;

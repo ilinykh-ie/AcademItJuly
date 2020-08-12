@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
         ListElement<Integer> element = new ListElement<>(10);
         List<Integer> integerList = new List<>(element.getData());
-        integerList.insertElement(11,1);
+        integerList.insertElement(11, 1);
         System.out.println(integerList);
 
         for (int i = 9; i >= 5; i--) {
@@ -33,9 +33,9 @@ public class Main {
         System.out.println(integerList + " у удаленного элемента с индексм 0 было значение " + number);
 
         integerList.reverse();
-        System.out.println("Развернутый список" + integerList);
+        System.out.println("Развернутый список " + integerList);
 
         List<Integer> list2 = integerList.copy();
-        System.out.println("Скопированный список" + list2);
+        System.out.println("Скопированный список " + list2);
     }
 }

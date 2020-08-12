@@ -8,7 +8,9 @@ public class ListElement<T> {
         this.data = data;
     }
 
-    public ListElement() {
+    public ListElement(T data, ListElement<T> next) {
+        this.data = data;
+        this.next = next;
     }
 
     public T getData() {
@@ -29,9 +31,6 @@ public class ListElement<T> {
 
     @Override
     public String toString() {
-        if (data == null) {
-            return null;
-        }
-        return data.toString();
+        return (data == null) ? "null" : data.toString();
     }
 }
