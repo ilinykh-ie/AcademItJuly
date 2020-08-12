@@ -30,9 +30,9 @@ public class CSV {
             writer.println("<head>");
             writer.println("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">");
             writer.println("<title>Таблица в формате HTML</title>");
+            writer.println("<style> table {border-collapse: collapse;} TD {border: 1px solid black;} </style>");
             writer.println("</head>");
             writer.println("<body>");
-            writer.println("<style> table {border-collapse: collapse;} TD {border: 1px solid black;} </style>");
             writer.println("<table>");
 
             boolean isInsideQuotes = false;
@@ -49,11 +49,13 @@ public class CSV {
                         isInsideQuotes = !isInsideQuotes;
                     }
 
-                    if (currentString.charAt(i) == '"' && (i == 0 || currentString.charAt(i - 1) == ',' || (i != currentString.length() - 1 && currentString.charAt(i + 1) == ','))) {
+                    if (currentString.charAt(i) == '"' && (i == 0 || currentString.charAt(i - 1) == ',' ||
+                            (i != currentString.length() - 1 && currentString.charAt(i + 1) == ','))) {
                         continue;
                     }
 
-                    if (currentString.charAt(i) == '"' && i != currentString.length() - 1 && currentString.charAt(i + 1) == '"') {
+                    if (currentString.charAt(i) == '"' && i != currentString.length() - 1 &&
+                            currentString.charAt(i + 1) == '"') {
                         writer.print('"');
                         isInsideQuotes = !isInsideQuotes;
                         i++;
@@ -74,12 +76,20 @@ public class CSV {
                     }
                 }
             }
+
             writer.println("</table>");
             writer.println("</body>");
             writer.println("</html>");
         } catch (FileNotFoundException e) {
-            System.out.println("Файл не надйен. Путь к исходному и конечному файлам нужно указать через аргументы программы.");
-            System.out.println("Аргумент с индексом 0 - путь к исходному CSV файлу, аргумент с индексом 1 - путь куда сохраниться полученный HTML файл.");
+            System.out.println("Файл не надйен. Путь к исходному и конечному файлам " +
+                    "нужно указать через аргументы программы.");
+            System.out.println("Аргумент с индексом 0 - путь к исходному CSV файлу, " +
+                    "аргумент с индексом 1 - путь к сохраняемому файлу в формате HTML.");
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Аргменты программы указаные неверно. Путь к исходному и конечному файлам " +
+                    "нужно указать через аргументы программы. ");
+            System.out.println("Аргумент с индексом 0 - путь к исходному CSV файлу, " +
+                    "аргумент с индексом 1 - путь к сохраняемому файлу в формате HTML.");
         }
     }
 }
