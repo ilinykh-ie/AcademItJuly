@@ -32,22 +32,16 @@ public class Matrix {
             throw new IllegalArgumentException("Количество строк (" + arrayLength + ") должно быть больше 0");
         }
 
-        for (int i = 0; i < arrayLength; i++) {
-            if (array[i].length != 0) {
-                break;
-            }
-
-            if (i == arrayLength - 1) {
-                throw new IllegalArgumentException("Количество столбцов должно быть больше 0");
-            }
-        }
-
         int maxLength = array[0].length;
 
         for (int i = 1; i < arrayLength; i++) {
             if (array[i].length > maxLength) {
                 maxLength = array[i].length;
             }
+        }
+
+        if (maxLength == 0) {
+            throw new IllegalArgumentException("Количество столбцов должно быть больше 0");
         }
 
         components = new Vector[arrayLength];
