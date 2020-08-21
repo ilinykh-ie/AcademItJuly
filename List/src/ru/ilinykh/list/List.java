@@ -34,8 +34,7 @@ public class List<T> {
 
     private ListElement<T> getElementByIndex(int index) {
         if (index < 0 || index >= count) {
-            int temp = count - 1;
-            throw new IndexOutOfBoundsException("Индекс " + index + " вне диспазона вставки (от 0 до " + temp + ").");
+            throw new IndexOutOfBoundsException("Индекс " + index + " вне диапазона вставки (от 0 до " + (count - 1) + ").");
         }
 
         int i = 0;
@@ -124,7 +123,7 @@ public class List<T> {
 
     public boolean deleteElement(T data) {
         for (ListElement<T> e = head, prev = null; e != null; prev = e, e = e.getNext()) {
-            if (e.getData() != null && e.getData().equals(data)) {
+            if (e.getData() == data || (e.getData() != null && e.getData().equals(data))) {
                 if (prev != null) {
                     prev.setNext(e.getNext());
                 } else {

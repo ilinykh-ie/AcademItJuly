@@ -37,5 +37,12 @@ public class Main {
 
         List<Integer> list2 = integerList.copy();
         System.out.println("Скопированный список " + list2);
+
+        list2.insertElement(null, 2);
+        list2.insertElement(null, 4);
+        System.out.println(list2 + " список после добавления null значений");
+
+        list2.deleteElement(null);
+        System.out.println(list2 + " список после удаления null значения");
     }
 }
