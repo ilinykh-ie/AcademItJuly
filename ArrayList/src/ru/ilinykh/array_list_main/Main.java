@@ -41,5 +41,15 @@ public class Main {
         System.out.println("Список 2: " + arrayList2);
         System.out.println("Список 3: " + arrayList3);
         System.out.println("Содержатся ли все элементы списка 3 в списке 2: " + arrayList2.containsAll(arrayList3));
+
+        arrayList2.add(1, null);
+        arrayList2.add(3, null);
+        System.out.println("Список 2 после добавления null значений: " + arrayList2);
+
+        arrayList2.remove(null);
+        arrayList2.remove(null);
+        System.out.println("Список 2 после удаления null значеня: " + arrayList2);
+
+        System.out.println("Содержит ли список 2 null: " + arrayList2.contains(null));
     }
 }
