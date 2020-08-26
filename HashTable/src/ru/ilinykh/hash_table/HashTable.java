@@ -9,7 +9,7 @@ public class HashTable<T> implements Collection<T> {
 
     public HashTable(int length) {
         if (length < 1) {
-            throw new ArrayIndexOutOfBoundsException("Длина должна быть больше 0.");
+            throw new NegativeArraySizeException("Длина должна быть больше 0.");
         }
 
         //noinspection unchecked
@@ -83,16 +83,12 @@ public class HashTable<T> implements Collection<T> {
 
         int i = 0;
 
-        for (ArrayList<T> arrayList : table) {
-            if (arrayList != null) {
-                for (T t : arrayList) {
-                    stringBuilder.append(t);
-                    i++;
+        for (T t : this) {
+            stringBuilder.append(t);
+            i++;
 
-                    if (i != count) {
-                        stringBuilder.append(", ");
-                    }
-                }
+            if (i != count) {
+                stringBuilder.append(", ");
             }
         }
 
@@ -191,7 +187,7 @@ public class HashTable<T> implements Collection<T> {
             throw new NullPointerException("Переданная коллекция не может быть null.");
         }
 
-        int temp = count;
+        int initialCount = count;
 
         for (ArrayList<T> arrayList : table) {
             if (arrayList != null) {
@@ -203,11 +199,11 @@ public class HashTable<T> implements Collection<T> {
             }
         }
 
-        if (temp != count) {
+        if (initialCount != count) {
             modCount++;
         }
 
-        return temp != count;
+        return initialCount != count;
     }
 
     @Override
@@ -216,7 +212,7 @@ public class HashTable<T> implements Collection<T> {
             throw new NullPointerException("Переданная коллекция не может быть null.");
         }
 
-        int temp = count;
+        int initialCount = count;
 
         for (ArrayList<T> arrayList : table) {
             if (arrayList != null) {
@@ -228,11 +224,11 @@ public class HashTable<T> implements Collection<T> {
             }
         }
 
-        if (temp != count) {
+        if (initialCount != count) {
             modCount++;
         }
 
-        return temp != count;
+        return initialCount != count;
     }
 
     @Override
@@ -256,18 +252,18 @@ public class HashTable<T> implements Collection<T> {
 
     @Override
     public <T1> T1[] toArray(T1[] a) {
-        //noinspection unchecked
-        T1[] temp = (T1[]) toArray();
+        Object[] temp = toArray();
 
-        if (count <= a.length) {
-            System.arraycopy(temp, 0, a, 0, count);
-
-            if (count < a.length) {
-                a[count] = null;
-            }
-        } else {
+        if (count>a.length){
             //noinspection unchecked
             return (T1[]) Arrays.copyOf(temp, count, a.getClass());
+        }
+
+        //noinspection SuspiciousSystemArraycopy
+        System.arraycopy(temp, 0, a, 0, count);
+
+        if (count < a.length) {
+            a[count] = null;
         }
 
         return a;
