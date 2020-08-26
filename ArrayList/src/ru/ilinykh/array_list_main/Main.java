@@ -21,20 +21,20 @@ public class Main {
         MyArrayList<Integer> arrayList1 = new MyArrayList<>(6);
         arrayList1.addAll(arrayList);
         arrayList1.add(3);
+        arrayList1.addAll(2, arrayList);
 
-        System.out.println(arrayList1);
+        System.out.println("Полученный список после изменений " + arrayList1);
         System.out.println("Первый индекс числа 3 в списке: " + arrayList1.indexOf(3));
         System.out.println("Последний индекс числа 3 в списке: " + arrayList1.lastIndexOf(3));
 
         Integer[] array2 = (Integer[]) arrayList.toArray();
         System.out.println("Массив, полученный из списка: " + Arrays.toString(array2));
 
-
-        String[] array1 = {"один", "два", "два", "три", "три"};
+        String[] array1 = {"один", "два", "два", "три", "три", null};
         MyArrayList<String> arrayList2 = new MyArrayList<>(array1);
         System.out.println("Список строк: " + arrayList2);
 
-        String[] array3 = {"два", "три", "пять"};
+        String[] array3 = {"два", "три", null, null};
         MyArrayList<String> arrayList3 = new MyArrayList<>(array3);
         arrayList2.retainAll(arrayList3);
 
@@ -51,5 +51,9 @@ public class Main {
         System.out.println("Список 2 после удаления null значеня: " + arrayList2);
 
         System.out.println("Содержит ли список 2 null: " + arrayList2.contains(null));
+
+        Number[] numbers = {1, 3, 4, 5, 6, 65, 98, 35.63};
+        numbers = arrayList1.toArray(numbers);
+        System.out.println("Массив чисел, полученный списка " + Arrays.toString(numbers));
     }
 }

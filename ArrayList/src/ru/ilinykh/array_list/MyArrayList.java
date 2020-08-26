@@ -18,7 +18,7 @@ public class MyArrayList<T> implements List<T> {
 
     public MyArrayList(int capacity) {
         if (capacity < 0) {
-            throw new ArrayIndexOutOfBoundsException("Вместимость должна быть не меньше 0.");
+            throw new NegativeArraySizeException("Вместимость должна быть не меньше 0.");
         }
 
         //noinspection unchecked
@@ -56,7 +56,7 @@ public class MyArrayList<T> implements List<T> {
 
     private void increaseCapacity() {
         if (items.length == 0) {
-            items = Arrays.copyOf(items, 1);
+            items = Arrays.copyOf(items, 10);
         } else {
             items = Arrays.copyOf(items, items.length * 2);
         }
@@ -114,7 +114,7 @@ public class MyArrayList<T> implements List<T> {
         }
 
         for (Object e : collection) {
-            if (e != null && !contains(e)) {
+            if (!contains(e)) {
                 return false;
             }
         }
@@ -134,18 +134,16 @@ public class MyArrayList<T> implements List<T> {
 
     @Override
     public <T1> T1[] toArray(T1[] a) {
-        //noinspection unchecked
-        T1[] temp = (T1[]) toArray();
-
-        if (length <= a.length) {
-            System.arraycopy(temp, 0, a, 0, length);
-
-            if (length < a.length) {
-                a[length] = null;
-            }
-        } else {
+        if (length > a.length) {
             //noinspection unchecked
-            return (T1[]) Arrays.copyOf(temp, length, a.getClass());
+            return (T1[]) Arrays.copyOf(items, length, a.getClass());
+        }
+
+        //noinspection SuspiciousSystemArraycopy
+        System.arraycopy(items, 0, a, 0, length);
+
+        if (length < a.length) {
+            a[length] = null;
         }
 
         return a;
@@ -198,23 +196,7 @@ public class MyArrayList<T> implements List<T> {
 
     @Override
     public boolean addAll(Collection<? extends T> collection) {
-        if (collection == null) {
-            throw new NullPointerException("Переданная коллекция не может быть null.");
-        }
-
-        int collectionSize = collection.size();
-
-        ensureCapacity(length + collectionSize);
-
-        //noinspection unchecked
-        T[] temp = (T[]) collection.toArray();
-
-        System.arraycopy(temp, 0, items, length, collectionSize);
-
-        length += collectionSize;
-        modCount++;
-
-        return true;
+        return addAll(0, collection);
     }
 
     @Override
@@ -227,19 +209,22 @@ public class MyArrayList<T> implements List<T> {
             throw new NullPointerException("Переданная коллекция не может быть null.");
         }
 
-        int collectionSize = collection.size();
+        if (collection.size() == 0) {
+            return false;
+        }
 
-        ensureCapacity(length + collectionSize);
+        ensureCapacity(length + collection.size());
 
+        System.arraycopy(items, index, items, index + collection.size(), length - index);
 
-        System.arraycopy(items, index, items, index + collectionSize, length - index);
+        int i = index;
 
-        //noinspection unchecked
-        T[] temp = (T[]) collection.toArray();
+        for (T t : collection) {
+            items[i] = t;
+            i++;
+        }
 
-        System.arraycopy(temp, 0, items, index, collectionSize);
-
-        length += collectionSize;
+        length += collection.size();
         modCount++;
 
         return true;
@@ -310,7 +295,6 @@ public class MyArrayList<T> implements List<T> {
         return temp;
     }
 
-
     @Override
     public T remove(int index) {
         if (index < 0 || index >= length) {
@@ -339,7 +323,7 @@ public class MyArrayList<T> implements List<T> {
 
     @Override
     public int lastIndexOf(Object o) {
-        for (int i = length - 1; i > 0; i--) {
+        for (int i = length - 1; i >= 0; i--) {
             if (Objects.equals(items[i], o)) {
                 return i;
             }
@@ -353,7 +337,6 @@ public class MyArrayList<T> implements List<T> {
         //noinspection ConstantConditions
         return null;
     }
-
 
     @Override
     public ListIterator<T> listIterator(int index) {
