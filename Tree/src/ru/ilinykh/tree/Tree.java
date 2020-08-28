@@ -1,20 +1,25 @@
 package ru.ilinykh.tree;
 
+import java.util.Comparator;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.function.Consumer;
 
-public class Tree<T extends Number & Comparable<T>> {
+public class Tree<T> {
     private TreeNode<T> root;
     private int count;
+    Comparator<T> comparator;
 
-    public Tree(TreeNode<T> root) {
-        this.root = root;
+    public Tree() {
+    }
+
+    public Tree(T data) {
+        root = new TreeNode<>(data);
         count = 1;
     }
 
-    public TreeNode<T> getRoot() {
-        return root;
+    public Tree(Comparator<T> comparator) {
+        this.comparator = comparator;
     }
 
     public void setRoot(TreeNode<T> node) {
@@ -35,7 +40,7 @@ public class Tree<T extends Number & Comparable<T>> {
         queue.add(root);
 
         while (!queue.isEmpty()) {
-            TreeNode<T> currentElement = queue.getFirst();
+            TreeNode<T> currentElement = queue.removeFirst();
 
             consumer.accept(currentElement.getData());
 
@@ -46,13 +51,11 @@ public class Tree<T extends Number & Comparable<T>> {
             if (currentElement.getRight() != null) {
                 queue.addLast(currentElement.getRight());
             }
-
-            queue.removeFirst();
         }
     }
 
     public void depthFirst(Consumer<T> consumer) {
-        if (count == 0 || root == null) {
+        if (root == null) {
             return;
         }
 
@@ -61,11 +64,9 @@ public class Tree<T extends Number & Comparable<T>> {
         stack.add(root);
 
         while (!stack.isEmpty()) {
-            TreeNode<T> currentElement = stack.getLast();
+            TreeNode<T> currentElement = stack.removeLast();
 
             consumer.accept(currentElement.getData());
-
-            stack.removeLast();
 
             if (currentElement.getRight() != null) {
                 stack.addLast(currentElement.getRight());
@@ -77,16 +78,23 @@ public class Tree<T extends Number & Comparable<T>> {
         }
     }
 
+    public void depthFirstRecursion(Consumer<T> consumer) {
+        depthFirstRecursionNode(consumer, root);
+    }
 
-    public void depthFirstRecursion(Consumer<T> consumer, TreeNode<T> node) {
-        if (count == 0 || root == null) {
+    private void depthFirstRecursionNode(Consumer<T> consumer, TreeNode<T> node) {
+        if (root == null) {
             return;
         }
 
         consumer.accept(node.getData());
 
-        for (TreeNode<T> child : node.getChildren()) {
-            depthFirstRecursion(consumer, child);
+        if (node.getLeft() != null) {
+            depthFirstRecursionNode(consumer, node.getLeft());
+        }
+
+        if (node.getRight() != null) {
+            depthFirstRecursionNode(consumer, node.getRight());
         }
     }
 
@@ -102,7 +110,10 @@ public class Tree<T extends Number & Comparable<T>> {
         TreeNode<T> currentNode = root;
 
         for (; ; ) {
-            if (data.compareTo(currentNode.getData()) < 0) {
+            //noinspection unchecked
+            if ((data == null & currentNode.getData() != null) || (data != null && currentNode.getData() != null &&
+                    (comparator != null && comparator.compare(data, currentNode.getData()) < 0 ||
+                            ((Comparable<T>) data).compareTo(currentNode.getData()) < 0))) {
                 if (currentNode.getLeft() != null) {
                     currentNode = currentNode.getLeft();
                 } else {
@@ -125,18 +136,21 @@ public class Tree<T extends Number & Comparable<T>> {
     }
 
     public boolean contains(T data) {
-        if (data == null || root == null) {
+        if (root == null) {
             return false;
         }
 
         TreeNode<T> currentNode = root;
 
         for (; ; ) {
-            if (currentNode.getData().equals(data)) {
+            if (data == currentNode.getData() || currentNode.getData() != null && currentNode.getData().equals(data)) {
                 return true;
             }
 
-            if (data.compareTo(currentNode.getData()) < 0) {
+            //noinspection unchecked
+            if ((data == null & currentNode.getData() != null) || data != null && currentNode.getData() != null &&
+                    (comparator != null && comparator.compare(data, currentNode.getData()) < 0 ||
+                            ((Comparable<T>) data).compareTo(currentNode.getData()) < 0)) {
                 if (currentNode.getLeft() != null) {
                     currentNode = currentNode.getLeft();
                 } else {
@@ -155,13 +169,13 @@ public class Tree<T extends Number & Comparable<T>> {
     }
 
     public boolean remove(T data) {
-        if (data == null || root == null) {
+        if (root == null) {
             return false;
         }
 
         TreeNode<T> currentNode = root;
 
-        if (currentNode.getData().equals(data)) {
+        if (data == currentNode.getData() || currentNode.getData() != null && currentNode.getData().equals(data)) {
             if (currentNode.getRight() == null && currentNode.getLeft() == null) {
                 root = null;
             } else if (currentNode.getRight() == null) {
@@ -169,14 +183,26 @@ public class Tree<T extends Number & Comparable<T>> {
             } else if (currentNode.getLeft() == null) {
                 setRoot(currentNode.getRight());
             } else {
-                TreeNode<T> temp = currentNode.getRight();
+                TreeNode<T> min = currentNode.getRight();
+                TreeNode<T> previousMin = currentNode;
 
-                while (temp.getLeft() != null) {
-                    temp = temp.getLeft();
+                while (min.getLeft() != null) {
+                    previousMin = min;
+                    min = min.getLeft();
                 }
 
-                temp.setLeft(currentNode.getLeft());
-                setRoot(currentNode.getRight());
+                if (!previousMin.equals(root)) {
+                    if (min.getRight() != null) {
+                        previousMin.setLeft(min.getRight());
+                    } else {
+                        previousMin.setLeft(null);
+                    }
+
+                    min.setRight(currentNode.getRight());
+                }
+
+                min.setLeft(currentNode.getLeft());
+                root = min;
             }
 
             count--;
@@ -186,7 +212,10 @@ public class Tree<T extends Number & Comparable<T>> {
         TreeNode<T> previousNode;
 
         for (; ; ) {
-            if (data.compareTo(currentNode.getData()) < 0) {
+            //noinspection unchecked
+            if ((data == null & currentNode.getData() != null) || data != null && currentNode.getData() != null &&
+                    (comparator != null && comparator.compare(data, currentNode.getData()) < 0 ||
+                            ((Comparable<T>) data).compareTo(currentNode.getData()) < 0)) {
                 if (currentNode.getLeft() != null) {
                     previousNode = currentNode;
                     currentNode = currentNode.getLeft();
@@ -202,7 +231,7 @@ public class Tree<T extends Number & Comparable<T>> {
                 }
             }
 
-            if (currentNode.getData().equals(data)) {
+            if (data == currentNode.getData() || currentNode.getData() != null && currentNode.getData().equals(data)) {
                 if (currentNode.getRight() == null && currentNode.getLeft() == null) {
                     if (previousNode.getLeft().equals(currentNode)) {
                         previousNode.setLeft(null);
