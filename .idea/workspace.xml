@@ -33,9 +33,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="71017881-c371-4f7b-b49f-bcd54cc08df1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Minesweeper/Minesweeper.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Minesweeper/src/ru/ilinykh/mine_sweeper/Controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Minesweeper/src/ru/ilinykh/mine_sweeper/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Minesweeper/src/ru/ilinykh/mine_sweeper/gui/Minesweeper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArrayList/src/ru/ilinykh/array_list/MyArrayList.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArrayList/src/ru/ilinykh/array_list/MyArrayList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArrayList/src/ru/ilinykh/array_list_main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArrayList/src/ru/ilinykh/array_list_main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSV/src/ru/ilinykh/csv_main/CSV.java" beforeDir="false" afterPath="$PROJECT_DIR$/CSV/src/ru/ilinykh/csv_main/CSV.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,14 +89,27 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
-  <component name="RunManager" selected="Application.Main (2)">
+  <component name="RunManager" selected="Application.CSV">
     <configuration name="CSV" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.ilinykh.csv_main.CSV" />
       <module name="CSV" />
-      <option name="PROGRAM_PARAMETERS" value="C:\Users\ilinykh-ie\Desktop\1\input.csv C:\Users\ilinykh-ie\Desktop\1\1.html" />
+      <option name="PROGRAM_PARAMETERS" value="C:\Users\ilinykh-ie\Desktop\1\iput.csv C:\Users\ilinykh-ie\Desktop\1\123.html" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ru.ilinykh.csv_main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.ilinykh.mine_sweeper.Main" />
+      <module name="Minesweeper" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.ilinykh.mine_sweeper.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -119,19 +136,6 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ru.ilinykh.hash_table_main.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main (5)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ru.ilinykh.list_main.Main" />
-      <module name="List" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ru.ilinykh.list_main.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -169,17 +173,17 @@
       <item itemvalue="Application.CSV" />
       <item itemvalue="Application.Main (2)" />
       <item itemvalue="Application.Main (3)" />
-      <item itemvalue="Application.Main (5)" />
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.Temperature" />
+      <item itemvalue="Application.Main (1)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Main (2)" />
         <item itemvalue="Application.Main (3)" />
         <item itemvalue="Application.Temperature" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.Main (5)" />
       </list>
     </recent_temporary>
   </component>
@@ -475,7 +479,14 @@
       <option name="project" value="LOCAL" />
       <updated>1598429974399</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Исправление задачи MyArrayList.">
+      <created>1598435143836</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1598435143837</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -513,11 +524,11 @@
     <MESSAGE value="Исправление задачи Matrix." />
     <MESSAGE value="Исправление задачи CSV." />
     <MESSAGE value="Исправление задачи List." />
-    <MESSAGE value="Исправление задачи MyArrayList." />
     <MESSAGE value="Добавление задачи Graph." />
     <MESSAGE value="Добавление задачи Temperature." />
     <MESSAGE value="Исправление задачи HashTable." />
-    <option name="LAST_COMMIT_MESSAGE" value="Исправление задачи HashTable." />
+    <MESSAGE value="Исправление задачи MyArrayList." />
+    <option name="LAST_COMMIT_MESSAGE" value="Исправление задачи MyArrayList." />
   </component>
   <component name="WindowStateProjectService">
     <state x="426" y="110" key="#Inspections" timestamp="1597055515026">
@@ -529,10 +540,10 @@
     </state>
     <state x="280" y="6" key="#Project_Structure/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1595314064052" />
     <state x="437" y="12" key="#Project_Structure/0.0.1600.860@0.0.1600.860" timestamp="1598249397965" />
-    <state x="155" y="111" width="1281" height="687" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1597918775735">
+    <state x="155" y="111" width="1281" height="687" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598602177394">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="155" y="111" width="1281" height="687" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1600.860@0.0.1600.860" timestamp="1597918775735" />
+    <state x="155" y="111" width="1281" height="687" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1600.860@0.0.1600.860" timestamp="1598602177394" />
     <state x="605" y="36" width="851" height="584" key="#com.intellij.ide.util.MemberChooser" timestamp="1597826174531">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -555,11 +566,11 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="130" y="178" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1600.860@0.0.1600.860" timestamp="1596710917130" />
-    <state x="623" y="8" width="745" height="852" key="CommitChangelistDialog2" timestamp="1598429973695">
+    <state x="623" y="8" width="745" height="852" key="CommitChangelistDialog2" timestamp="1598435143260">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="427" y="0" width="1092" height="860" key="CommitChangelistDialog2/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1595953246421" />
-    <state x="623" y="8" width="745" height="852" key="CommitChangelistDialog2/0.0.1600.860@0.0.1600.860" timestamp="1598429973695" />
+    <state x="623" y="8" width="745" height="852" key="CommitChangelistDialog2/0.0.1600.860@0.0.1600.860" timestamp="1598435143260" />
     <state width="440" height="466" key="DebuggerActiveHint" timestamp="1598258137473">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -574,56 +585,56 @@
     </state>
     <state x="580" y="173" key="FileChooserDialogImpl/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1595319717006" />
     <state x="580" y="173" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1598346575017" />
-    <state width="1556" height="180" key="GridCell.Tab.0.bottom" timestamp="1598434927599">
+    <state width="1556" height="173" key="GridCell.Tab.0.bottom" timestamp="1598602181292">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="1556" height="270" key="GridCell.Tab.0.bottom/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1597667274618" />
-    <state width="1556" height="180" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1598434927599" />
-    <state width="1556" height="180" key="GridCell.Tab.0.center" timestamp="1598434927598">
+    <state width="1556" height="173" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1598602181292" />
+    <state width="1556" height="173" key="GridCell.Tab.0.center" timestamp="1598602181292">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="1556" height="270" key="GridCell.Tab.0.center/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1597667274617" />
-    <state width="1556" height="180" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1598434927598" />
-    <state width="1556" height="180" key="GridCell.Tab.0.left" timestamp="1598434927598">
+    <state width="1556" height="173" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1598602181292" />
+    <state width="1556" height="173" key="GridCell.Tab.0.left" timestamp="1598602181291">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="1556" height="270" key="GridCell.Tab.0.left/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1597667274617" />
-    <state width="1556" height="180" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1598434927598" />
-    <state width="1556" height="180" key="GridCell.Tab.0.right" timestamp="1598434927598">
+    <state width="1556" height="173" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1598602181291" />
+    <state width="1556" height="173" key="GridCell.Tab.0.right" timestamp="1598602181292">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="1556" height="270" key="GridCell.Tab.0.right/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1597667274618" />
-    <state width="1556" height="180" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1598434927598" />
-    <state width="1556" height="343" key="GridCell.Tab.1.bottom" timestamp="1598385786002">
+    <state width="1556" height="173" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1598602181292" />
+    <state width="740" height="335" key="GridCell.Tab.1.bottom" timestamp="1598542854680">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="1556" height="270" key="GridCell.Tab.1.bottom/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1597667274619" />
-    <state width="1556" height="343" key="GridCell.Tab.1.bottom/0.0.1600.860@0.0.1600.860" timestamp="1598385786002" />
-    <state width="1556" height="343" key="GridCell.Tab.1.center" timestamp="1598385786002">
+    <state width="740" height="335" key="GridCell.Tab.1.bottom/0.0.1600.860@0.0.1600.860" timestamp="1598542854680" />
+    <state width="740" height="335" key="GridCell.Tab.1.center" timestamp="1598542854680">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="1556" height="270" key="GridCell.Tab.1.center/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1597667274618" />
-    <state width="1556" height="343" key="GridCell.Tab.1.center/0.0.1600.860@0.0.1600.860" timestamp="1598385786002" />
-    <state width="1556" height="343" key="GridCell.Tab.1.left" timestamp="1598385786002">
+    <state width="740" height="335" key="GridCell.Tab.1.center/0.0.1600.860@0.0.1600.860" timestamp="1598542854680" />
+    <state width="740" height="335" key="GridCell.Tab.1.left" timestamp="1598542854680">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="1556" height="270" key="GridCell.Tab.1.left/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1597667274618" />
-    <state width="1556" height="343" key="GridCell.Tab.1.left/0.0.1600.860@0.0.1600.860" timestamp="1598385786002" />
-    <state width="1556" height="343" key="GridCell.Tab.1.right" timestamp="1598385786002">
+    <state width="740" height="335" key="GridCell.Tab.1.left/0.0.1600.860@0.0.1600.860" timestamp="1598542854680" />
+    <state width="740" height="335" key="GridCell.Tab.1.right" timestamp="1598542854680">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="1556" height="270" key="GridCell.Tab.1.right/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1597667274618" />
-    <state width="1556" height="343" key="GridCell.Tab.1.right/0.0.1600.860@0.0.1600.860" timestamp="1598385786002" />
+    <state width="740" height="335" key="GridCell.Tab.1.right/0.0.1600.860@0.0.1600.860" timestamp="1598542854680" />
     <state x="352" y="0" key="SettingsEditor" timestamp="1598386173928">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="500" y="0" key="SettingsEditor/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1595000400978" />
     <state x="352" y="0" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1598386173928" />
-    <state x="392" y="164" key="Vcs.Push.Dialog.v2" timestamp="1598429977729">
+    <state x="392" y="164" key="Vcs.Push.Dialog.v2" timestamp="1598435146759">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="392" y="164" key="Vcs.Push.Dialog.v2/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1595953251665" />
-    <state x="392" y="164" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1598429977729" />
+    <state x="392" y="164" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1598435146759" />
     <state x="92" y="92" width="1416" height="676" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1593692643511">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -646,11 +657,11 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="518" y="232" key="git4idea.merge.GitPullDialog/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1593692955387" />
-    <state x="117" y="33" key="new project wizard" timestamp="1598362338866">
+    <state x="117" y="33" key="new project wizard" timestamp="1598448603689">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="182" y="55" key="new project wizard/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1595319570688" />
-    <state x="117" y="33" key="new project wizard/0.0.1600.860@0.0.1600.860" timestamp="1598362338866" />
+    <state x="117" y="33" key="new project wizard/0.0.1600.860@0.0.1600.860" timestamp="1598448603689" />
     <state x="456" y="190" key="run.anything.popup" timestamp="1596803708838">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -677,6 +688,11 @@
           <properties class="java.util.ConcurrentModificationException" package="java.util" />
           <option name="timeStamp" value="11" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Temperature/src/ru/ilinykh/temperature/Temperature.java</url>
+          <line>42</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>

@@ -24,9 +24,10 @@ public class CSV {
 
     public static void main(String[] args) {
         if (args.length != 2) {
-            throw new ArrayIndexOutOfBoundsException("Аргменты программы указаные неверно. Должно быть 2 аргумента: " +
-                    "путь к исходному и конечному файлам \n нужно указать через аргументы программы. Аргумент с индексом" +
-                    " 0 - путь к исходному CSV файлу, аргумент с индексом 1 - путь к сохраняемому файлу в формате HTML.");
+            System.out.println("Аргументы программы указаны неверно. Должно быть два аргумента: первый аргумент - путь к исходному" +
+                    " CSV файлу," + System.lineSeparator() + "второй аргумент - путь к сохраняемому файлу в формате HTML.");
+
+            return;
         }
 
         try (Scanner scanner = new Scanner(new FileInputStream(args[0]), "windows-1251");
@@ -87,10 +88,7 @@ public class CSV {
             writer.println("</body>");
             writer.println("</html>");
         } catch (FileNotFoundException e) {
-            System.out.println("Файл не надйен. Путь к исходному и конечному файлам " +
-                    "нужно указать через аргументы программы.");
-            System.out.println("Аргумент с индексом 0 - путь к исходному CSV файлу, " +
-                    "аргумент с индексом 1 - путь к сохраняемому файлу в формате HTML.");
+            System.out.println("Файл, указанный в аргументах, не найден.");
         }
     }
 }
