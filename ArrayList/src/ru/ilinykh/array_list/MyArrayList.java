@@ -18,7 +18,7 @@ public class MyArrayList<T> implements List<T> {
 
     public MyArrayList(int capacity) {
         if (capacity < 0) {
-            throw new NegativeArraySizeException("Вместимость должна быть не меньше 0.");
+            throw new IllegalArgumentException("Вместимость должна быть не меньше 0.");
         }
 
         //noinspection unchecked
@@ -196,7 +196,7 @@ public class MyArrayList<T> implements List<T> {
 
     @Override
     public boolean addAll(Collection<? extends T> collection) {
-        return addAll(0, collection);
+        return addAll(length, collection);
     }
 
     @Override
