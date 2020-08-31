@@ -1,6 +1,7 @@
 package ru.ilinykh.list;
 
 import java.util.NoSuchElementException;
+import java.util.Objects;
 
 public class List<T> {
     private ListElement<T> head;
@@ -123,7 +124,7 @@ public class List<T> {
 
     public boolean deleteElement(T data) {
         for (ListElement<T> e = head, prev = null; e != null; prev = e, e = e.getNext()) {
-            if (e.getData() == data || (e.getData() != null && e.getData().equals(data))) {
+            if (Objects.equals(e.getData(), data)) {
                 if (prev != null) {
                     prev.setNext(e.getNext());
                 } else {
@@ -173,7 +174,8 @@ public class List<T> {
         List<T> result = new List<>(head.getData());
         result.count = count;
 
-        for (ListElement<T> e = head.getNext(), resultElement, resultPreviousElement = result.head; e != null; e = e.getNext(), resultPreviousElement = resultElement) {
+        for (ListElement<T> e = head.getNext(), resultElement, resultPreviousElement = result.head;
+             e != null; e = e.getNext(), resultPreviousElement = resultElement) {
             resultElement = new ListElement<>(e.getData());
             resultPreviousElement.setNext(resultElement);
         }

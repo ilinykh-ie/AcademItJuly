@@ -38,7 +38,7 @@
       <change afterPath="$PROJECT_DIR$/Minesweeper/src/ru/ilinykh/mine_sweeper/Main.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Minesweeper/src/ru/ilinykh/mine_sweeper/gui/Minesweeper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HashTable/src/ru/ilinykh/hash_table/HashTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/HashTable/src/ru/ilinykh/hash_table/HashTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/List/src/ru/ilinykh/list/List.java" beforeDir="false" afterPath="$PROJECT_DIR$/List/src/ru/ilinykh/list/List.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +88,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
-  <component name="RunManager" selected="Application.Main (4)">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="CSV" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.ilinykh.csv_main.CSV" />
       <module name="CSV" />
@@ -155,12 +155,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Temperature" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ru.ilinykh.temperature.Temperature" />
-      <module name="Temperature" />
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.ilinykh.list_main.Main" />
+      <module name="List" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.ilinykh.temperature.*" />
+          <option name="PATTERN" value="ru.ilinykh.list_main.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -170,19 +170,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.CSV" />
-      <item itemvalue="Application.Main (1)" />
       <item itemvalue="Application.Main (2)" />
       <item itemvalue="Application.Main (3)" />
+      <item itemvalue="Application.Main (1)" />
       <item itemvalue="Application.Main (4)" />
-      <item itemvalue="Application.Temperature" />
+      <item itemvalue="Application.Main" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main (4)" />
         <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Main (2)" />
         <item itemvalue="Application.Main (3)" />
-        <item itemvalue="Application.Temperature" />
       </list>
     </recent_temporary>
   </component>
@@ -499,7 +499,14 @@
       <option name="project" value="LOCAL" />
       <updated>1598621770218</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Исправление задачи HashTable.">
+      <created>1598857267286</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1598857267287</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -537,11 +544,11 @@
     <MESSAGE value="Исправление задачи List." />
     <MESSAGE value="Добавление задачи Graph." />
     <MESSAGE value="Добавление задачи Temperature." />
-    <MESSAGE value="Исправление задачи HashTable." />
     <MESSAGE value="Исправление задачи MyArrayList." />
     <MESSAGE value="Исправление задачи CSV." />
     <MESSAGE value="Исправление задачи Tree." />
-    <option name="LAST_COMMIT_MESSAGE" value="Исправление задачи Tree." />
+    <MESSAGE value="Исправление задачи HashTable." />
+    <option name="LAST_COMMIT_MESSAGE" value="Исправление задачи HashTable." />
   </component>
   <component name="WindowStateProjectService">
     <state x="426" y="110" key="#Inspections" timestamp="1598621151741">
@@ -579,11 +586,11 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="130" y="178" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1600.860@0.0.1600.860" timestamp="1596710917130" />
-    <state x="623" y="8" width="745" height="852" key="CommitChangelistDialog2" timestamp="1598621769378">
+    <state x="494" y="0" width="745" height="852" key="CommitChangelistDialog2" timestamp="1598857266460">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="427" y="0" width="1092" height="860" key="CommitChangelistDialog2/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1595953246421" />
-    <state x="623" y="8" width="745" height="852" key="CommitChangelistDialog2/0.0.1600.860@0.0.1600.860" timestamp="1598621769378" />
+    <state x="494" y="0" width="745" height="852" key="CommitChangelistDialog2/0.0.1600.860@0.0.1600.860" timestamp="1598857266460" />
     <state width="440" height="466" key="DebuggerActiveHint" timestamp="1598258137473">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -598,26 +605,26 @@
     </state>
     <state x="580" y="173" key="FileChooserDialogImpl/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1595319717006" />
     <state x="580" y="173" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1598346575017" />
-    <state width="1556" height="342" key="GridCell.Tab.0.bottom" timestamp="1598621842209">
+    <state width="1556" height="172" key="GridCell.Tab.0.bottom" timestamp="1598858343710">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="1556" height="270" key="GridCell.Tab.0.bottom/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1597667274618" />
-    <state width="1556" height="342" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1598621842209" />
-    <state width="1556" height="342" key="GridCell.Tab.0.center" timestamp="1598621842209">
+    <state width="1556" height="172" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1598858343710" />
+    <state width="1556" height="172" key="GridCell.Tab.0.center" timestamp="1598858343710">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="1556" height="270" key="GridCell.Tab.0.center/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1597667274617" />
-    <state width="1556" height="342" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1598621842209" />
-    <state width="1556" height="342" key="GridCell.Tab.0.left" timestamp="1598621842209">
+    <state width="1556" height="172" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1598858343710" />
+    <state width="1556" height="172" key="GridCell.Tab.0.left" timestamp="1598858343709">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="1556" height="270" key="GridCell.Tab.0.left/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1597667274617" />
-    <state width="1556" height="342" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1598621842209" />
-    <state width="1556" height="342" key="GridCell.Tab.0.right" timestamp="1598621842209">
+    <state width="1556" height="172" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1598858343709" />
+    <state width="1556" height="172" key="GridCell.Tab.0.right" timestamp="1598858343710">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="1556" height="270" key="GridCell.Tab.0.right/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1597667274618" />
-    <state width="1556" height="342" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1598621842209" />
+    <state width="1556" height="172" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1598858343710" />
     <state width="1556" height="342" key="GridCell.Tab.1.bottom" timestamp="1598621842209">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -643,11 +650,11 @@
     </state>
     <state x="500" y="0" key="SettingsEditor/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1595000400978" />
     <state x="352" y="0" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1598386173928" />
-    <state x="392" y="164" key="Vcs.Push.Dialog.v2" timestamp="1598621774975">
+    <state x="392" y="164" key="Vcs.Push.Dialog.v2" timestamp="1598857270141">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="392" y="164" key="Vcs.Push.Dialog.v2/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1595953251665" />
-    <state x="392" y="164" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1598621774975" />
+    <state x="392" y="164" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1598857270141" />
     <state x="92" y="92" width="1416" height="676" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1593692643511">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
