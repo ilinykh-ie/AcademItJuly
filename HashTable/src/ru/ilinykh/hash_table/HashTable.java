@@ -9,7 +9,7 @@ public class HashTable<T> implements Collection<T> {
 
     public HashTable(int length) {
         if (length < 1) {
-            throw new NegativeArraySizeException("Длина должна быть больше 0.");
+            throw new IllegalArgumentException("Длина должна быть больше 0.");
         }
 
         //noinspection unchecked
@@ -254,7 +254,7 @@ public class HashTable<T> implements Collection<T> {
     public <T1> T1[] toArray(T1[] a) {
         Object[] temp = toArray();
 
-        if (count>a.length){
+        if (count > a.length) {
             //noinspection unchecked
             return (T1[]) Arrays.copyOf(temp, count, a.getClass());
         }
