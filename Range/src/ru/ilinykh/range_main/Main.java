@@ -9,7 +9,7 @@ public class Main {
         range.setTo(100.3);
         range.setFrom(45.2);
         double number1 = 70.5;
-        double number2 = 110.4;
+        double number2 = 110.5;
         double from = range.getFrom();
         double to = range.getTo();
         boolean isInside1 = range.isInside(number1);
