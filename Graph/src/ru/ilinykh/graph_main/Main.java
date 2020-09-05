@@ -27,5 +27,8 @@ public class Main {
 
         graph.depthFirst(print);
         System.out.println(" обход в глубину.");
+
+        graph.depthFirstRecursion(print);
+        System.out.println(" обход в глубину с рекурсией.");
     }
 }
