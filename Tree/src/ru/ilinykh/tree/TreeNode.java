@@ -9,23 +9,23 @@ class TreeNode<T> {
         this.value = value;
     }
 
-    public T getData() {
-        return value;
-    }
-
     public TreeNode<T> getLeft() {
         return left;
-    }
-
-    public TreeNode<T> getRight() {
-        return right;
     }
 
     public void setLeft(TreeNode<T> left) {
         this.left = left;
     }
 
+    public TreeNode<T> getRight() {
+        return right;
+    }
+
     public void setRight(TreeNode<T> right) {
         this.right = right;
+    }
+
+    public T getData() {
+        return value;
     }
 }

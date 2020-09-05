@@ -31,7 +31,7 @@ public class Main {
         System.out.println(" - обход в глубину");
 
         tree.depthFirstRecursion(print);
-        System.out.print(" - обход в глубину рекурсией");
+        System.out.println(" - обход в глубину рекурсией");
 
         Integer number = 8;
         System.out.println("Содержит ли дерево число " + number + ": " + tree.contains(number));
@@ -54,7 +54,7 @@ public class Main {
         tree1.breadthFirst(print1);
         System.out.println("список с null значениями");
 
-        System.out.println("Содержтся ли null в списке" + tree1.contains(null));
+        System.out.println("Содержтся ли null в списке: " + tree1.contains(null));
 
         tree1.remove(null);
         tree1.breadthFirst(print1);
