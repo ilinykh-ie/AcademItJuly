@@ -1,6 +1,5 @@
 package ru.ilinykh.graph;
 
-import java.util.Arrays;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -8,7 +7,6 @@ import java.util.function.Consumer;
 
 public class Graph {
     private final int[][] connections;
-    private final boolean[] isVisited;
 
     public Graph(int[][] array) {
         if (array == null) {
@@ -26,40 +24,29 @@ public class Graph {
         }
 
         connections = array.clone();
-
-        isVisited = new boolean[connections.length];
     }
 
     public void breadthFirst(Consumer<Integer> consumer) {
-        Arrays.fill(isVisited, false);
-
         int length = connections.length;
+        boolean[] isVisited = new boolean[length];
 
         Queue<Integer> queue = new LinkedList<>();
 
-        queue.add(0);
-        isVisited[0] = true;
-        int searchStart = 1;
+        for (int i = 0; i < length; i++) {
+            if (!isVisited[i]) {
+                queue.add(i);
+                isVisited[i] = true;
 
-        while (!queue.isEmpty()) {
-            int currentElement = queue.remove();
+                while (!queue.isEmpty()) {
+                    int currentElement = queue.remove();
 
-            consumer.accept(currentElement);
+                    consumer.accept(currentElement);
 
-            for (int i = 0; i < length; i++) {
-                if (i != currentElement && connections[currentElement][i] == 1 && !isVisited[i]) {
-                    queue.add(i);
-                    isVisited[i] = true;
-                }
-            }
-
-            if (queue.isEmpty()) {
-                for (int i = searchStart; i < length; i++) {
-                    if (!isVisited[i]) {
-                        queue.add(i);
-                        isVisited[i] = true;
-                        searchStart = i + 1;
-                        break;
+                    for (int j = 0; j < length; j++) {
+                        if (j != currentElement && connections[currentElement][j] == 1 && !isVisited[j]) {
+                            queue.add(j);
+                            isVisited[j] = true;
+                        }
                     }
                 }
             }
@@ -67,36 +54,26 @@ public class Graph {
     }
 
     public void depthFirst(Consumer<Integer> consumer) {
-        Arrays.fill(isVisited, false);
-
         int length = connections.length;
+        boolean[] isVisited = new boolean[length];
 
         Deque<Integer> stack = new LinkedList<>();
 
-        stack.addLast(0);
-        isVisited[0] = true;
-        int searchStart = 1;
+        for (int i = 0; i < length; i++) {
+            if (!isVisited[i]) {
+                stack.addLast(i);
+                isVisited[i] = true;
 
-        while (!stack.isEmpty()) {
-            int currentElement = stack.removeLast();
+                while (!stack.isEmpty()) {
+                    int currentElement = stack.removeLast();
 
-            consumer.accept(currentElement);
+                    consumer.accept(currentElement);
 
-            for (int i = length - 1; i >= 0; i--) {
-                if (i != currentElement && connections[currentElement][i] == 1 && !isVisited[i]) {
-                    stack.addLast(i);
-                    isVisited[i] = true;
-                }
-            }
-
-            if (stack.isEmpty()) {
-                for (int i = searchStart; i < length; i++) {
-                    if (!isVisited[i]) {
-                        stack.addLast(i);
-                        isVisited[i] = true;
-                        searchStart = i + 1;
-
-                        break;
+                    for (int j = length - 1; j >= 0; j--) {
+                        if (j != currentElement && connections[currentElement][j] == 1 && !isVisited[j]) {
+                            stack.addLast(j);
+                            isVisited[j] = true;
+                        }
                     }
                 }
             }
@@ -104,20 +81,17 @@ public class Graph {
     }
 
     public void depthFirstRecursion(Consumer<Integer> consumer) {
-        Arrays.fill(isVisited, false);
-        depthFirstRecursionNumber(consumer, 0);
-
         int length = connections.length;
+        boolean[] isVisited = new boolean[length];
 
-        for (int i = 1; i < length; i++) {
+        for (int i = 0; i < length; i++) {
             if (!isVisited[i]) {
-                depthFirstRecursionNumber(consumer, i);
+                depthFirstRecursionNumber(consumer, i, isVisited);
             }
         }
-
     }
 
-    private void depthFirstRecursionNumber(Consumer<Integer> consumer, int number) {
+    private void depthFirstRecursionNumber(Consumer<Integer> consumer, int number, boolean[] isVisited) {
         int length = connections.length;
         isVisited[number] = true;
 
@@ -125,7 +99,7 @@ public class Graph {
 
         for (int i = 0; i < length; i++) {
             if (i != number && connections[number][i] == 1 && !isVisited[i]) {
-                depthFirstRecursionNumber(consumer, i);
+                depthFirstRecursionNumber(consumer, i, isVisited);
             }
         }
     }

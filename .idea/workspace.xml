@@ -33,11 +33,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="71017881-c371-4f7b-b49f-bcd54cc08df1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Lambda/Lambda.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lambda/src/ru/ilinykh/lambda_main/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lambda/src/ru/ilinykh/person/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Graph/src/ru/ilinykh/graph/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/src/ru/ilinykh/graph/Graph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Minesweeper/src/ru/ilinykh/mine_sweeper/gui/Minesweeper.java" beforeDir="false" afterPath="$PROJECT_DIR$/Minesweeper/src/ru/ilinykh/mine_sweeper/gui/Minesweeper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +79,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Minesweeper/src" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -92,7 +90,7 @@
       <recent name="C:\IdeaProjects\AcademItJuly\Minesweeper\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main (2)">
+  <component name="RunManager" selected="Application.Main (5)">
     <configuration name="CSV" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.ilinykh.csv_main.CSV" />
       <module name="CSV" />
@@ -133,12 +131,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ru.ilinykh.range_main.Main" />
-      <module name="Range" />
+    <configuration name="Main (4)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.ilinykh.tree_main.Main" />
+      <module name="Tree" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.ilinykh.range_main.*" />
+          <option name="PATTERN" value="ru.ilinykh.tree_main.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -146,12 +144,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main (4)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ru.ilinykh.tree_main.Main" />
-      <module name="Tree" />
+    <configuration name="Main (5)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.ilinykh.graph_main.Main" />
+      <module name="Graph" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.ilinykh.tree_main.*" />
+          <option name="PATTERN" value="ru.ilinykh.graph_main.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -175,18 +173,18 @@
     <list>
       <item itemvalue="Application.CSV" />
       <item itemvalue="Application.Main (1)" />
-      <item itemvalue="Application.Main (3)" />
+      <item itemvalue="Application.Main (2)" />
       <item itemvalue="Application.Main (4)" />
       <item itemvalue="Application.Main" />
-      <item itemvalue="Application.Main (2)" />
+      <item itemvalue="Application.Main (5)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main (5)" />
         <item itemvalue="Application.Main (2)" />
         <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main (4)" />
-        <item itemvalue="Application.Main (3)" />
       </list>
     </recent_temporary>
   </component>
@@ -201,13 +199,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1593339776851</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Задача Range">
-      <created>1594122563745</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1594122563745</updated>
     </task>
     <task id="LOCAL-00004" summary="Добавление задачи Shapes">
       <created>1594388554474</created>
@@ -545,7 +536,14 @@
       <option name="project" value="LOCAL" />
       <updated>1599629761763</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="Добавление задачи Lambda.">
+      <created>1599671845612</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1599671845612</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -562,7 +560,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Исправление задачи Range" />
     <MESSAGE value="Исправление задачи Vector, добавление задачи Matrix." />
     <MESSAGE value="Добавление задачи ArrayListHome." />
     <MESSAGE value="Исправление задачи Shapes" />
@@ -587,7 +584,8 @@
     <MESSAGE value="Исправление задачи Tree." />
     <MESSAGE value="Исправление задачи Temperature." />
     <MESSAGE value="Добавление задачи Minesweeper." />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавление задачи Minesweeper." />
+    <MESSAGE value="Добавление задачи Lambda." />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавление задачи Lambda." />
   </component>
   <component name="WindowStateProjectService">
     <state x="426" y="110" key="#Inspections" timestamp="1598621151741">
@@ -599,10 +597,10 @@
     </state>
     <state x="280" y="6" key="#Project_Structure/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1595314064052" />
     <state x="437" y="12" key="#Project_Structure/0.0.1600.860@0.0.1600.860" timestamp="1599298668382" />
-    <state x="155" y="111" width="1281" height="687" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598602177394">
+    <state x="155" y="111" width="1281" height="687" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600148468443">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="155" y="111" width="1281" height="687" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1600.860@0.0.1600.860" timestamp="1598602177394" />
+    <state x="155" y="111" width="1281" height="687" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1600.860@0.0.1600.860" timestamp="1600148468443" />
     <state x="605" y="36" width="851" height="584" key="#com.intellij.ide.util.MemberChooser" timestamp="1599631337976">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -633,11 +631,11 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="130" y="178" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1600.860@0.0.1600.860" timestamp="1596710917130" />
-    <state x="496" y="29" width="745" height="823" key="CommitChangelistDialog2" timestamp="1599629760989">
+    <state x="496" y="29" width="745" height="823" key="CommitChangelistDialog2" timestamp="1599671844837">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="427" y="0" width="1092" height="860" key="CommitChangelistDialog2/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1595953246421" />
-    <state x="496" y="29" width="745" height="823" key="CommitChangelistDialog2/0.0.1600.860@0.0.1600.860" timestamp="1599629760989" />
+    <state x="496" y="29" width="745" height="823" key="CommitChangelistDialog2/0.0.1600.860@0.0.1600.860" timestamp="1599671844837" />
     <state width="440" height="466" key="DebuggerActiveHint" timestamp="1599559858729">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -647,31 +645,31 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="401" y="107" width="1097" height="660" key="DiffContextDialog/0.0.1600.860@0.0.1600.860" timestamp="1598621750856" />
-    <state x="580" y="173" key="FileChooserDialogImpl" timestamp="1599211083921">
+    <state x="580" y="173" key="FileChooserDialogImpl" timestamp="1600159322030">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="580" y="173" key="FileChooserDialogImpl/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1595319717006" />
-    <state x="580" y="173" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1599211083921" />
-    <state width="1556" height="291" key="GridCell.Tab.0.bottom" timestamp="1599671803120">
+    <state x="580" y="173" key="FileChooserDialogImpl/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1599742870231" />
+    <state x="580" y="173" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1600159322030" />
+    <state width="1556" height="184" key="GridCell.Tab.0.bottom" timestamp="1600322611667">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="1556" height="279" key="GridCell.Tab.0.bottom/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1599476263879" />
-    <state width="1556" height="291" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1599671803120" />
-    <state width="1556" height="291" key="GridCell.Tab.0.center" timestamp="1599671803120">
+    <state width="1556" height="184" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1600322611667" />
+    <state width="1556" height="184" key="GridCell.Tab.0.center" timestamp="1600322611667">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="1556" height="279" key="GridCell.Tab.0.center/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1599476263878" />
-    <state width="1556" height="291" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1599671803120" />
-    <state width="1556" height="291" key="GridCell.Tab.0.left" timestamp="1599671803120">
+    <state width="1556" height="184" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1600322611667" />
+    <state width="1556" height="184" key="GridCell.Tab.0.left" timestamp="1600322611667">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="1556" height="279" key="GridCell.Tab.0.left/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1599476263878" />
-    <state width="1556" height="291" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1599671803120" />
-    <state width="1556" height="291" key="GridCell.Tab.0.right" timestamp="1599671803120">
+    <state width="1556" height="184" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1600322611667" />
+    <state width="1556" height="184" key="GridCell.Tab.0.right" timestamp="1600322611667">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="1556" height="279" key="GridCell.Tab.0.right/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1599476263879" />
-    <state width="1556" height="291" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1599671803120" />
+    <state width="1556" height="184" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1600322611667" />
     <state width="1556" height="279" key="GridCell.Tab.1.bottom" timestamp="1599579387497">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -697,11 +695,11 @@
     </state>
     <state x="500" y="0" key="SettingsEditor/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1595000400978" />
     <state x="25" y="39" width="1040" height="801" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1599298177569" />
-    <state x="392" y="164" key="Vcs.Push.Dialog.v2" timestamp="1599629767728">
+    <state x="392" y="164" key="Vcs.Push.Dialog.v2" timestamp="1599671851737">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="392" y="164" key="Vcs.Push.Dialog.v2/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1595953251665" />
-    <state x="392" y="164" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1599629767728" />
+    <state x="392" y="164" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1599671851737" />
     <state width="808" height="438" key="XDebugger.FullValuePopup" timestamp="1599300038182">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -719,11 +717,11 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="329" y="167" width="942" height="559" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1600.860@0.0.1600.860" timestamp="1599472742163" />
-    <state x="184" y="266" width="550" height="572" key="dock-window-1" timestamp="1598860772407">
+    <state x="556" y="258" width="582" height="819" key="dock-window-1" timestamp="1600134017830">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="264" y="183" width="1377" height="500" key="dock-window-1/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1597666070124" />
-    <state x="184" y="266" width="550" height="572" key="dock-window-1/0.0.1600.860@0.0.1600.860" timestamp="1598860772407" />
+    <state x="556" y="258" width="582" height="819" key="dock-window-1/0.0.1600.860@0.0.1600.860" timestamp="1600134017830" />
     <state x="92" y="92" width="1416" height="676" key="dock-window-2" timestamp="1598888184580">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -779,11 +777,6 @@
           <properties class="java.lang.ArrayIndexOutOfBoundsException" package="java.lang" />
           <option name="timeStamp" value="14" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Graph/src/ru/ilinykh/graph_main/Main.java</url>
-          <line>30</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
