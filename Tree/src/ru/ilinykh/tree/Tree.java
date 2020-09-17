@@ -23,25 +23,20 @@ public class Tree<T> {
         this.comparator = comparator;
     }
 
-    private int compareTreeData(T data1, T data2) {
+    private int compare(T data1, T data2) {
         //noinspection unchecked
-        if (data2 == data1 || (data1 != null && data2 != null &&
-                (comparator != null && comparator.compare(data1, data2) == 0 ||
-                        ((Comparable<T>) data2).compareTo(data1) == 0))) {
+        if ((comparator != null && (comparator.compare(data1, data2)) == 0) || data2 == data1 ||
+                (data1 != null && data2 != null && ((Comparable<T>) data2).compareTo(data1) == 0)) {
             return 0;
         }
 
         //noinspection unchecked
-        if ((data2 == null) || (data1 != null && (comparator != null && comparator.compare(data1, data2) < 0 ||
-                ((Comparable<T>) data2).compareTo(data1) < 0))) {
+        if ((comparator != null && comparator.compare(data1, data2) < 0) || (data2 == null) ||
+                (data1 != null && ((Comparable<T>) data2).compareTo(data1) < 0)) {
             return -1;
         }
 
         return 1;
-    }
-
-    private void setRoot(TreeNode<T> node) {
-        root = node;
     }
 
     public int size() {
@@ -60,7 +55,7 @@ public class Tree<T> {
         while (!queue.isEmpty()) {
             TreeNode<T> currentElement = queue.remove();
 
-            consumer.accept(currentElement.getData());
+            consumer.accept(currentElement.getValue());
 
             if (currentElement.getLeft() != null) {
                 queue.add(currentElement.getLeft());
@@ -79,12 +74,12 @@ public class Tree<T> {
 
         Deque<TreeNode<T>> stack = new LinkedList<>();
 
-        stack.add(root);
+        stack.addLast(root);
 
         while (!stack.isEmpty()) {
             TreeNode<T> currentElement = stack.removeLast();
 
-            consumer.accept(currentElement.getData());
+            consumer.accept(currentElement.getValue());
 
             if (currentElement.getRight() != null) {
                 stack.addLast(currentElement.getRight());
@@ -105,7 +100,7 @@ public class Tree<T> {
     }
 
     private void depthFirstRecursionNode(Consumer<T> consumer, TreeNode<T> node) {
-        consumer.accept(node.getData());
+        consumer.accept(node.getValue());
 
         if (node.getLeft() != null) {
             depthFirstRecursionNode(consumer, node.getLeft());
@@ -128,7 +123,7 @@ public class Tree<T> {
         TreeNode<T> currentNode = root;
 
         for (; ; ) {
-            if (compareTreeData(currentNode.getData(), data) < 0) {
+            if (compare(currentNode.getValue(), data) < 0) {
                 if (currentNode.getLeft() != null) {
                     currentNode = currentNode.getLeft();
                 } else {
@@ -158,11 +153,13 @@ public class Tree<T> {
         TreeNode<T> currentNode = root;
 
         for (; ; ) {
-            if (compareTreeData(currentNode.getData(), data) == 0) {
+            int comparisonResult = compare(currentNode.getValue(), data);
+
+            if (comparisonResult == 0) {
                 return true;
             }
 
-            if (compareTreeData(currentNode.getData(), data) < 0) {
+            if (comparisonResult < 0) {
                 if (currentNode.getLeft() != null) {
                     currentNode = currentNode.getLeft();
                 } else {
@@ -187,13 +184,13 @@ public class Tree<T> {
 
         TreeNode<T> currentNode = root;
 
-        if (compareTreeData(currentNode.getData(), data) == 0) {
+        if (compare(currentNode.getValue(), data) == 0) {
             if (currentNode.getRight() == null && currentNode.getLeft() == null) {
                 root = null;
             } else if (currentNode.getRight() == null) {
-                setRoot(currentNode.getLeft());
+                root = currentNode.getLeft();
             } else if (currentNode.getLeft() == null) {
-                setRoot(currentNode.getRight());
+                root = currentNode.getRight();
             } else {
                 TreeNode<T> min = currentNode.getRight();
                 TreeNode<T> previousMin = currentNode;
@@ -224,7 +221,9 @@ public class Tree<T> {
         TreeNode<T> previousNode;
 
         for (; ; ) {
-            if (compareTreeData(currentNode.getData(), data) < 0) {
+            int comparisonResult = compare(currentNode.getValue(), data);
+
+            if (comparisonResult < 0) {
                 if (currentNode.getLeft() != null) {
                     previousNode = currentNode;
                     currentNode = currentNode.getLeft();
@@ -240,7 +239,7 @@ public class Tree<T> {
                 }
             }
 
-            if (compareTreeData(currentNode.getData(), data) == 0) {
+            if (comparisonResult == 0) {
                 if (currentNode.getRight() == null && currentNode.getLeft() == null) {
                     if (previousNode.getLeft().equals(currentNode)) {
                         previousNode.setLeft(null);

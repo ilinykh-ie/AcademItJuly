@@ -3,6 +3,7 @@ package ru.ilinykh.tree_main;
 import ru.ilinykh.tree.Tree;
 
 import java.util.Comparator;
+import java.util.Objects;
 import java.util.function.Consumer;
 
 public class Main {
@@ -60,7 +61,18 @@ public class Main {
         tree1.breadthFirst(print1);
         System.out.println("список после уданения 1го элемента с null значением");
 
-        Comparator<Integer> comparator = Integer::compare;
+        //Comparator<Integer> comparator = Integer::compare;
+        Comparator<Integer> comparator = (o1, o2) -> {
+            if (Objects.equals(o1, o2)) {
+                return 0;
+            }
+
+            if (o2 == null || o1 != null && o1 < o2) {
+                return -1;
+            }
+
+            return 1;
+        };
 
         Tree<Integer> tree2 = new Tree<>(comparator);
         tree2.add(5);
