@@ -9,27 +9,26 @@ import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
-        ArrayList<Person> list = new ArrayList<>();
+        ArrayList<Person> testListOfPersons = new ArrayList<>();
 
-        list.add(new Person("Ivan", 30));
-        list.add(new Person("Vladimir", 12));
-        list.add(new Person("Tatiana", 17));
-        list.add(new Person("Olga", 14));
-        list.add(new Person("Evgeniy", 45));
-        list.add(new Person("Ekaterina", 22));
-        list.add(new Person("Petr", 13));
-        list.add(new Person("Petr", 25));
-        list.add(new Person("Nickolay", 8));
+        testListOfPersons.add(new Person("Ivan", 30));
+        testListOfPersons.add(new Person("Vladimir", 12));
+        testListOfPersons.add(new Person("Tatiana", 17));
+        testListOfPersons.add(new Person("Olga", 14));
+        testListOfPersons.add(new Person("Evgeniy", 45));
+        testListOfPersons.add(new Person("Ekaterina", 22));
+        testListOfPersons.add(new Person("Petr", 13));
+        testListOfPersons.add(new Person("Petr", 25));
+        testListOfPersons.add(new Person("Nickolay", 8));
 
-        String distinctNames = list.stream()
+        String distinctNames = testListOfPersons.stream()
                 .map(Person::getName)
                 .distinct()
-                .collect(Collectors.joining(", "));
+                .collect(Collectors.joining(", ", "Имена: ", "."));
 
-        System.out.println("Имена: " + distinctNames);
+        System.out.println(distinctNames);
 
-
-        double averageAge = list.stream()
+        double averageAge = testListOfPersons.stream()
                 .mapToInt(Person::getAge)
                 .filter(x -> x < 18)
                 .average()
@@ -37,13 +36,13 @@ public class Main {
 
         System.out.println("Средний возраст людей, младше 18 составляет: " + averageAge);
 
-        Map<String, Double> persons = list.stream()
+        Map<String, Double> mapWithAverageAge = testListOfPersons.stream()
                 .collect(Collectors.groupingBy(Person::getName,
-                        Collectors.averagingInt(Person::getAge)));
+                        Collectors.averagingDouble(Person::getAge)));
 
-        System.out.println(persons);
+        System.out.println(mapWithAverageAge);
 
-        String personsFrom20to45 = list.stream()
+        String personsFrom20to45 = testListOfPersons.stream()
                 .filter(x -> x.getAge() >= 20 && x.getAge() <= 45)
                 .sorted((o1, o2) -> Integer.compare(o2.getAge(), o1.getAge()))
                 .map(Person::getName)
@@ -60,8 +59,8 @@ public class Main {
         sqrt.limit(elementsCount).forEach(System.out::println);
 
         Stream.iterate(new int[]{0, 1}, x -> new int[]{x[1], x[0] + x[1]})
-                .limit(30)
                 .map(t -> t[0])
+                .limit(30)
                 .forEach(e -> System.out.print(e + " "));
     }
 }

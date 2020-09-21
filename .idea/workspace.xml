@@ -33,16 +33,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="71017881-c371-4f7b-b49f-bcd54cc08df1" name="Default Changelist" comment="Исправление задачи Tree.">
-      <change afterPath="$PROJECT_DIR$/Temperature/src/ru/ilinykh/temperature/Celsius.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Temperature/src/ru/ilinykh/temperature/Fahrenheit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Temperature/src/ru/ilinykh/temperature/Kelvin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Temperature/src/ru/ilinykh/temperature/TemperatureScale.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lambda/src/ru/ilinykh/lambda_main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lambda/src/ru/ilinykh/lambda_main/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Minesweeper/src/ru/ilinykh/mine_sweeper/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/Minesweeper/src/ru/ilinykh/mine_sweeper/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Minesweeper/src/ru/ilinykh/mine_sweeper/gui/Minesweeper.java" beforeDir="false" afterPath="$PROJECT_DIR$/Minesweeper/src/ru/ilinykh/mine_sweeper/gui/Minesweeper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Temperature/src/ru/ilinykh/temperature/Dimensions.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Temperature/src/ru/ilinykh/temperature/Temperature.java" beforeDir="false" afterPath="$PROJECT_DIR$/Temperature/src/ru/ilinykh/temperature/Temperature.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Temperature/src/ru/ilinykh/temperature/TemperatureConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Temperature/src/ru/ilinykh/temperature/TemperatureConverter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +92,7 @@
       <recent name="C:\IdeaProjects\AcademItJuly\Minesweeper\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.Main (2)">
     <configuration name="CSV" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.ilinykh.csv_main.CSV" />
       <module name="CSV" />
@@ -188,10 +182,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main (2)" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main (4)" />
         <item itemvalue="Application.Main (5)" />
-        <item itemvalue="Application.Main (2)" />
         <item itemvalue="Application.Main (1)" />
       </list>
     </recent_temporary>
@@ -207,13 +201,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1593339776851</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Добавление задачи Vector;&#10;Перемещение файла Main из задачи Shapes в оттельную папку.">
-      <created>1594732230188</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1594732230188</updated>
     </task>
     <task id="LOCAL-00007" summary="Исправление задачи Vector">
       <created>1594735764109</created>
@@ -551,7 +538,14 @@
       <option name="project" value="LOCAL" />
       <updated>1600330469073</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="Исправление задачи Temperature.">
+      <created>1600666447868</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1600666447868</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -588,12 +582,12 @@
     <MESSAGE value="Исправление задачи List." />
     <MESSAGE value="Исправление задачи MyArrayList." />
     <MESSAGE value="Исправление задачи Range." />
-    <MESSAGE value="Исправление задачи Temperature." />
     <MESSAGE value="Добавление задачи Minesweeper." />
     <MESSAGE value="Добавление задачи Lambda." />
     <MESSAGE value="Исправление задачи Graph." />
     <MESSAGE value="Исправление задачи Tree." />
-    <option name="LAST_COMMIT_MESSAGE" value="Исправление задачи Tree." />
+    <MESSAGE value="Исправление задачи Temperature." />
+    <option name="LAST_COMMIT_MESSAGE" value="Исправление задачи Temperature." />
   </component>
   <component name="WindowStateProjectService">
     <state x="426" y="110" key="#Inspections" timestamp="1598621151741">
@@ -639,11 +633,11 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="130" y="178" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1600.860@0.0.1600.860" timestamp="1596710917130" />
-    <state x="496" y="29" width="745" height="823" key="CommitChangelistDialog2" timestamp="1600330468480">
+    <state x="496" y="29" width="745" height="823" key="CommitChangelistDialog2" timestamp="1600666447136">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="427" y="0" width="1092" height="860" key="CommitChangelistDialog2/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1595953246421" />
-    <state x="496" y="29" width="745" height="823" key="CommitChangelistDialog2/0.0.1600.860@0.0.1600.860" timestamp="1600330468480" />
+    <state x="496" y="29" width="745" height="823" key="CommitChangelistDialog2/0.0.1600.860@0.0.1600.860" timestamp="1600666447136" />
     <state width="440" height="466" key="DebuggerActiveHint" timestamp="1599559858729">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -658,26 +652,26 @@
     </state>
     <state x="580" y="173" key="FileChooserDialogImpl/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1599742870231" />
     <state x="580" y="173" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1600347379939" />
-    <state width="1556" height="279" key="GridCell.Tab.0.bottom" timestamp="1600335568275">
+    <state width="1556" height="181" key="GridCell.Tab.0.bottom" timestamp="1600667646298">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="1556" height="279" key="GridCell.Tab.0.bottom/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1599476263879" />
-    <state width="1556" height="279" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1600335568275" />
-    <state width="1556" height="279" key="GridCell.Tab.0.center" timestamp="1600335568275">
+    <state width="1556" height="181" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1600667646298" />
+    <state width="1556" height="181" key="GridCell.Tab.0.center" timestamp="1600667646297">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="1556" height="279" key="GridCell.Tab.0.center/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1599476263878" />
-    <state width="1556" height="279" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1600335568275" />
-    <state width="1556" height="279" key="GridCell.Tab.0.left" timestamp="1600335568275">
+    <state width="1556" height="181" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1600667646297" />
+    <state width="1556" height="181" key="GridCell.Tab.0.left" timestamp="1600667646297">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="1556" height="279" key="GridCell.Tab.0.left/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1599476263878" />
-    <state width="1556" height="279" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1600335568275" />
-    <state width="1556" height="279" key="GridCell.Tab.0.right" timestamp="1600335568275">
+    <state width="1556" height="181" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1600667646297" />
+    <state width="1556" height="181" key="GridCell.Tab.0.right" timestamp="1600667646297">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="1556" height="279" key="GridCell.Tab.0.right/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1599476263879" />
-    <state width="1556" height="279" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1600335568275" />
+    <state width="1556" height="181" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1600667646297" />
     <state width="1556" height="279" key="GridCell.Tab.1.bottom" timestamp="1600335568276">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -703,11 +697,11 @@
     </state>
     <state x="500" y="0" key="SettingsEditor/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1595000400978" />
     <state x="25" y="39" width="1040" height="801" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1599298177569" />
-    <state x="392" y="164" key="Vcs.Push.Dialog.v2" timestamp="1600330497437">
+    <state x="392" y="164" key="Vcs.Push.Dialog.v2" timestamp="1600666450794">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="392" y="164" key="Vcs.Push.Dialog.v2/0.0.1600.860/1600.0.1280.984@0.0.1600.860" timestamp="1595953251665" />
-    <state x="392" y="164" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1600330497437" />
+    <state x="392" y="164" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1600666450794" />
     <state width="808" height="438" key="XDebugger.FullValuePopup" timestamp="1599300038182">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
