@@ -33,23 +33,26 @@ public class Graph {
         Queue<Integer> queue = new LinkedList<>();
 
         for (int i = 0; i < length; i++) {
-            if (!isVisited[i]) {
-                queue.add(i);
-                isVisited[i] = true;
+            if (isVisited[i]) {
+                continue;
+            }
 
-                while (!queue.isEmpty()) {
-                    int currentElement = queue.remove();
+            queue.add(i);
+            isVisited[i] = true;
 
-                    consumer.accept(currentElement);
+            while (!queue.isEmpty()) {
+                int currentElement = queue.remove();
 
-                    for (int j = 0; j < length; j++) {
-                        if (j != currentElement && connections[currentElement][j] == 1 && !isVisited[j]) {
-                            queue.add(j);
-                            isVisited[j] = true;
-                        }
+                consumer.accept(currentElement);
+
+                for (int j = 0; j < length; j++) {
+                    if (j != currentElement && connections[currentElement][j] == 1 && !isVisited[j]) {
+                        queue.add(j);
+                        isVisited[j] = true;
                     }
                 }
             }
+
         }
     }
 
@@ -60,23 +63,26 @@ public class Graph {
         Deque<Integer> stack = new LinkedList<>();
 
         for (int i = 0; i < length; i++) {
-            if (!isVisited[i]) {
-                stack.addLast(i);
-                isVisited[i] = true;
+            if (isVisited[i]) {
+                continue;
+            }
 
-                while (!stack.isEmpty()) {
-                    int currentElement = stack.removeLast();
+            stack.addLast(i);
+            isVisited[i] = true;
 
-                    consumer.accept(currentElement);
+            while (!stack.isEmpty()) {
+                int currentElement = stack.removeLast();
 
-                    for (int j = length - 1; j >= 0; j--) {
-                        if (j != currentElement && connections[currentElement][j] == 1 && !isVisited[j]) {
-                            stack.addLast(j);
-                            isVisited[j] = true;
-                        }
+                consumer.accept(currentElement);
+
+                for (int j = length - 1; j >= 0; j--) {
+                    if (j != currentElement && connections[currentElement][j] == 1 && !isVisited[j]) {
+                        stack.addLast(j);
+                        isVisited[j] = true;
                     }
                 }
             }
+
         }
     }
 
