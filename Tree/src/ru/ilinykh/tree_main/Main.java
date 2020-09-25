@@ -37,7 +37,7 @@ public class Main {
         Integer number = 8;
         System.out.println("Содержит ли дерево число " + number + ": " + tree.contains(number));
 
-        Integer number2 = 8;
+        Integer number2 = 10;
         boolean isDeleted = tree.remove(number2);
         tree.breadthFirst(print);
         System.out.println(" - дерево после удаления ");
@@ -61,7 +61,6 @@ public class Main {
         tree1.breadthFirst(print1);
         System.out.println("список после уданения 1го элемента с null значением");
 
-        //Comparator<Integer> comparator = Integer::compare;
         Comparator<Integer> comparator = (o1, o2) -> {
             if (Objects.equals(o1, o2)) {
                 return 0;
