@@ -1,219 +1,106 @@
 package ru.ilinykh.mine_sweeper.gui;
 
-import ru.ilinykh.mine_sweeper.Controller;
+import ru.ilinykh.mine_sweeper.controller.Controller;
+import ru.ilinykh.mine_sweeper.model.CellsState;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Minesweeper {
-    private final int x;
-    private final int y;
+    private final int width;
+    private final int height;
     private final int bombsCount;
     private final Controller controller;
     private final JButton[][] buttons;
     private JPanel field;
     private JFrame window;
-    private int closedCells;
-    private final ImageIcon closed = new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/Closed.jpg"));
-    private final ImageIcon bomb = new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/Bomb.jpg"));
-    private final ImageIcon opened = new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/Opened.jpg"));
-    private final ImageIcon one = new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/1.jpg"));
-    private final ImageIcon two = new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/2.jpg"));
-    private final ImageIcon three = new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/3.jpg"));
-    private final ImageIcon four = new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/4.jpg"));
-    private final ImageIcon five = new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/5.jpg"));
-    private final ImageIcon six = new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/6.jpg"));
-    private final ImageIcon seven = new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/7.jpg"));
-    private final ImageIcon eight = new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/8.jpg"));
-    private final ImageIcon flag = new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/Flag.jpg"));
-    private final ImageIcon clock = new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/Clock.jpg"));
-    private final Timer timer;
-    private int time;
+    private final HashMap<Integer, ImageIcon> icons;
     private final JLabel timePanel;
-    private int bombsLeft;
     private JLabel bombsLeftPanel;
 
     public Minesweeper() {
         this(9, 9, 10);
     }
 
-    public Minesweeper(int x, int y, int bombsCount) {
-        this.x = x;
-        this.y = y;
+    public Minesweeper(int width, int height, int bombsCount) {
+        this.width = width;
+        this.height = height;
         this.bombsCount = bombsCount;
-        bombsLeft = bombsCount;
+        controller = new Controller(width, height, bombsCount);
 
         timePanel = new JLabel();
-        timer = new Timer(1000, e -> {
-            time++;
-            timePanel.setText(Integer.toString(time));
-        });
+        timePanel.setText(Integer.toString(0));
+        controller.setTimerListener(e -> timePanel.setText(Integer.toString(controller.getTime())));
 
-        closedCells = x * y;
-        buttons = new JButton[y][x];
-        controller = new Controller(x, y, bombsCount);
+        buttons = new JButton[height][width];
+        field = new JPanel(new GridLayout(height, width, 0, 0));
 
-        field = new JPanel(new GridLayout(y, x, 0, 0));
-
-        for (int i = 0; i < y; i++) {
-            for (int j = 0; j < x; j++) {
-                buttons[i][j] = new JButton();
-                buttons[i][j].setBackground(Color.WHITE);
-                buttons[i][j].setIcon(closed);
-                buttons[i][j].addMouseListener(controller.mouseListener(i, j, buttons));
-
-                field.add(buttons[i][j]);
-            }
-        }
+        icons = new HashMap<>();
+        icons.put(-1, new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/Bomb.jpg")));
+        icons.put(0, new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/Opened.jpg")));
+        icons.put(1, new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/1.jpg")));
+        icons.put(2, new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/2.jpg")));
+        icons.put(3, new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/3.jpg")));
+        icons.put(4, new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/4.jpg")));
+        icons.put(5, new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/5.jpg")));
+        icons.put(6, new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/6.jpg")));
+        icons.put(7, new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/7.jpg")));
+        icons.put(8, new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/8.jpg")));
+        icons.put(9, new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/Flag.jpg")));
+        icons.put(10, new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/Clock.jpg")));
+        icons.put(11, new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/Closed.jpg")));
     }
 
-    private MouseListener getMouseListener(int i, int j) {
+    private MouseListener getMouseListener(int width, int height) {
         return new MouseAdapter() {
-            boolean isPressed = false;
-
             @Override
-            public void mouseClicked(MouseEvent e) {
-                if (e.getButton() == MouseEvent.BUTTON1 && !isPressed) {
-                    buttons[i][j].setEnabled(false);
-                    closedCells--;
+            public void mouseReleased(MouseEvent e) {
+                controller.timerStart();
 
-                    if (controller.getCondition(i, j) == -1) {
+                CellsState cellsState = null;
+
+                if (e.getButton() == MouseEvent.BUTTON1) {
+                    cellsState = controller.leftMouseButtonClick(width, height);
+                } else if (e.getButton() == MouseEvent.BUTTON3) {
+                    controller.rightMouseButtonClick(width, height);
+
+                    if (controller.getCellState(width, height) == 0) {
+                        buttons[height][width].setIcon(icons.get(11));
+                    } else if (controller.getCellState(width, height) == -1) {
+                        buttons[height][width].setIcon(icons.get(9));
+                    }
+
+                    bombsLeftPanel.setText(Integer.toString(controller.getBombsLeft()));
+                } else if (e.getButton() == MouseEvent.BUTTON2) {
+                    cellsState = controller.middleMouseButtonClick(width, height);
+                }
+
+                if (cellsState != null) {
+                    for (int i = 0; i < Minesweeper.this.height; i++) {
+                        for (int j = 0; j < Minesweeper.this.width; j++) {
+                            if (cellsState.getCellState(j, i) == 1) {
+                                buttons[i][j].setEnabled(false);
+                            }
+                        }
+                    }
+
+                    if (cellsState.getLooseOrWin() == -1) {
                         loose();
-                    }else if (closedCells == bombsCount) {
+                    } else if (cellsState.getLooseOrWin() == 1) {
                         win();
                     }
-
-                    if (controller.getCondition(i, j) == 0) {
-                        openAdjacentCells(i, j);
-                    }
-                } else if (e.getButton() == MouseEvent.BUTTON3) {
-                    if (!isPressed) {
-                        buttons[i][j].setIcon(flag);
-                        isPressed = true;
-
-                        bombsLeft--;
-                    } else {
-                        buttons[i][j].setIcon(closed);
-                        isPressed = false;
-                        bombsLeft++;
-                    }
-
-                    bombsLeftPanel.setText(Integer.toString(bombsLeft));
                 }
             }
         };
     }
 
-    private void openAdjacentCells(int i, int j) {
-        if (i == 0 && j == 0) {
-            for (int k = i; k < i + 2; k++) {
-                for (int l = j; l < j + 2; l++) {
-                    open(k, l);
-                }
-            }
-        } else if (i == 0 && j == x - 1) {
-            for (int k = i; k < i + 2; k++) {
-                for (int l = j - 1; l < j + 1; l++) {
-                    if (k == i && j == l) {
-                        continue;
-                    }
-
-                    open(k, l);
-                }
-            }
-        } else if (i == y - 1 && j == 0) {
-            for (int k = i - 1; k < i + 1; k++) {
-                for (int l = j; l < j + 2; l++) {
-                    if (k == i && j == l) {
-                        continue;
-                    }
-
-                    open(k, l);
-                }
-            }
-        } else if (i == y - 1 && j == x - 1) {
-            for (int k = i - 1; k < i + 1; k++) {
-                for (int l = j - 1; l < j + 1; l++) {
-                    if (k == i && j == l) {
-                        continue;
-                    }
-
-                    open(k, l);
-                }
-            }
-        } else if (i == 0) {
-            for (int k = i; k < i + 2; k++) {
-                for (int l = j - 1; l < j + 2; l++) {
-                    if (k == i && j == l) {
-                        continue;
-                    }
-
-                    open(k, l);
-                }
-            }
-        } else if (i == y - 1) {
-            for (int k = i - 1; k < i + 1; k++) {
-                for (int l = j - 1; l < j + 2; l++) {
-                    if (k == i && j == l) {
-                        continue;
-                    }
-
-                    open(k, l);
-                }
-            }
-        } else if (j == 0) {
-            for (int k = i - 1; k < i + 2; k++) {
-                for (int l = j; l < j + 2; l++) {
-                    if (k == i && j == l) {
-                        continue;
-                    }
-
-                    open(k, l);
-                }
-            }
-        } else if (j == x - 1) {
-            for (int k = i - 1; k < i + 2; k++) {
-                for (int l = j - 1; l < j + 1; l++) {
-                    if (k == i && j == l) {
-                        continue;
-                    }
-
-                    open(k, l);
-                }
-            }
-        } else {
-            for (int k = i - 1; k < i + 2; k++) {
-                for (int l = j - 1; l < j + 2; l++) {
-                    if (k == i && j == l) {
-                        continue;
-                    }
-
-                    open(k, l);
-                }
-            }
-        }
-    }
-
-    private void open(int i, int j) {
-        if (buttons[i][j].isEnabled()) {
-            buttons[i][j].setEnabled(false);
-            closedCells--;
-
-            if (closedCells == bombsCount) {
-                win();
-            }
-
-            if (controller.getCondition(i, j) == 0) {
-                openAdjacentCells(i, j);
-            }
-        }
-    }
-
     private void win() {
-        timer.stop();
+        controller.timerStop();
         StringBuilder stringBuilder = new StringBuilder();
-        String stringTime = String.format("%8d", time);
+        String stringTime = String.format("%3d", controller.getTime());
 
         stringBuilder.append("Время игры: ").append(stringTime).append(" секунд, количество бомб: ").append(bombsCount);
 
@@ -227,21 +114,21 @@ public class Minesweeper {
                 "новую игру?", "Вы выиграли!", JOptionPane.YES_NO_OPTION);
 
         if (result == JOptionPane.NO_OPTION) {
-            System.exit(0);
+            controller.exit();
         } else {
             window.dispatchEvent(new WindowEvent(window, WindowEvent.WINDOW_CLOSING));
-            Minesweeper minesweeper = new Minesweeper(x, y, bombsCount);
+            Minesweeper minesweeper = new Minesweeper(width, height, bombsCount);
             minesweeper.show();
         }
     }
 
     private void loose() {
-        timer.stop();
+        controller.timerStop();
 
-        for (int l = 0; l < y; l++) {
-            for (int k = 0; k < x; k++) {
-                if (controller.getCondition(l, k) == -1) {
-                    buttons[l][k].setEnabled(false);
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                if (controller.getCellParameter(j, i) == -1) {
+                    buttons[i][j].setEnabled(false);
                 }
             }
         }
@@ -251,38 +138,38 @@ public class Minesweeper {
                 "Игра проиграна!", JOptionPane.YES_NO_OPTION);
 
         if (result == JOptionPane.NO_OPTION) {
-            System.exit(0);
+            controller.exit();
         } else {
-            Minesweeper minesweeper = new Minesweeper(x, y, bombsCount);
+            Minesweeper minesweeper = new Minesweeper(width, height, bombsCount);
             minesweeper.show();
 
             window.dispatchEvent(new WindowEvent(window, WindowEvent.WINDOW_CLOSING));
         }
     }
 
-
     public void show() {
-        timer.start();
-
         SwingUtilities.invokeLater(() -> {
             window = new JFrame("Сапер");
             window.addWindowListener(new WindowAdapter() {
                 @Override
                 public void windowClosed(WindowEvent e) {
-                    timer.stop();
+                    controller.timerStop();
                 }
             });
 
             window.setSize(600, 700);
             window.setMinimumSize(new Dimension(300, 350));
-
             window.setVisible(true);
             window.setLocationRelativeTo(null);
-
             window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-            JPanel menu = new JPanel(new GridBagLayout());
-            JButton newGame = new JButton("Новая ирга");
+            JMenuBar menu = new JMenuBar();
+
+            JMenu game = new JMenu("Игра");
+            game.setPreferredSize(new Dimension(60, 20));
+            menu.add(game);
+
+            JMenuItem newGame = new JMenuItem("Новая ирга");
             newGame.addActionListener(e -> {
                 int result = JOptionPane.showConfirmDialog(null, "Текущая игра не завершена. " +
                                 "Начать новую игру?", "Новая игра",
@@ -290,18 +177,23 @@ public class Minesweeper {
 
                 if (result == JOptionPane.YES_OPTION) {
                     window.dispatchEvent(new WindowEvent(window, WindowEvent.WINDOW_CLOSING));
-                    Minesweeper minesweeper = new Minesweeper(x, y, bombsCount);
+                    Minesweeper minesweeper = new Minesweeper(width, height, bombsCount);
                     minesweeper.show();
                 }
             });
 
-            menu.add(newGame);
+            game.add(newGame);
 
-            JButton about = new JButton("Справка");
-            about.addActionListener(controller.about());
+            JMenu about = new JMenu("Справка");
+            about.setPreferredSize(new Dimension(60, 20));
             menu.add(about);
 
-            JButton options = new JButton("Настройки");
+            JMenuItem info = new JMenuItem("Правила игры");
+            info.addActionListener(e -> JOptionPane.showMessageDialog(null, controller.about(),
+                    "Справка", JOptionPane.INFORMATION_MESSAGE));
+            about.add(info);
+
+            JMenuItem options = new JMenuItem("Настройки");
             options.addActionListener(e -> {
                 Integer enteredX = null;
                 Integer enteredY = null;
@@ -319,7 +211,7 @@ public class Minesweeper {
                 panel.add(fieldBombs);
                 JOptionPane.showMessageDialog(null, panel, "Настройи", JOptionPane.QUESTION_MESSAGE);
 
-                if (!(fieldX.getText().equals("") && fieldY.getText().equals("") && fieldBombs.getText().equals(""))) {
+                if (!fieldX.getText().equals("") || !fieldY.getText().equals("") || !fieldBombs.getText().equals("")) {
                     try {
                         enteredX = Integer.parseInt(fieldX.getText());
                         enteredY = Integer.parseInt(fieldY.getText());
@@ -331,9 +223,9 @@ public class Minesweeper {
                     }
                 }
 
-                if (!(enteredX == null || enteredY == null || enteredBombsCount == null) && !(enteredX > 8 &&
-                        enteredX < 31 && enteredY > 8 && enteredY < 25 && enteredBombsCount > 9 &&
-                        enteredBombsCount < enteredX * enteredY * 0.85)) {
+                if ((enteredX != null && enteredY != null && enteredBombsCount != null) && (enteredX < 9 ||
+                        enteredX > 30 || enteredY < 9 || enteredY > 24 || enteredBombsCount < 9 ||
+                        enteredBombsCount > enteredX * enteredY * 0.85)) {
                     JOptionPane.showMessageDialog(null, "Неверные данные, ширина должна " +
                             "быть от 9 до 30, высота дожна быть от 9 до 24, количество бомб должно быть от 10 до "
                             + Math.round(enteredX * enteredY * 0.85) + ".");
@@ -345,51 +237,37 @@ public class Minesweeper {
                 }
             });
 
-            menu.add(options);
+            game.add(options);
 
-            JButton highScores = new JButton("Лучшие результаты");
-            highScores.addActionListener(controller.highScores());
-            menu.add(highScores);
+            JMenuItem highScores = new JMenuItem("Лучшие результаты");
+            highScores.addActionListener(e -> {
+                ArrayList<String> leaders = controller.getLeaders();
 
-            JButton exit = new JButton("Выход");
-            exit.addActionListener(controller.exit());
-            menu.add(exit);
+                if (leaders.size() < 1) {
+                    JOptionPane.showMessageDialog(null, "Победителей пока нет.");
+                } else {
+                    JOptionPane.showMessageDialog(null, leaders.toArray());
+                }
+            });
+
+            about.add(highScores);
+
+            JMenuItem exit = new JMenuItem("Выход");
+            exit.addActionListener(e -> controller.exit());
+            game.add(exit);
 
             window.add(menu, BorderLayout.PAGE_START);
 
-            field = new JPanel(new GridLayout(y, x, 0, 0));
+            field = new JPanel(new GridLayout(height, width, 0, 0));
 
-            for (int i = 0; i < y; i++) {
-                for (int j = 0; j < x; j++) {
+            for (int i = 0; i < height; i++) {
+                for (int j = 0; j < width; j++) {
                     buttons[i][j] = new JButton();
                     buttons[i][j].setBackground(Color.WHITE);
-                    buttons[i][j].setIcon(closed);
+                    buttons[i][j].setIcon(icons.get(11));
+                    buttons[i][j].setDisabledIcon(icons.get(controller.getCellParameter(j, i)));
 
-                    final int conditions = controller.getCondition(i, j);
-
-                    if (conditions == -1) {
-                        buttons[i][j].setDisabledIcon(bomb);
-                    } else if (conditions == 0) {
-                        buttons[i][j].setDisabledIcon(opened);
-                    } else if (conditions == 1) {
-                        buttons[i][j].setDisabledIcon(one);
-                    } else if (conditions == 2) {
-                        buttons[i][j].setDisabledIcon(two);
-                    } else if (conditions == 3) {
-                        buttons[i][j].setDisabledIcon(three);
-                    } else if (conditions == 4) {
-                        buttons[i][j].setDisabledIcon(four);
-                    } else if (conditions == 5) {
-                        buttons[i][j].setDisabledIcon(five);
-                    } else if (conditions == 6) {
-                        buttons[i][j].setDisabledIcon(six);
-                    } else if (conditions == 7) {
-                        buttons[i][j].setDisabledIcon(seven);
-                    } else {
-                        buttons[i][j].setDisabledIcon(eight);
-                    }
-
-                    buttons[i][j].addMouseListener(getMouseListener(i, j));
+                    buttons[i][j].addMouseListener(getMouseListener(j, i));
                     field.add(buttons[i][j]);
                 }
             }
@@ -398,20 +276,21 @@ public class Minesweeper {
 
             JPanel lowerPanel = new JPanel(new GridLayout(1, 4, 0, 0));
             lowerPanel.setSize(200, 100);
-            lowerPanel.add(new JLabel(clock));
+            lowerPanel.add(new JLabel(icons.get(10)));
             bombsLeftPanel = new JLabel();
             bombsLeftPanel.setText(Integer.toString(bombsCount));
             bombsLeftPanel.setHorizontalAlignment(SwingConstants.RIGHT);
+
             lowerPanel.add(timePanel);
             lowerPanel.add(bombsLeftPanel);
 
-            lowerPanel.add(new JLabel(bomb));
+            lowerPanel.add(new JLabel(icons.get(-1)));
             lowerPanel.setPreferredSize(new Dimension(300, 50));
 
             window.add(lowerPanel, BorderLayout.PAGE_END);
 
             if (Frame.getFrames().length < 1) {
-                System.exit(0);
+                controller.exit();
             }
         });
     }
