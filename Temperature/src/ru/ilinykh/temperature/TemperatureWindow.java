@@ -5,13 +5,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Objects;
 
-public class Temperature {
+public class TemperatureWindow {
     private final TemperatureConverter temperatureConverter;
+    private final TemperatureScale[] scales;
 
-    public Temperature() {
+    public TemperatureWindow(TemperatureScale... scales) {
         temperatureConverter = new TemperatureConverter();
+
+        this.scales = scales;
     }
 
     public void show() {
@@ -60,8 +64,6 @@ public class Temperature {
             result.setEditable(false);
             panel.add(result, constraints);
 
-            TemperatureScale[] scales = {new Celsius(), new Fahrenheit(), new Kelvin()};
-
             String[] scaleNames = new String[scales.length];
 
             for (int i = 0; i < scales.length; i++) {
@@ -79,7 +81,6 @@ public class Temperature {
             JComboBox<String> outComboBox = new JComboBox<>(scaleNames);
             panel.add(outComboBox, constraints);
 
-
             constraints.gridwidth = 2;
             constraints.gridx = 0;
             constraints.gridy = 3;
@@ -88,29 +89,27 @@ public class Temperature {
             constraints.insets = new Insets(50, 0, 0, 0);
             JButton okButton = new JButton("Перевести");
             okButton.addActionListener(e -> {
-                double number = 0;
-
                 try {
-                    number = Double.parseDouble(enteredValue.getText().replace(",", "."));
+                    double number = Double.parseDouble(enteredValue.getText().replace(",", "."));
+
+                    TemperatureScale from = Arrays.stream(scales)
+                            .filter(x -> Objects.equals(inComboBox.getSelectedItem(), x.getName()))
+                            .findAny()
+                            .orElse(null);
+
+                    TemperatureScale to = Arrays.stream(scales)
+                            .filter(x -> Objects.equals(outComboBox.getSelectedItem(), x.getName()))
+                            .findAny()
+                            .orElse(null);
+
+                    if (from != null && to != null) {
+                        result.setText(Double.toString(temperatureConverter.convert(number, from, to)));
+                    }
                 } catch (NumberFormatException n) {
                     JOptionPane.showMessageDialog(null, "Неверные данные, введите число.");
                 }
-
-                int from = -1;
-                int to = -1;
-
-                for (int i = 0; i < scales.length; i++) {
-                    if (Objects.equals(inComboBox.getSelectedItem(), scales[i].getName())) {
-                        from = i;
-                    }
-
-                    if (Objects.equals(outComboBox.getSelectedItem(), scales[i].getName())) {
-                        to = i;
-                    }
-                }
-
-                result.setText(Double.toString(temperatureConverter.convert(number, scales[from], scales[to])));
             });
+
             panel.add(okButton, constraints);
 
             frame.add(panel, BorderLayout.CENTER);

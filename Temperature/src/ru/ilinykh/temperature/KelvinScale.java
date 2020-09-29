@@ -1,18 +1,18 @@
 package ru.ilinykh.temperature;
 
-public class Fahrenheit implements TemperatureScale {
+public class KelvinScale implements TemperatureScale {
     @Override
     public String getName() {
-        return "Градусы Фаренгейта (°F)";
+        return "Градусы Кельвина (К)";
     }
 
     @Override
     public double getCelsiusFromThis(double value) {
-        return (value - 32) * 5 / 9;
+        return value - 273.15;
     }
 
     @Override
     public double getThisFromCelsius(double value) {
-        return (value * 9 / 5) + 32;
+        return value + 273.15;
     }
 }

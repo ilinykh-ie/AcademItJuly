@@ -1,6 +1,6 @@
 package ru.ilinykh.temperature;
 
-public class Celsius implements TemperatureScale {
+public class CelsiusScale implements TemperatureScale {
     @Override
     public String getName() {
         return "Градусы Цельсия (°C)";
