@@ -28,17 +28,20 @@ public class Tree<T> {
             return comparator.compare(data1, data2);
         }
 
-        //noinspection unchecked
-        if (data2 == data1 || (data1 != null && data2 != null && ((Comparable<T>) data2).compareTo(data1) == 0)) {
+        if (data2 == data1) {
             return 0;
         }
 
-        //noinspection unchecked
-        if (data2 == null || (data1 != null && ((Comparable<T>) data2).compareTo(data1) < 0)) {
+        if (data2 == null) {
             return -1;
         }
 
-        return 1;
+        if (data1 == null) {
+            return 1;
+        }
+
+        //noinspection unchecked
+        return ((Comparable<T>) data2).compareTo(data1);
     }
 
     public int size() {
@@ -234,9 +237,7 @@ public class Tree<T> {
                 } else {
                     break;
                 }
-            }
-
-            if (comparisonResult == 0) {
+            } else {
                 if (currentNode.getRight() == null && currentNode.getLeft() == null) {
                     if (previousNode.getLeft() == currentNode) {
                         previousNode.setLeft(null);
