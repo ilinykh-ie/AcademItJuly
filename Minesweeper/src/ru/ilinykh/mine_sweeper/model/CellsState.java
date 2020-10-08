@@ -1,23 +1,31 @@
 package ru.ilinykh.mine_sweeper.model;
 
+import java.util.Arrays;
+
 public class CellsState {
-    private final int[][] cellState; //0 - ячейка закрыта, -1 - флаг, 1 - открыта.
-    private int looseOrWin;          //0 - игра не закончена. -1 - поражение, 1 - победа
+    private final CellState[][] cellsState;
+    private GameState loseOrWin;
     private int closedCells;
     private int bombsLeft;
 
     public CellsState(int width, int height, int bombsCount) {
-        cellState = new int[height][width];
+        cellsState = new CellState[height][width];
+
+        for (CellState[] e : cellsState) {
+            Arrays.fill(e, CellState.CLOSED);
+        }
+
+        loseOrWin = GameState.CONTINUE;
         closedCells = width * height;
         bombsLeft = bombsCount;
     }
 
-    public int getCellState(int width, int height) {
-        return cellState[height][width];
+    public CellState getCellState(int width, int height) {
+        return cellsState[height][width];
     }
 
-    public void setCellState(int width, int height, int state) {
-        cellState[height][width] = state;
+    public void setCellState(int width, int height, CellState cellState) {
+        cellsState[height][width] = cellState;
     }
 
     public int getClosedCells() {
@@ -36,11 +44,11 @@ public class CellsState {
         this.bombsLeft = bombsLeft;
     }
 
-    public int getLooseOrWin() {
-        return looseOrWin;
+    public GameState getLoseOrWin() {
+        return loseOrWin;
     }
 
-    public void setLooseOrWin(int looseOrWin) {
-        this.looseOrWin = looseOrWin;
+    public void setLoseOrWin(GameState gameState) {
+        this.loseOrWin = gameState;
     }
 }

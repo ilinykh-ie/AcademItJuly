@@ -10,9 +10,11 @@ import java.util.Scanner;
 public class HighScores {
     private final ArrayList<String> leaders;
     private final File highScores;
+    private final int maxHighScoresLength;
 
     public HighScores() {
         this.leaders = new ArrayList<>(10);
+        maxHighScoresLength = 10;
 
         File currentJavaJarFile = new File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath());
         String currentJavaJarFilePath = currentJavaJarFile.getAbsolutePath().replace("\\", "/")
@@ -40,8 +42,8 @@ public class HighScores {
     }
 
     public void setLeaders(String newLeader) {
-        if (leaders.size() == 10) {
-            leaders.remove(9);
+        if (leaders.size() == maxHighScoresLength) {
+            leaders.remove(maxHighScoresLength - 1);
         }
 
         leaders.add(newLeader);

@@ -51,24 +51,24 @@ public class GameField {
         return field[height][width];
     }
 
-    public int getCellState(int width, int height) {
+    public CellState getCellState(int width, int height) {
         return cellsState.getCellState(width, height);
     }
 
     public CellsState leftMouseButtonClick(int width, int height) {
-        if (cellsState.getCellState(width, height) == -1) {
+        if (cellsState.getCellState(width, height) == CellState.FLAG) {
             return null;
         }
 
-        if (cellsState.getCellState(width, height) == 0) {
-            cellsState.setCellState(width, height, 1);
+        if (cellsState.getCellState(width, height) == CellState.CLOSED) {
+            cellsState.setCellState(width, height, CellState.OPENED);
             cellsState.setClosedCells(cellsState.getClosedCells() - 1);
         }
 
         if (field[height][width] == -1) {
-            cellsState.setLooseOrWin(-1);
+            cellsState.setLoseOrWin(GameState.LOSE);
         } else if (bombsCount == cellsState.getClosedCells()) {
-            cellsState.setLooseOrWin(1);
+            cellsState.setLoseOrWin(GameState.WIN);
         } else if (field[height][width] == 0) {
             openAdjacentCells(width, height);
         }
@@ -77,11 +77,11 @@ public class GameField {
     }
 
     public void rightMouseButtonClick(int width, int height) {
-        if (cellsState.getCellState(width, height) == -1) {
-            cellsState.setCellState(width, height, 0);
+        if (cellsState.getCellState(width, height) == CellState.FLAG) {
+            cellsState.setCellState(width, height, CellState.CLOSED);
             cellsState.setBombsLeft(cellsState.getBombsLeft() + 1);
-        } else if (cellsState.getCellState(width, height) == 0) {
-            cellsState.setCellState(width, height, -1);
+        } else if (cellsState.getCellState(width, height) == CellState.CLOSED) {
+            cellsState.setCellState(width, height, CellState.FLAG);
             cellsState.setBombsLeft(cellsState.getBombsLeft() - 1);
         }
     }
@@ -89,7 +89,7 @@ public class GameField {
     private void openAdjacentCells(int width, int height) {
         for (int i = height - 1; i < height + 2; i++) {
             for (int j = width - 1; j < width + 2; j++) {
-                if (i < 0 || i == this.height || j < 0 || j == this.width || cellsState.getCellState(j, i) == -1) {
+                if (i < 0 || i == this.height || j < 0 || j == this.width || cellsState.getCellState(j, i) == CellState.FLAG) {
                     continue;
                 }
 
@@ -99,8 +99,8 @@ public class GameField {
     }
 
     private void open(int width, int height) {
-        if (cellsState.getCellState(width, height) == 0) {
-            cellsState.setCellState(width, height, 1);
+        if (cellsState.getCellState(width, height) == CellState.CLOSED) {
+            cellsState.setCellState(width, height, CellState.OPENED);
             cellsState.setClosedCells(cellsState.getClosedCells() - 1);
 
             if (field[height][width] == 0) {
@@ -108,7 +108,7 @@ public class GameField {
             }
 
             if (bombsCount == cellsState.getClosedCells()) {
-                cellsState.setLooseOrWin(1);
+                cellsState.setLoseOrWin(GameState.WIN);
             }
         }
     }
@@ -118,7 +118,7 @@ public class GameField {
     }
 
     public CellsState middleMouseButtonClick(int width, int height) {
-        if (cellsState.getCellState(width, height) != 1) {
+        if (cellsState.getCellState(width, height) != CellState.OPENED) {
             return null;
         }
 
@@ -130,7 +130,7 @@ public class GameField {
                     continue;
                 }
 
-                if (cellsState.getCellState(j, i) == -1) {
+                if (cellsState.getCellState(j, i) == CellState.FLAG) {
                     flagsAround++;
                 }
             }
@@ -146,15 +146,15 @@ public class GameField {
                     continue;
                 }
 
-                if (cellsState.getCellState(j, i) == 0) {
-                    cellsState.setCellState(j, i, 1);
+                if (cellsState.getCellState(j, i) == CellState.CLOSED) {
+                    cellsState.setCellState(j, i, CellState.OPENED);
                     cellsState.setClosedCells(cellsState.getClosedCells() - 1);
                 }
 
-                if (field[i][j] == -1 && cellsState.getCellState(j, i) != -1) {
-                    cellsState.setLooseOrWin(-1);
+                if (field[i][j] == -1 && cellsState.getCellState(j, i) != CellState.FLAG) {
+                    cellsState.setLoseOrWin(GameState.LOSE);
                 } else if (bombsCount == cellsState.getClosedCells()) {
-                    cellsState.setLooseOrWin(1);
+                    cellsState.setLoseOrWin(GameState.WIN);
                 }
             }
         }

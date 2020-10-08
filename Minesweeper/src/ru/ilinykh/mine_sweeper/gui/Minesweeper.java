@@ -1,7 +1,9 @@
 package ru.ilinykh.mine_sweeper.gui;
 
 import ru.ilinykh.mine_sweeper.controller.Controller;
+import ru.ilinykh.mine_sweeper.model.CellState;
 import ru.ilinykh.mine_sweeper.model.CellsState;
+import ru.ilinykh.mine_sweeper.model.GameState;
 
 import javax.swing.*;
 import java.awt.*;
@@ -67,9 +69,9 @@ public class Minesweeper {
                 } else if (e.getButton() == MouseEvent.BUTTON3) {
                     controller.rightMouseButtonClick(width, height);
 
-                    if (controller.getCellState(width, height) == 0) {
+                    if (controller.getCellState(width, height) == CellState.CLOSED) {
                         buttons[height][width].setIcon(icons.get(11));
-                    } else if (controller.getCellState(width, height) == -1) {
+                    } else if (controller.getCellState(width, height) == CellState.FLAG) {
                         buttons[height][width].setIcon(icons.get(9));
                     }
 
@@ -81,15 +83,15 @@ public class Minesweeper {
                 if (cellsState != null) {
                     for (int i = 0; i < Minesweeper.this.height; i++) {
                         for (int j = 0; j < Minesweeper.this.width; j++) {
-                            if (cellsState.getCellState(j, i) == 1) {
+                            if (cellsState.getCellState(j, i) == CellState.OPENED) {
                                 buttons[i][j].setEnabled(false);
                             }
                         }
                     }
 
-                    if (cellsState.getLooseOrWin() == -1) {
+                    if (cellsState.getLoseOrWin() == GameState.LOSE) {
                         loose();
-                    } else if (cellsState.getLooseOrWin() == 1) {
+                    } else if (cellsState.getLoseOrWin() == GameState.WIN) {
                         win();
                     }
                 }

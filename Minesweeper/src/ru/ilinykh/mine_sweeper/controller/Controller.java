@@ -1,9 +1,6 @@
 package ru.ilinykh.mine_sweeper.controller;
 
-import ru.ilinykh.mine_sweeper.model.CellsState;
-import ru.ilinykh.mine_sweeper.model.GameField;
-import ru.ilinykh.mine_sweeper.model.GameTimer;
-import ru.ilinykh.mine_sweeper.model.HighScores;
+import ru.ilinykh.mine_sweeper.model.*;
 
 import java.awt.event.ActionListener;
 import java.util.*;
@@ -45,7 +42,7 @@ public class Controller {
         return gameField.getCellParameter(width, height);
     }
 
-    public int getCellState(int width, int height) {
+    public CellState getCellState(int width, int height) {
         return gameField.getCellState(width, height);
     }
 
