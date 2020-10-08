@@ -28,20 +28,20 @@ public class Tree<T> {
             return comparator.compare(data1, data2);
         }
 
-        if (data2 == data1) {
+        if (data1 == data2) {
             return 0;
         }
 
         if (data2 == null) {
-            return -1;
-        }
-
-        if (data1 == null) {
             return 1;
         }
 
+        if (data1 == null) {
+            return -1;
+        }
+
         //noinspection unchecked
-        return ((Comparable<T>) data2).compareTo(data1);
+        return ((Comparable<T>) data1).compareTo(data2);
     }
 
     public int size() {
@@ -128,7 +128,7 @@ public class Tree<T> {
         TreeNode<T> currentNode = root;
 
         for (; ; ) {
-            if (compare(currentNode.getValue(), data) < 0) {
+            if (compare(data, currentNode.getValue()) < 0) {
                 if (currentNode.getLeft() != null) {
                     currentNode = currentNode.getLeft();
                 } else {
@@ -158,7 +158,7 @@ public class Tree<T> {
         TreeNode<T> currentNode = root;
 
         for (; ; ) {
-            int comparisonResult = compare(currentNode.getValue(), data);
+            int comparisonResult = compare(data, currentNode.getValue());
 
             if (comparisonResult == 0) {
                 return true;
@@ -189,7 +189,7 @@ public class Tree<T> {
 
         TreeNode<T> currentNode = root;
 
-        if (compare(currentNode.getValue(), data) == 0) {
+        if (compare(data, currentNode.getValue()) == 0) {
             if (currentNode.getRight() == null && currentNode.getLeft() == null) {
                 root = null;
             } else if (currentNode.getRight() == null) {
@@ -221,7 +221,7 @@ public class Tree<T> {
         TreeNode<T> previousNode = currentNode;
 
         for (; ; ) {
-            int comparisonResult = compare(currentNode.getValue(), data);
+            int comparisonResult = compare(data, currentNode.getValue());
 
             if (comparisonResult < 0) {
                 if (currentNode.getLeft() != null) {
