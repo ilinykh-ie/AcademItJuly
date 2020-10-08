@@ -101,7 +101,7 @@
       <recent name="ru.ilinykh.mine_sweeper" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JAR Application.Minesweeper.jar (2)">
     <configuration name="CSV" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.ilinykh.csv_main.CSV" />
       <module name="CSV" />
@@ -204,11 +204,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JAR Application.Minesweeper.jar (2)" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main (3)" />
         <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Main (1)" />
-        <item itemvalue="JAR Application.Minesweeper.jar (2)" />
       </list>
     </recent_temporary>
   </component>
