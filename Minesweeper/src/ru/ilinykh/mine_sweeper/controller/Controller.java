@@ -6,12 +6,18 @@ import java.awt.event.ActionListener;
 import java.util.*;
 
 public class Controller {
-    private final GameField gameField;
+    private GameField gameField;
     private final HighScores highScores;
     private final GameTimer gameTimer;
+    private final int x;
+    private final int y;
+    private final int bombsCount;
 
     public Controller(int x, int y, int bombsCount) {
-        gameField = new GameField(x, y, bombsCount);
+        this.x = x;
+        this.y = y;
+        this.bombsCount = bombsCount;
+        gameField = null;
         highScores = new HighScores();
         gameTimer = new GameTimer();
     }
@@ -51,6 +57,10 @@ public class Controller {
     }
 
     public CellsState leftMouseButtonClick(int width, int height) {
+        if (gameField == null) {
+            gameField = new GameField(x, y, bombsCount, width, height);
+        }
+
         return gameField.leftMouseButtonClick(width, height);
     }
 

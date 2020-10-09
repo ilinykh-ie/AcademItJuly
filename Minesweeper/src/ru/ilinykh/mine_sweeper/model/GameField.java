@@ -9,7 +9,7 @@ public class GameField {
     private final int width;
     private final int height;
 
-    public GameField(int width, int height, int bombsCount) {
+    public GameField(int width, int height, int bombsCount, int firstOpenedWidth, int firstOpenedHeight) {
         this.width = width;
         this.height = height;
         field = new int[height][width];
@@ -19,7 +19,15 @@ public class GameField {
         Random random = new Random();
 
         for (int i = 0; i < bombsCount; i++) {
-            field[random.nextInt(height)][random.nextInt(width)] = -1;
+            Integer bombWidthCoordinate = null;
+            Integer bombHeightCoordinate = null;
+
+            while (bombWidthCoordinate == null || (bombWidthCoordinate == firstOpenedWidth && bombHeightCoordinate == firstOpenedHeight)) {
+                bombWidthCoordinate = random.nextInt(width);
+                bombHeightCoordinate = random.nextInt(height);
+            }
+
+            field[bombHeightCoordinate][bombWidthCoordinate] = -1;
         }
 
         for (int i = 0; i < height; i++) {
@@ -76,6 +84,42 @@ public class GameField {
         return cellsState;
     }
 
+    public CellsState middleMouseButtonClick(int width, int height) {
+        if (cellsState.getCellState(width, height) != CellState.OPENED) {
+            return null;
+        }
+
+        int flagsAround = 0;
+
+        for (int i = height - 1; i < height + 2; i++) {
+            for (int j = width - 1; j < width + 2; j++) {
+                if (i < 0 || i == this.height || j < 0 || j == this.width) {
+                    continue;
+                }
+
+                if (cellsState.getCellState(j, i) == CellState.FLAG) {
+                    flagsAround++;
+                }
+            }
+        }
+
+        if (field[height][width] != flagsAround) {
+            return null;
+        }
+
+        for (int i = height - 1; i < height + 2; i++) {
+            for (int j = width - 1; j < width + 2; j++) {
+                if (i < 0 || i == this.height || j < 0 || j == this.width) {
+                    continue;
+                }
+
+                leftMouseButtonClick(j, i);
+            }
+        }
+
+        return cellsState;
+    }
+
     public void rightMouseButtonClick(int width, int height) {
         if (cellsState.getCellState(width, height) == CellState.FLAG) {
             cellsState.setCellState(width, height, CellState.CLOSED);
@@ -115,50 +159,5 @@ public class GameField {
 
     public int getBombsLeft() {
         return cellsState.getBombsLeft();
-    }
-
-    public CellsState middleMouseButtonClick(int width, int height) {
-        if (cellsState.getCellState(width, height) != CellState.OPENED) {
-            return null;
-        }
-
-        int flagsAround = 0;
-
-        for (int i = height - 1; i < height + 2; i++) {
-            for (int j = width - 1; j < width + 2; j++) {
-                if (i < 0 || i == this.height || j < 0 || j == this.width) {
-                    continue;
-                }
-
-                if (cellsState.getCellState(j, i) == CellState.FLAG) {
-                    flagsAround++;
-                }
-            }
-        }
-
-        if (field[height][width] != flagsAround) {
-            return null;
-        }
-
-        for (int i = height - 1; i < height + 2; i++) {
-            for (int j = width - 1; j < width + 2; j++) {
-                if (i < 0 || i == this.height || j < 0 || j == this.width) {
-                    continue;
-                }
-
-                if (cellsState.getCellState(j, i) == CellState.CLOSED) {
-                    cellsState.setCellState(j, i, CellState.OPENED);
-                    cellsState.setClosedCells(cellsState.getClosedCells() - 1);
-                }
-
-                if (field[i][j] == -1 && cellsState.getCellState(j, i) != CellState.FLAG) {
-                    cellsState.setLoseOrWin(GameState.LOSE);
-                } else if (bombsCount == cellsState.getClosedCells()) {
-                    cellsState.setLoseOrWin(GameState.WIN);
-                }
-            }
-        }
-
-        return cellsState;
     }
 }

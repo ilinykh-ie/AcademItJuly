@@ -22,6 +22,7 @@ public class Minesweeper {
     private final HashMap<Integer, ImageIcon> icons;
     private final JLabel timePanel;
     private JLabel bombsLeftPanel;
+    private boolean isAppointed;
 
     public Minesweeper() {
         this(9, 9, 10);
@@ -31,6 +32,7 @@ public class Minesweeper {
         this.width = width;
         this.height = height;
         this.bombsCount = bombsCount;
+
         controller = new Controller(width, height, bombsCount);
 
         timePanel = new JLabel();
@@ -66,6 +68,17 @@ public class Minesweeper {
 
                 if (e.getButton() == MouseEvent.BUTTON1) {
                     cellsState = controller.leftMouseButtonClick(width, height);
+
+                    if (!isAppointed) {
+                        isAppointed = true;
+
+                        for (int i = 0; i < Minesweeper.this.height; i++) {
+                            for (int j = 0; j < Minesweeper.this.width; j++) {
+                                buttons[i][j].setDisabledIcon(icons.get(controller.getCellParameter(j, i)));
+                            }
+                        }
+                    }
+
                 } else if (e.getButton() == MouseEvent.BUTTON3) {
                     controller.rightMouseButtonClick(width, height);
 
@@ -136,7 +149,7 @@ public class Minesweeper {
         }
 
         int result = JOptionPane.showConfirmDialog(null, "Вы проиграли. Если" +
-                        " хотите начать новую игру нажимте YES, если хотите выйти нажмите NO.",
+                        " хотите начать новую игру нажмите \"Да\", если хотите выйти нажмите \"Нет\".",
                 "Игра проиграна!", JOptionPane.YES_NO_OPTION);
 
         if (result == JOptionPane.NO_OPTION) {
@@ -151,6 +164,10 @@ public class Minesweeper {
 
     public void show() {
         SwingUtilities.invokeLater(() -> {
+            UIManager.put("OptionPane.yesButtonText", "Да");
+            UIManager.put("OptionPane.noButtonText", "Нет");
+            UIManager.put("OptionPane.cancelButtonText", "Отмена");
+
             window = new JFrame("Сапер");
             window.addWindowListener(new WindowAdapter() {
                 @Override
@@ -171,7 +188,8 @@ public class Minesweeper {
             game.setPreferredSize(new Dimension(60, 20));
             menu.add(game);
 
-            JMenuItem newGame = new JMenuItem("Новая ирга");
+            JMenuItem newGame = new JMenuItem("Новая игра");
+            newGame.setAccelerator(KeyStroke.getKeyStroke("F2"));
             newGame.addActionListener(e -> {
                 int result = JOptionPane.showConfirmDialog(null, "Текущая игра не завершена. " +
                                 "Начать новую игру?", "Новая игра",
@@ -191,11 +209,13 @@ public class Minesweeper {
             menu.add(about);
 
             JMenuItem info = new JMenuItem("Правила игры");
+            info.setAccelerator(KeyStroke.getKeyStroke("F1"));
             info.addActionListener(e -> JOptionPane.showMessageDialog(null, controller.about(),
                     "Справка", JOptionPane.INFORMATION_MESSAGE));
             about.add(info);
 
             JMenuItem options = new JMenuItem("Настройки");
+            options.setAccelerator(KeyStroke.getKeyStroke("F5"));
             options.addActionListener(e -> {
                 Integer enteredX = null;
                 Integer enteredY = null;
@@ -242,19 +262,23 @@ public class Minesweeper {
             game.add(options);
 
             JMenuItem highScores = new JMenuItem("Лучшие результаты");
+            highScores.setAccelerator(KeyStroke.getKeyStroke("F4"));
             highScores.addActionListener(e -> {
                 ArrayList<String> leaders = controller.getLeaders();
 
                 if (leaders.size() < 1) {
-                    JOptionPane.showMessageDialog(null, "Победителей пока нет.");
+                    JOptionPane.showMessageDialog(null, "Победителей пока нет.",
+                            "Лучшие результаты", JOptionPane.INFORMATION_MESSAGE);
                 } else {
-                    JOptionPane.showMessageDialog(null, leaders.toArray());
+                    JOptionPane.showMessageDialog(null, leaders.toArray(), "Лучшие результаты",
+                            JOptionPane.INFORMATION_MESSAGE);
                 }
             });
 
             about.add(highScores);
 
             JMenuItem exit = new JMenuItem("Выход");
+            exit.setAccelerator(KeyStroke.getKeyStroke("F10"));
             exit.addActionListener(e -> controller.exit());
             game.add(exit);
 
@@ -267,8 +291,6 @@ public class Minesweeper {
                     buttons[i][j] = new JButton();
                     buttons[i][j].setBackground(Color.WHITE);
                     buttons[i][j].setIcon(icons.get(11));
-                    buttons[i][j].setDisabledIcon(icons.get(controller.getCellParameter(j, i)));
-
                     buttons[i][j].addMouseListener(getMouseListener(j, i));
                     field.add(buttons[i][j]);
                 }
