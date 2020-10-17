@@ -19,7 +19,7 @@ public class Minesweeper {
     private final JButton[][] buttons;
     private JPanel field;
     private JFrame window;
-    private final HashMap<Integer, ImageIcon> icons;
+    private final HashMap<Icons, ImageIcon> icons;
     private final JLabel timePanel;
     private JLabel bombsLeftPanel;
     private boolean isAppointed;
@@ -43,19 +43,19 @@ public class Minesweeper {
         field = new JPanel(new GridLayout(height, width, 0, 0));
 
         icons = new HashMap<>();
-        icons.put(-1, new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/Bomb.jpg")));
-        icons.put(0, new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/Opened.jpg")));
-        icons.put(1, new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/1.jpg")));
-        icons.put(2, new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/2.jpg")));
-        icons.put(3, new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/3.jpg")));
-        icons.put(4, new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/4.jpg")));
-        icons.put(5, new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/5.jpg")));
-        icons.put(6, new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/6.jpg")));
-        icons.put(7, new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/7.jpg")));
-        icons.put(8, new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/8.jpg")));
-        icons.put(9, new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/Flag.jpg")));
-        icons.put(10, new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/Clock.jpg")));
-        icons.put(11, new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/Closed.jpg")));
+        icons.put(Icons.BOMB, new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/Bomb.jpg")));
+        icons.put(Icons.OPENED, new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/Opened.jpg")));
+        icons.put(Icons.ONE, new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/1.jpg")));
+        icons.put(Icons.TWO, new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/2.jpg")));
+        icons.put(Icons.THREE, new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/3.jpg")));
+        icons.put(Icons.FOUR, new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/4.jpg")));
+        icons.put(Icons.FIVE, new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/5.jpg")));
+        icons.put(Icons.SIX, new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/6.jpg")));
+        icons.put(Icons.SEVEN, new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/7.jpg")));
+        icons.put(Icons.EIGHT, new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/8.jpg")));
+        icons.put(Icons.FLAG, new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/Flag.jpg")));
+        icons.put(Icons.CLOCK, new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/Clock.jpg")));
+        icons.put(Icons.CLOSED, new ImageIcon(getClass().getResource("/ru/ilinykh/mine_sweeper/resources/Closed.jpg")));
     }
 
     private MouseListener getMouseListener(int width, int height) {
@@ -80,15 +80,17 @@ public class Minesweeper {
                     }
 
                 } else if (e.getButton() == MouseEvent.BUTTON3) {
-                    controller.rightMouseButtonClick(width, height);
+                    if (controller.getCellState(width, height) != null) {
+                        controller.rightMouseButtonClick(width, height);
 
-                    if (controller.getCellState(width, height) == CellState.CLOSED) {
-                        buttons[height][width].setIcon(icons.get(11));
-                    } else if (controller.getCellState(width, height) == CellState.FLAG) {
-                        buttons[height][width].setIcon(icons.get(9));
+                        if (controller.getCellState(width, height) == CellState.CLOSED) {
+                            buttons[height][width].setIcon(icons.get(Icons.CLOSED));
+                        } else if (controller.getCellState(width, height) == CellState.FLAG) {
+                            buttons[height][width].setIcon(icons.get(Icons.FLAG));
+                        }
+
+                        bombsLeftPanel.setText(Integer.toString(controller.getBombsLeft()));
                     }
-
-                    bombsLeftPanel.setText(Integer.toString(controller.getBombsLeft()));
                 } else if (e.getButton() == MouseEvent.BUTTON2) {
                     cellsState = controller.middleMouseButtonClick(width, height);
                 }
@@ -142,7 +144,7 @@ public class Minesweeper {
 
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-                if (controller.getCellParameter(j, i) == -1) {
+                if (controller.getCellParameter(j, i) == Icons.BOMB) {
                     buttons[i][j].setEnabled(false);
                 }
             }
@@ -176,8 +178,15 @@ public class Minesweeper {
                 }
             });
 
-            window.setSize(600, 700);
-            window.setMinimumSize(new Dimension(300, 350));
+            int windowWidth = width * 30;
+            int windowHeight = height * 40;
+
+            if (height > 20) {
+                windowHeight = height * 33;
+            }
+
+            window.setSize(400, 500);
+            window.setMinimumSize(new Dimension(windowWidth, windowHeight));
             window.setVisible(true);
             window.setLocationRelativeTo(null);
             window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -290,7 +299,7 @@ public class Minesweeper {
                 for (int j = 0; j < width; j++) {
                     buttons[i][j] = new JButton();
                     buttons[i][j].setBackground(Color.WHITE);
-                    buttons[i][j].setIcon(icons.get(11));
+                    buttons[i][j].setIcon(icons.get(Icons.CLOSED));
                     buttons[i][j].addMouseListener(getMouseListener(j, i));
                     field.add(buttons[i][j]);
                 }
@@ -300,7 +309,7 @@ public class Minesweeper {
 
             JPanel lowerPanel = new JPanel(new GridLayout(1, 4, 0, 0));
             lowerPanel.setSize(200, 100);
-            lowerPanel.add(new JLabel(icons.get(10)));
+            lowerPanel.add(new JLabel(icons.get(Icons.CLOCK)));
             bombsLeftPanel = new JLabel();
             bombsLeftPanel.setText(Integer.toString(bombsCount));
             bombsLeftPanel.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -308,7 +317,7 @@ public class Minesweeper {
             lowerPanel.add(timePanel);
             lowerPanel.add(bombsLeftPanel);
 
-            lowerPanel.add(new JLabel(icons.get(-1)));
+            lowerPanel.add(new JLabel(icons.get(Icons.BOMB)));
             lowerPanel.setPreferredSize(new Dimension(300, 50));
 
             window.add(lowerPanel, BorderLayout.PAGE_END);

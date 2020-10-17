@@ -9,6 +9,7 @@ public class GameTimer {
 
     public GameTimer() {
         timer = new Timer(1000, e -> time++);
+        time = 1;
     }
 
     public void timerStart() {

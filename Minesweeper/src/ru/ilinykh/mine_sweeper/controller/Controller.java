@@ -1,5 +1,6 @@
 package ru.ilinykh.mine_sweeper.controller;
 
+import ru.ilinykh.mine_sweeper.gui.Icons;
 import ru.ilinykh.mine_sweeper.model.*;
 
 import java.awt.event.ActionListener;
@@ -44,11 +45,31 @@ public class Controller {
                 System.lineSeparator() + "Чтобы победить, необходимо открыть все ячейки, в которых нет мин.";
     }
 
-    public int getCellParameter(int width, int height) {
-        return gameField.getCellParameter(width, height);
+    public Icons getCellParameter(int width, int height) {
+        int parameter = gameField.getCellParameter(width, height);
+
+        return switch (parameter) {
+            case -1 -> Icons.BOMB;
+            case 0 -> Icons.OPENED;
+            case 1 -> Icons.ONE;
+            case 2 -> Icons.TWO;
+            case 3 -> Icons.THREE;
+            case 4 -> Icons.FOUR;
+            case 5 -> Icons.FIVE;
+            case 6 -> Icons.SIX;
+            case 7 -> Icons.SEVEN;
+            case 8 -> Icons.EIGHT;
+            case 9 -> Icons.FLAG;
+            case 10 -> Icons.CLOCK;
+            default -> Icons.CLOSED;
+        };
     }
 
     public CellState getCellState(int width, int height) {
+        if (gameField == null) {
+            return null;
+        }
+
         return gameField.getCellState(width, height);
     }
 
