@@ -240,7 +240,12 @@ public class Minesweeper {
                 panel.add(fieldX);
                 panel.add(new JLabel("Число мин (от 10 до 85% поля): "));
                 panel.add(fieldBombs);
-                JOptionPane.showMessageDialog(null, panel, "Настройи", JOptionPane.QUESTION_MESSAGE);
+                int result = JOptionPane.showOptionDialog(null, panel, "Настройки",
+                        JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+
+                if (result != JOptionPane.OK_OPTION) {
+                    return;
+                }
 
                 if (!fieldX.getText().equals("") || !fieldY.getText().equals("") || !fieldBombs.getText().equals("")) {
                     try {
@@ -249,7 +254,8 @@ public class Minesweeper {
                         enteredBombsCount = Integer.parseInt(fieldBombs.getText());
 
                     } catch (NumberFormatException n) {
-                        JOptionPane.showMessageDialog(null, "Неверные данные, введите числа.");
+                        JOptionPane.showMessageDialog(null, "Неверные данные, заполните все " +
+                                "поля в числовом формате.");
                         options.doClick();
                     }
                 }
